@@ -1,0 +1,119 @@
+{
+  "schema": "powershell-command-readiness/v1",
+  "parameter_contract": {
+    "id": "new-item-path-contract",
+    "cmdlet": "New-Item",
+    "unsupported_parameter": "LiteralPath",
+    "supported_parameter": "Path"
+  },
+  "error_contract": {
+    "id": "cmdlet-nonterminating-vs-exit",
+    "cmdlet": "Copy-Item",
+    "green_exit": 0,
+    "fail_closed_exit": 7,
+    "artifact_content": "expected"
+  },
+  "parser_pairs": [
+    {
+      "id": "variable-colon",
+      "invalid": "$name = 'alpha'; \"$name: value\"",
+      "valid": "$name = 'alpha'; \"${name}: value\"",
+      "valid_expected": "alpha: value"
+    },
+    {
+      "id": "literal-scope-regex",
+      "invalid": "$pattern = \"$env:|$script:\"",
+      "valid": "$pattern = '\\$(?:env|script):'; if ('$env:Path $script:value' -match $pattern) { 'literal-scope-regex' }",
+      "valid_expected": "literal-scope-regex"
+    },
+    {
+      "id": "foreach-statement-pipeline",
+      "invalid": "foreach ($item in 1..2) { $item } | Measure-Object",
+      "valid": "$items = foreach ($item in 1..2) { $item }; ($items | Measure-Object).Count",
+      "valid_expected": "2"
+    }
+  ],
+  "runtime_pairs": [
+    {
+      "id": "automatic-matches-collision",
+      "invalid": "$Matches = @('application-item'); [void]('abc' -match '^(?<prefix>a)'); if (($Matches -is [hashtable]) -and $Matches['prefix'] -eq 'a') { 'collision' }",
+      "invalid_expected": "collision",
+      "valid": "$resultItems = @('application-item'); [void]('abc' -match '^(?<prefix>a)'); if ($resultItems.Count -eq 1 -and $resultItems[0] -eq 'application-item') { 'preserved' }",
+      "valid_expected": "preserved"
+    }
+  ],
+  "pwsh_readiness_cases": [
+    {
+      "id": "usable-version",
+      "resolved_count": 1,
+      "launch_succeeded": true,
+      "exit_code": 0,
+      "stdout": "7.6.3\r\n",
+      "expected_usable": true
+    },
+    {
+      "id": "nonzero-exit",
+      "resolved_count": 1,
+      "launch_succeeded": true,
+      "exit_code": 9,
+      "stdout": "7.6.3\n",
+      "expected_usable": false
+    },
+    {
+      "id": "empty-output",
+      "resolved_count": 1,
+      "launch_succeeded": true,
+      "exit_code": 0,
+      "stdout": "\r\n",
+      "expected_usable": false
+    },
+    {
+      "id": "malformed-version-output",
+      "resolved_count": 1,
+      "launch_succeeded": true,
+      "exit_code": 0,
+      "stdout": "PowerShell 7 is ready\n",
+      "expected_usable": false
+    }
+  ],
+  "wsl_candidate_cases": [
+    {
+      "id": "wsl-zero-applications",
+      "discovered": [
+        {"command_type": "Alias", "path": "alias:wsl"}
+      ],
+      "expected_application_count": 0,
+      "expected_selected_path": null
+    },
+    {
+      "id": "wsl-one-application",
+      "discovered": [
+        {"command_type": "Application", "path": "fixture-system/wsl.exe"},
+        {"command_type": "Alias", "path": "alias:wsl"}
+      ],
+      "expected_application_count": 1,
+      "expected_selected_path": "fixture-system/wsl.exe"
+    },
+    {
+      "id": "wsl-many-applications",
+      "discovered": [
+        {"command_type": "Application", "path": "fixture-system/wsl.exe"},
+        {"command_type": "Application", "path": "fixture-shadow/wsl.exe"}
+      ],
+      "expected_application_count": 2,
+      "expected_selected_path": null
+    }
+  ],
+  "wsl_exit_cases": [
+    {"id": "wsl-zero-exit", "exit_code": 0, "expected_success": true},
+    {"id": "wsl-nonzero-exit", "exit_code": 23, "expected_success": false}
+  ],
+  "selection_cases": [
+    {"id": "material-nontrivial-powershell", "expected_select": true},
+    {"id": "destructive-filesystem-operation", "expected_select": true},
+    {"id": "ordinary-version-independent-cmdlet", "expected_select": false},
+    {"id": "simple-documented-native-call", "expected_select": false},
+    {"id": "general-windows-work", "expected_select": false},
+    {"id": "posix-only", "expected_select": false}
+  ]
+}

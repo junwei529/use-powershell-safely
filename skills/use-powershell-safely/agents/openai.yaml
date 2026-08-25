@@ -1,0 +1,4 @@
+interface:
+  display_name: "PowerShell"
+  short_description: "Prepare and diagnose PowerShell shell boundaries"
+  default_prompt: "Use $use-powershell-safely before running this non-trivial PowerShell workflow to validate command readiness and preserve its shell boundaries."
