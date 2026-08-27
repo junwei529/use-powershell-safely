@@ -12,17 +12,34 @@ This repository owns its Git history, documentation, checks, and future version,
 evaluation, installation, and release decisions. It has no implicit dependency
 on another Skill repository and begins with no configured remote.
 
+The approved future public identity is
+`junwei529/use-powershell-safely`. Version `v0.3.0` is the initial independent
+candidate; later versions are independently owned by this repository.
+
 ## Evidence state
 
-The migration proves current package byte identity, mapped case and fixture byte
-identity, local link and publication-safety checks, and repository-local
-verification. The focused suite is synthetic and local; it does not prove live WSL, installation, broad selection, or efficacy.
+The migration proves current package byte identity, mapped case and fixture
+byte identity, local link and publication-safety checks, and repository-local
+verification. Candidate C binds exact package tree
+`7e10775d423bfb08bc4ad6388875b7277ce3c18c` and remains
+`PENDING_PLANNER_ACCEPTANCE` until its immutable commit is independently
+assessed.
+
+Historical `c42eef3...` model and loaded-copy evidence belongs to different
+package tree `22c230...` and is not forwarded to this candidate. The exact
+current tree has admissible historical deterministic SOURCE evidence and is
+freshly rechecked locally. Current SOURCE-forward model behavior, public
+Release, persistent lifecycle, stable installed copy, fresh loaded-copy
+behavior, and broad efficacy remain `UNKNOWN`.
 
 ## Next gate
 
-Any remote, installation, tag, release, publication, or behavior-evaluation
-action requires its own authority and fresh evidence. Ordinary local changes
-must preserve the provenance record or explicitly supersede the mapped baseline.
+Planner acceptance of exact Candidate C permits only a later narrow local
+readiness receipt that binds the immutable candidate and records
+`LOCAL_RELEASE_READY`. Any remote, persistent installation, tag, Release,
+publication, discovery/configuration, or model-evaluation action requires its
+own authority and fresh evidence. Ordinary local changes must preserve the
+provenance record or explicitly supersede the mapped baseline.
 
 ## Recovery entry
 

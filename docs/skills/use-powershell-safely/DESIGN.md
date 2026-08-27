@@ -24,6 +24,21 @@ Cases and fixtures are exact source blobs. They define deterministic inputs and
 expected boundaries; model runs, installation, and release remain separately
 authorized evidence classes.
 
+## Independent release qualification
+
+The local `v0.3.0` candidate binds the unchanged five-file package tree and a
+deterministic SOURCE contract. Repository-local lifecycle tooling accepts an
+explicit immutable candidate source and explicit destination, is dry-run by
+default, and refuses roots, homes, link-like paths, foreign copies, and drifted
+managed copies. Disposable self-tests exercise install, update, rollback,
+drift refusal, foreign-copy refusal, and uninstall without changing persistent
+discovery or user configuration.
+
+The local candidate descriptor and a later Planner-acceptance receipt are
+separate identities: candidate acceptance can prove `LOCAL_RELEASE_READY` for
+one immutable commit, but only a later authorized public phase can prove a tag,
+Release, stable installed copy, or fresh loaded-copy behavior.
+
 ## Standalone constraints
 
 - No other Skill package is included.

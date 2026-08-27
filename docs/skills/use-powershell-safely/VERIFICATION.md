@@ -7,6 +7,31 @@
 - Package files: 5
 - Provenance manifest: [`../../../provenance/source-map.json`](../../../provenance/source-map.json)
 
+## Local v0.3.0 candidate qualification
+
+Candidate C preserves package tree
+`7e10775d423bfb08bc4ad6388875b7277ce3c18c`, which is exact at source package
+commit `985e0d21ab1633c642a86826a86773f700ade729`, migration source commit
+`80910a8b2375a11be897e9660c4b00a06d00dd13`, and the independent repository
+baseline. [`../../../release/v0.3.0-candidate.json`](../../../release/v0.3.0-candidate.json)
+binds the package, future public identity, evidence states, release-note review,
+and verification commands.
+
+Historical `c42eef3...` exact-commit model/loaded-copy evidence is not
+admissible for current SOURCE-forward behavior because its package tree is
+`22c230...`, not the current `7e1077...`. Candidate qualification therefore
+uses no provider/model call and transmits no package or case bytes externally.
+The current tree's historical 59-assertion deterministic evidence is reused
+only as bounded SOURCE history and is re-executed through the focused checks.
+
+The deterministic SOURCE contract checks exact five-file shape and tree,
+strict UTF-8/LF/no-BOM bytes, pre-error positive and narrow negative selection
+contracts, native identity/arguments/streams/exit boundaries, permission and
+destructive stops, text/hash/cross-shell rules, and Windows/WSL identity and
+state gates. The lifecycle self-test uses a disposable temporary root and
+exercises dry-run, install, update, rollback, drift refusal, foreign-copy
+refusal, and uninstall. It does not create persistent installed-copy evidence.
+
 ## Repository check
 
 ```powershell
@@ -38,7 +63,7 @@ python -B scripts/check_repository.py --adversarial
 This builds every disposable repository strictly from staged Git-index blobs;
 working-tree, ignored, untracked, cache, and link-target bytes are not copied.
 The admitted publication-classifier input domain is the UTF-8 text of mapped
-repository files plus every string value consumed from the v1 provenance
+repository files plus every string value consumed from the v2 provenance
 manifest. Manifest paths remain strict POSIX repository-relative paths. Within
 that domain, the locator grammar is limited to direct absolute Windows drive
 profiles, direct/device UNC locators, and `file:` URIs that resolve to those
@@ -96,6 +121,10 @@ pwsh -NoLogo -NoProfile -NonInteractive -File evals/check-powershell-boundaries.
 
 ## Evidence limits
 
-The focused suite is synthetic and local; it does not prove live WSL, installation, broad selection, or efficacy. A local clean commit and native review prove only this
-standalone migration checkpoint; they do not authorize or prove publication,
-installation, a remote, tag, Release, or broad product efficacy.
+The focused suite is synthetic and local; it does not prove live WSL, model
+behavior, persistent installation, broad selection, or efficacy. A local clean
+candidate commit and native review prove only repository/source identity and
+deterministic local qualification. They do not authorize or prove a remote,
+tag, Release, publication, stable installed copy, fresh loaded-copy behavior,
+persistent lifecycle, or broad product efficacy. Human review of release notes
+also remains pending until the public-release phase.

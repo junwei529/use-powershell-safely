@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PRODUCT = 'use-powershell-safely'
 BASELINE = '80910a8b2375a11be897e9660c4b00a06d00dd13'
 EXPECTED_SOURCE_TREE = '2ec2574116a9b2c4e8ec9a1bb4cb2636cb6279af'
-EXPECTED_SOURCE_MAPPING_SHA256 = 'b136a682a57fc0cead3e87f0be255cc4f87f7273b0751f02f532139242a17a61'
+EXPECTED_SOURCE_MAPPING_SHA256 = 'ae5d028c72bae69152b2273b647502829a2bdc5976f240848194dd15833c31b3'
 EXPECTED_PACKAGE_COUNT = 5
 EXPECTED_CASES = set(['powershell-boundary.md'])
 EXPECTED_FIXTURES = set(['powershell-boundary'])
@@ -572,6 +572,13 @@ def source_mapping_sha256(manifest: dict) -> str:
                 )
             elif entry.get("kind") == "standalone-normalized-text-rewrite":
                 projected["sources"] = entry.get("sources")
+            elif entry.get("kind") == "repository-native":
+                projected.update(
+                    {
+                        "note": entry.get("note"),
+                        "target_sha256": entry.get("target_sha256"),
+                    }
+                )
             projected_entries.append(projected)
     else:
         projected_entries = entries
@@ -589,7 +596,7 @@ def source_mapping_sha256(manifest: dict) -> str:
 
 
 def validate_manifest_identity(manifest: dict, failures: list[str]) -> None:
-    if manifest.get("schema") != "standalone-skill-provenance/v1":
+    if manifest.get("schema") != "standalone-skill-provenance/v2":
         failures.append("provenance manifest schema mismatch")
     if manifest.get("product") != PRODUCT or manifest.get("source_commit") != BASELINE:
         failures.append("provenance product or source commit mismatch")
@@ -1261,6 +1268,16 @@ def run_adversarial_matrix() -> int:
         "provenance source mapping mismatch",
     )
     execute_case(
+        "manifest-native-target-hash",
+        lambda repo: mutate_manifest(
+            repo,
+            lambda manifest: next(
+                entry for entry in manifest["entries"] if entry.get("kind") == "repository-native"
+            ).update({"target_sha256": "0" * 64}),
+        ),
+        "provenance source mapping mismatch",
+    )
+    execute_case(
         "rewrite-source-schema",
         lambda repo: mutate_manifest(
             repo,
@@ -1501,6 +1518,9 @@ def main() -> int:
             else:
                 for index, source in enumerate(sources):
                     validate_rewrite_source(source, relative, index, failures)
+        elif kind == "repository-native":
+            if not isinstance(entry.get("note"), str) or not entry["note"].strip():
+                failures.append(f"{relative}: repository-native entry requires a note")
         else:
             failures.append(f"{relative}: unknown provenance kind")
     if args.source_repository is not None:

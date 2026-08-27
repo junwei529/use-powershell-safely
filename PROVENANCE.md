@@ -18,6 +18,10 @@ mapping, or source working-tree byte was used.
   evaluation index, checker, and this provenance summary were rewritten as
   UTF-8 without BOM with LF newlines. The manifest records every source path,
   source blob, source normalized-text SHA-256, and target SHA-256.
+- `repository-native`: local release notes, candidate identity, deterministic
+  SOURCE qualification, and the explicit-destination lifecycle tool were
+  created in this independent repository. They are hash-bound in the v2
+  manifest and do not alter or claim ancestry for package bytes.
 
 The installable package behavior is unchanged. Historical monorepo operational
 detail and cross-product release state were omitted because full historical
@@ -26,6 +30,8 @@ dependency.
 
 ## Publication boundary
 
-Tracked content contains no private task, host, checkout, account, or destination
-locator. This local migration makes no remote, installation, tag, Release,
-publication, stable-copy, or efficacy claim.
+Tracked content contains no private task, host, checkout, account, or
+destination locator. The local `v0.3.0` candidate identifies the future public
+repository as `junwei529/use-powershell-safely` and binds the unchanged package
+tree. It makes no remote, tag, Release, publication, persistent-installation,
+stable-copy, model-behavior, or efficacy claim.
