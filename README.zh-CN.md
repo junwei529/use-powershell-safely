@@ -13,10 +13,15 @@
 `7e10775d423bfb08bc4ad6388875b7277ce3c18c`；候选只增加独立仓库资格验证和
 release lifecycle 材料，不改变 package 行为。
 
-候选状态为 `PENDING_PLANNER_ACCEPTANCE`，而且 [`CHANGELOG.md`](CHANGELOG.md)
-仍需在任何公开发布前完成人工审核。本地 deterministic 检查不证明 public
-Release、persistent lifecycle、stable installed-copy、model behavior 或 broad
-efficacy。
+Exact candidate C 已获验收，并由
+[`release/v0.3.0-local-release-receipt.json`](release/v0.3.0-local-release-receipt.json)
+绑定，因此 `LOCAL_RELEASE_READY` 为 `VERIFIED`。不可变 candidate descriptor
+保留 C 中原始的 `PENDING_PLANNER_ACCEPTANCE` 快照；[`CHANGELOG.md`](CHANGELOG.md)
+仍需在任何公开发布前完成人工审核。
+
+获验收的 Q04 只证明三个冻结场景中的 bounded SOURCE-forward behavior；它不证明
+selection/load attribution、installed-copy behavior、persistent lifecycle、public
+Release、stable installation、live WSL 或 broad efficacy。
 
 ## 仓库内容
 

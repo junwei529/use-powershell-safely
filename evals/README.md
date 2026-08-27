@@ -19,6 +19,9 @@ Run `python -B scripts/check_source_contract.py --json` and
 focused PowerShell boundary checker remains the executable synthetic contract.
 The local lifecycle self-test operates only in a disposable temporary root.
 
-Case execution that invokes a model, persistently installs a Skill, changes
-discovery configuration, or uses an external provider remains a separately
-authorized evidence action. None is part of local Candidate C qualification.
+Accepted Q04 is bounded fresh exact-SOURCE forward-behavior evidence from one
+projectless, read-only, no-tool `gpt-5.6-sol/high` turn. It establishes only the
+three frozen scenarios; selection/load attribution, installed-copy behavior,
+publication, stable installation, persistent lifecycle, live WSL, and broad
+efficacy remain `UNKNOWN`. Any further model execution, persistent installation,
+discovery change, or provider use remains separately authorized.

@@ -1,0 +1,59 @@
+{
+  "candidate": {
+    "commit": "ad8f056b110ee3798a5f92ed9715c1085e45fe72",
+    "descriptor": "release/v0.3.0-candidate.json",
+    "package_tree": "7e10775d423bfb08bc4ad6388875b7277ce3c18c",
+    "tree": "4a2597202b89b91c330e559f86d04fc288894bea"
+  },
+  "evidence_states": {
+    "broad_product_efficacy": "UNKNOWN",
+    "installed_copy_behavior": "UNKNOWN",
+    "live_wsl": "UNKNOWN",
+    "local_release_ready": "VERIFIED",
+    "persistent_lifecycle": "UNKNOWN",
+    "public_release": "UNKNOWN",
+    "selection_load_attribution": "UNKNOWN",
+    "source_forward_model_behavior": "VERIFIED_BOUNDED_SOURCE",
+    "stable_installed_copy": "UNKNOWN"
+  },
+  "human_release_notes_review": "PENDING",
+  "planner_acceptance": {
+    "evidence_id": "Q04",
+    "verdict": "ACCEPTED"
+  },
+  "product": "use-powershell-safely",
+  "schema": "use-powershell-safely-local-release-receipt/v1",
+  "sealed_qualification_history": [
+    {
+      "behavior_result": "UNKNOWN_NOT_ASSESSED",
+      "evidence_id": "Q01",
+      "result": "QUALIFICATION_FAILED/TRANSPORT_TERMINAL"
+    },
+    {
+      "behavior_result": "UNKNOWN_NOT_ASSESSED",
+      "evidence_id": "Q02",
+      "result": "ESCALATION_DENIED"
+    },
+    {
+      "behavior_result": "UNKNOWN_NOT_ASSESSED",
+      "evidence_id": "Q03",
+      "result": "PREFLIGHT_STOP/NO_SOURCE_TRANSMISSION"
+    }
+  ],
+  "source_forward_behavior": {
+    "controller_rubric_sha256": "63621cb8c6d2e625b8fbeabbe51ea007bc828ce0bb05c7a32cc2dbae506273f8",
+    "evidence_id": "Q04",
+    "final_messages": 1,
+    "model": "gpt-5.6-sol",
+    "package_tree": "7e10775d423bfb08bc4ad6388875b7277ce3c18c",
+    "reasoning_effort": "high",
+    "reasoning_records": 2,
+    "request_payload_sha256": "cfa75604ca5dbf49f6f5f7452e9c9dfe6eb927981ac6028c08d9dd7b602f538c",
+    "response_sha256": "8fba2576f76755e77d848574b60e19b2276d378e5e5de46027b9dcd97774c085",
+    "result": "ACCEPTED",
+    "scope": "fresh projectless read-only no-tool exact-SOURCE three-scenario",
+    "task_turns": 1,
+    "tool_events": 0
+  },
+  "version": "0.3.0"
+}

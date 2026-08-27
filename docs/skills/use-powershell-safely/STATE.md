@@ -20,26 +20,37 @@ candidate; later versions are independently owned by this repository.
 
 The migration proves current package byte identity, mapped case and fixture
 byte identity, local link and publication-safety checks, and repository-local
-verification. Candidate C binds exact package tree
-`7e10775d423bfb08bc4ad6388875b7277ce3c18c` and remains
-`PENDING_PLANNER_ACCEPTANCE` until its immutable commit is independently
-assessed.
+verification. Candidate C is immutable commit
+`ad8f056b110ee3798a5f92ed9715c1085e45fe72`, tree
+`4a2597202b89b91c330e559f86d04fc288894bea`, and exact package tree
+`7e10775d423bfb08bc4ad6388875b7277ce3c18c`. The Planner accepted exact C with
+public evidence id `Q04`; the separate
+[`v0.3.0 local-release receipt`](../../../release/v0.3.0-local-release-receipt.json)
+records `LOCAL_RELEASE_READY=VERIFIED` without rewriting C.
 
 Historical `c42eef3...` model and loaded-copy evidence belongs to different
-package tree `22c230...` and is not forwarded to this candidate. The exact
-current tree has admissible historical deterministic SOURCE evidence and is
-freshly rechecked locally. Current SOURCE-forward model behavior, public
-Release, persistent lifecycle, stable installed copy, fresh loaded-copy
-behavior, and broad efficacy remain `UNKNOWN`.
+package tree `22c230...` and is not forwarded to this candidate. Q01 and Q02
+remain sealed transport/permission stops with behavior `UNKNOWN_NOT_ASSESSED`;
+Q03 remains a sealed preflight stop with no SOURCE transmission. Accepted Q04
+is one projectless, read-only, no-tool `gpt-5.6-sol/high` turn against the exact
+five-file current tree. Its one final response (SHA-256
+`8fba2576f76755e77d848574b60e19b2276d378e5e5de46027b9dcd97774c085`)
+passed only the frozen PowerShell native/JSON positive, ordinary-cmdlet
+negative, and POSIX-only negative scenarios.
+
+Selection/load attribution, installed-copy behavior, public Release,
+persistent install/update/uninstall behavior, stable installed copy, live WSL,
+and broad efficacy remain `UNKNOWN`. Human public release-note review remains
+`PENDING`.
 
 ## Next gate
 
-Planner acceptance of exact Candidate C permits only a later narrow local
-readiness receipt that binds the immutable candidate and records
-`LOCAL_RELEASE_READY`. Any remote, persistent installation, tag, Release,
-publication, discovery/configuration, or model-evaluation action requires its
-own authority and fresh evidence. Ordinary local changes must preserve the
-provenance record or explicitly supersede the mapped baseline.
+The next release gate is the separately authorized immutable public source and
+publication route. Any remote, persistent installation, tag, Release,
+publication, discovery/configuration, installed-copy evaluation, or broader
+model-evaluation action requires its own authority and fresh evidence. Ordinary
+local changes must preserve the provenance record or explicitly supersede the
+mapped baseline.
 
 ## Recovery entry
 

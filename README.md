@@ -15,10 +15,16 @@ public identity `junwei529/use-powershell-safely`. Its exact package tree is
 `7e10775d423bfb08bc4ad6388875b7277ce3c18c`; the candidate changes repository
 qualification and release-lifecycle material, not package behavior.
 
-Candidate state is `PENDING_PLANNER_ACCEPTANCE`, and human review of
-[`CHANGELOG.md`](CHANGELOG.md) is pending before any public release. Local
-deterministic checks do not prove a public Release, persistent lifecycle,
-stable installed-copy behavior, model behavior, or broad efficacy.
+Exact candidate C was accepted and is bound by
+[`release/v0.3.0-local-release-receipt.json`](release/v0.3.0-local-release-receipt.json),
+so `LOCAL_RELEASE_READY` is `VERIFIED`. The immutable candidate descriptor
+retains its original `PENDING_PLANNER_ACCEPTANCE` snapshot. Human review of
+[`CHANGELOG.md`](CHANGELOG.md) remains pending before any public release.
+
+Accepted Q04 proves only bounded SOURCE-forward behavior for three frozen
+scenarios. It does not prove selection/load attribution, installed-copy
+behavior, persistent lifecycle, a public Release, stable installation, live
+WSL, or broad efficacy.
 
 ## Repository contents
 

@@ -19,10 +19,28 @@ and verification commands.
 
 Historical `c42eef3...` exact-commit model/loaded-copy evidence is not
 admissible for current SOURCE-forward behavior because its package tree is
-`22c230...`, not the current `7e1077...`. Candidate qualification therefore
-uses no provider/model call and transmits no package or case bytes externally.
-The current tree's historical 59-assertion deterministic evidence is reused
-only as bounded SOURCE history and is re-executed through the focused checks.
+`22c230...`, not the current `7e1077...`. The current tree's historical
+59-assertion deterministic evidence is reused only as bounded SOURCE history
+and is re-executed through the focused checks.
+
+Accepted Q04 is one fresh projectless, read-only, no-tool
+`gpt-5.6-sol/high` qualification against exact candidate C. The frozen request
+payload SHA-256 is
+`cfa75604ca5dbf49f6f5f7452e9c9dfe6eb927981ac6028c08d9dd7b602f538c`,
+the controller-only rubric SHA-256 is
+`63621cb8c6d2e625b8fbeabbe51ea007bc828ce0bb05c7a32cc2dbae506273f8`,
+and the single final response SHA-256 is
+`8fba2576f76755e77d848574b60e19b2276d378e5e5de46027b9dcd97774c085`.
+The retained controller evidence contains one user-visible turn, two reasoning
+records, one final message, and zero tool events. It passed only the frozen
+PowerShell native/JSON positive, ordinary-cmdlet negative, and POSIX-only
+negative scenarios. Private task, turn, message, host, prompt, and checkout
+locators remain controller-side rather than tracked.
+
+Q01 remains sealed as `QUALIFICATION_FAILED/TRANSPORT_TERMINAL` and Q02 as
+`ESCALATION_DENIED`; both have behavior `UNKNOWN_NOT_ASSESSED`. Q03 remains a
+sealed preflight stop with no SOURCE transmission or behavior result. None is
+retryable or evidence of a product defect.
 
 The deterministic SOURCE contract checks exact five-file shape and tree,
 strict UTF-8/LF/no-BOM bytes, pre-error positive and narrow negative selection
@@ -121,10 +139,11 @@ pwsh -NoLogo -NoProfile -NonInteractive -File evals/check-powershell-boundaries.
 
 ## Evidence limits
 
-The focused suite is synthetic and local; it does not prove live WSL, model
-behavior, persistent installation, broad selection, or efficacy. A local clean
-candidate commit and native review prove only repository/source identity and
-deterministic local qualification. They do not authorize or prove a remote,
-tag, Release, publication, stable installed copy, fresh loaded-copy behavior,
-persistent lifecycle, or broad product efficacy. Human review of release notes
-also remains pending until the public-release phase.
+The focused suite is synthetic and local; accepted Q04 adds only bounded
+current-tree SOURCE-forward behavior for three frozen scenarios. Together with
+the immutable candidate, deterministic checks, and native review, it establishes
+the accepted `LOCAL_RELEASE_READY=VERIFIED` receipt. It does not authorize or
+prove a remote, tag, Release, publication, selection/load attribution, stable or
+other installed-copy behavior, persistent lifecycle, live WSL, or broad product
+efficacy. Human review of release notes also remains pending until the public-
+release phase.

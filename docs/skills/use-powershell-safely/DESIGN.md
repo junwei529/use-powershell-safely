@@ -39,6 +39,11 @@ separate identities: candidate acceptance can prove `LOCAL_RELEASE_READY` for
 one immutable commit, but only a later authorized public phase can prove a tag,
 Release, stable installed copy, or fresh loaded-copy behavior.
 
+Candidate C remains immutable. Its separate local-release receipt binds the
+exact candidate commit, candidate tree, unchanged package tree, independent
+Planner acceptance, and the hash-addressed bounded Q04 SOURCE-forward evidence
+without recording private task, turn, message, host, or checkout identifiers.
+
 ## Standalone constraints
 
 - No other Skill package is included.

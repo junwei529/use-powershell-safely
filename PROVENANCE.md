@@ -31,7 +31,9 @@ dependency.
 ## Publication boundary
 
 Tracked content contains no private task, host, checkout, account, or
-destination locator. The local `v0.3.0` candidate identifies the future public
-repository as `junwei529/use-powershell-safely` and binds the unchanged package
-tree. It makes no remote, tag, Release, publication, persistent-installation,
-stable-copy, model-behavior, or efficacy claim.
+destination locator. The accepted local `v0.3.0` candidate and receipt identify
+the future public repository as `junwei529/use-powershell-safely` and bind the
+unchanged package tree. Q04 supplies bounded SOURCE-forward behavior evidence;
+the receipt makes no remote, tag, Release, publication, persistent-installation,
+stable-copy, installed-copy, live-WSL, selection/load-attribution, or broad-
+efficacy claim.

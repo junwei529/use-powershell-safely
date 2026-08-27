@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "use-powershell-safely"
 CANDIDATE = ROOT / "release" / "v0.3.0-candidate.json"
+RECEIPT = ROOT / "release" / "v0.3.0-local-release-receipt.json"
 EXPECTED_FILES = {
     "SKILL.md",
     "agents/openai.yaml",
@@ -203,7 +204,96 @@ def main():
             ],
         ),
     }
+    receipt_error = None
+    receipt = {}
+    try:
+        parsed_receipt = json.loads(RECEIPT.read_text(encoding="utf-8"))
+        if not isinstance(parsed_receipt, dict):
+            raise ValueError("local release receipt must be an object")
+        for field in (
+            "candidate",
+            "evidence_states",
+            "planner_acceptance",
+            "source_forward_behavior",
+        ):
+            if not isinstance(parsed_receipt.get(field), dict):
+                raise ValueError(f"local release receipt field {field!r} must be an object")
+        if not isinstance(parsed_receipt.get("sealed_qualification_history"), list):
+            raise ValueError("sealed_qualification_history must be an array")
+        receipt = parsed_receipt
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
+        receipt_error = str(error)
+
+    evidence_states = receipt.get("evidence_states", {})
+    source_forward = receipt.get("source_forward_behavior", {})
+    checks["receipt.identity_readiness_and_bounded_source"] = (
+        receipt.get("schema") == "use-powershell-safely-local-release-receipt/v1"
+        and receipt.get("product") == "use-powershell-safely"
+        and receipt.get("version") == "0.3.0"
+        and receipt.get("candidate", {}).get("commit")
+        == "ad8f056b110ee3798a5f92ed9715c1085e45fe72"
+        and receipt.get("candidate", {}).get("descriptor")
+        == "release/v0.3.0-candidate.json"
+        and receipt.get("candidate", {}).get("tree")
+        == "4a2597202b89b91c330e559f86d04fc288894bea"
+        and receipt.get("candidate", {}).get("package_tree") == package_tree
+        and receipt.get("planner_acceptance", {}).get("evidence_id") == "Q04"
+        and receipt.get("planner_acceptance", {}).get("verdict") == "ACCEPTED"
+        and evidence_states.get("local_release_ready") == "VERIFIED"
+        and evidence_states.get("source_forward_model_behavior")
+        == "VERIFIED_BOUNDED_SOURCE"
+        and all(
+            evidence_states.get(field) == "UNKNOWN"
+            for field in (
+                "broad_product_efficacy",
+                "installed_copy_behavior",
+                "live_wsl",
+                "persistent_lifecycle",
+                "public_release",
+                "selection_load_attribution",
+                "stable_installed_copy",
+            )
+        )
+        and receipt.get("human_release_notes_review") == "PENDING"
+        and receipt.get("sealed_qualification_history")
+        == [
+            {
+                "behavior_result": "UNKNOWN_NOT_ASSESSED",
+                "evidence_id": "Q01",
+                "result": "QUALIFICATION_FAILED/TRANSPORT_TERMINAL",
+            },
+            {
+                "behavior_result": "UNKNOWN_NOT_ASSESSED",
+                "evidence_id": "Q02",
+                "result": "ESCALATION_DENIED",
+            },
+            {
+                "behavior_result": "UNKNOWN_NOT_ASSESSED",
+                "evidence_id": "Q03",
+                "result": "PREFLIGHT_STOP/NO_SOURCE_TRANSMISSION",
+            },
+        ]
+        and source_forward.get("evidence_id") == "Q04"
+        and source_forward.get("model") == "gpt-5.6-sol"
+        and source_forward.get("reasoning_effort") == "high"
+        and source_forward.get("result") == "ACCEPTED"
+        and source_forward.get("scope")
+        == "fresh projectless read-only no-tool exact-SOURCE three-scenario"
+        and source_forward.get("package_tree") == package_tree
+        and source_forward.get("request_payload_sha256")
+        == "cfa75604ca5dbf49f6f5f7452e9c9dfe6eb927981ac6028c08d9dd7b602f538c"
+        and source_forward.get("controller_rubric_sha256")
+        == "63621cb8c6d2e625b8fbeabbe51ea007bc828ce0bb05c7a32cc2dbae506273f8"
+        and source_forward.get("response_sha256")
+        == "8fba2576f76755e77d848574b60e19b2276d378e5e5de46027b9dcd97774c085"
+        and source_forward.get("task_turns") == 1
+        and source_forward.get("reasoning_records") == 2
+        and source_forward.get("final_messages") == 1
+        and source_forward.get("tool_events") == 0
+    )
     failures.extend(name for name, passed in checks.items() if not passed)
+    if receipt_error:
+        failures.append(f"receipt.unreadable: {receipt_error}")
     package_hashes = {
         relative: sha256(raw_files[relative])
         for relative in sorted(raw_files)
@@ -216,9 +306,11 @@ def main():
         "proof_class": "deterministic-source-contract",
         "result": "PASS" if not failures else "FAIL",
         "scope_limits": [
-            "no model execution or source transmission",
+            "this deterministic checker executes no model and transmits no source",
+            "Q04 proves only bounded SOURCE-forward behavior for three frozen scenarios",
             "no persistent install, update, rollback, or uninstall",
             "no stable installed-copy or loaded-copy proof",
+            "no selection/load attribution or live WSL proof",
             "no publication proof",
             "no broad product efficacy proof",
         ],
