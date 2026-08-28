@@ -23,7 +23,10 @@ preserves its `PENDING_HUMAN_APPROVAL` pre-publication snapshot. The separate
 [`public-release evidence`](../../../release/v0.3.0-public-release-evidence.json)
 records exact public source P, annotated tag object, human-approved Release,
 same-version managed lifecycle, origin-aware absence, and final exact installed
-copy. That evidence subject is `PENDING_PLANNER_ACCEPTANCE`.
+copy. The Planner accepted exact evidence subject F
+`21eca7724a84b4073c98c68e548b1816c52a0ff0`, tree
+`a53e693d29d33dddd6bb673ba3f54a2fcedbfe54`, at public evidence id
+`B2-PS-PUBLIC-EVIDENCE-F-01`; the evidence state is now `VERIFIED`.
 
 ## Evidence state
 
@@ -54,7 +57,7 @@ with tree `6f03b9a5717f823f87d117fc17b5040e0531dcc8`; annotated tag object
 immutable public source, publication, persistent same-version lifecycle,
 origin-aware absence, sole installed-copy discovery, stable installed-copy
 identity, complete five-file load, and bounded three-scenario behavior are
-`VERIFIED` observations pending Planner acceptance of the evidence subject.
+`VERIFIED` observations accepted by the Planner for exact evidence subject F.
 
 Cross-version update/rollback, live WSL, cross-Harness behavior, untested
 contexts, and broad product efficacy remain `UNKNOWN`. The retained legacy copy
@@ -63,9 +66,9 @@ controller-side.
 
 ## Next gate
 
-The next gate is independent Planner acceptance of the exact public-release
-evidence subject. Ordinary local changes must preserve the provenance record or
-explicitly supersede the mapped baseline.
+B2 public-release and stable-copy acceptance is durably recorded. No further B2
+effect is authorized by this state transition. Ordinary local changes must
+preserve the provenance record or explicitly supersede the mapped baseline.
 
 ## Recovery entry
 

@@ -25,7 +25,8 @@ preserves the immutable pre-publication snapshot. The separate
 public source commit `13edb84cd1b072cb64926c5ae600714c6f7203e7`, annotated tag
 `v0.3.0`, the approved non-draft/non-prerelease Release, same-version managed
 lifecycle evidence, and the final exact installed copy. That evidence subject
-is pending independent Planner acceptance.
+was independently accepted by the Planner at public evidence id
+`B2-PS-PUBLIC-EVIDENCE-F-01`.
 
 Accepted Q04 proves bounded SOURCE-forward behavior for three frozen scenarios.
 Fresh projectless witnesses separately prove origin-aware absence and the sole

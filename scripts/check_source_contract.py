@@ -363,6 +363,7 @@ def main():
             "evidence_states",
             "github_release",
             "installed_copy_behavior",
+            "planner_acceptance",
             "persistent_lifecycle",
             "public_source",
             "tag",
@@ -397,8 +398,15 @@ def main():
         == "use-powershell-safely-public-release-evidence/v1"
         and public_evidence.get("product") == "use-powershell-safely"
         and public_evidence.get("version") == "0.3.0"
-        and public_evidence.get("evidence_state") == "PENDING_PLANNER_ACCEPTANCE"
-        and public_evidence.get("planner_acceptance") == "PENDING"
+        and public_evidence.get("evidence_state") == "VERIFIED"
+        and public_evidence.get("planner_acceptance")
+        == {
+            "evidence_id": "B2-PS-PUBLIC-EVIDENCE-F-01",
+            "package_tree": package_tree,
+            "subject_commit": "21eca7724a84b4073c98c68e548b1816c52a0ff0",
+            "subject_tree": "a53e693d29d33dddd6bb673ba3f54a2fcedbfe54",
+            "verdict": "ACCEPTED",
+        }
         and public_evidence.get("release_notes_human_approval") == "VERIFIED"
         and public_source
         == {

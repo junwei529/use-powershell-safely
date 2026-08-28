@@ -22,7 +22,8 @@ Exact candidate C 已获验收，并由
 [`public-release evidence`](release/v0.3.0-public-release-evidence.json) 绑定 public
 source commit `13edb84cd1b072cb64926c5ae600714c6f7203e7`、annotated tag
 `v0.3.0`、已批准的 non-draft/non-prerelease Release、same-version managed
-lifecycle 证据与最终 exact installed copy。该证据主体仍待 Planner 独立验收。
+lifecycle 证据与最终 exact installed copy。该证据主体已由 Planner 以 public
+evidence id `B2-PS-PUBLIC-EVIDENCE-F-01` 独立验收。
 
 获验收的 Q04 证明三个冻结场景中的 bounded SOURCE-forward behavior。fresh
 projectless witness 分别证明 origin-aware absence，以及唯一 USER-scope exact

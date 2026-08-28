@@ -45,6 +45,6 @@ binds exact public source P, the annotated tag object, approved public Release,
 same-version managed lifecycle, origin-aware absence, and the final exact
 installed copy through publication-safe ids and hashes. It intentionally omits
 private task, host, checkout, destination, and recovery locators. The evidence
-subject is pending independent Planner acceptance and preserves cross-version
-lifecycle, live WSL, cross-Harness behavior, untested contexts, and broad
-efficacy as `UNKNOWN`.
+subject was independently accepted by the Planner at public evidence id
+`B2-PS-PUBLIC-EVIDENCE-F-01`. Cross-version lifecycle, live WSL, cross-Harness
+behavior, untested contexts, and broad efficacy remain `UNKNOWN`.

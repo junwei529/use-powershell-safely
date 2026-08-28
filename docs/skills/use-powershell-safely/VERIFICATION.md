@@ -86,7 +86,10 @@ complete five-file load, and the bounded PowerShell native/JSON positive,
 ordinary-cmdlet negative, and POSIX-only negative scenarios. Both retained
 evidence tasks, prompts, and outputs remain controller-side. The public
 [`evidence subject`](../../../release/v0.3.0-public-release-evidence.json) binds
-only publication-safe ids and hashes and is pending Planner acceptance.
+only publication-safe ids and hashes. The Planner accepted exact subject F
+`21eca7724a84b4073c98c68e548b1816c52a0ff0`, tree
+`a53e693d29d33dddd6bb673ba3f54a2fcedbfe54`, at public evidence id
+`B2-PS-PUBLIC-EVIDENCE-F-01`.
 
 ## Repository check
 
@@ -183,4 +186,5 @@ projectless evidence proves the exact public source, Release, same-version
 lifecycle, origin-aware absence, stable installed-copy identity and bounded
 loaded-copy behavior. It does not prove cross-version lifecycle, live WSL,
 cross-Harness behavior, untested contexts, or broad product efficacy. The
-public-release evidence subject remains pending independent Planner acceptance.
+Planner accepted the exact public-release evidence subject. The retained
+`UNKNOWN` layers are unchanged.

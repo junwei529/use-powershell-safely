@@ -1,5 +1,5 @@
 {
-  "evidence_state": "PENDING_PLANNER_ACCEPTANCE",
+  "evidence_state": "VERIFIED",
   "evidence_states": {
     "broad_product_efficacy": "UNKNOWN",
     "cross_harness_behavior": "UNKNOWN",
@@ -65,7 +65,13 @@
     "source_ref": "v0.3.0",
     "version": "0.3.0"
   },
-  "planner_acceptance": "PENDING",
+  "planner_acceptance": {
+    "evidence_id": "B2-PS-PUBLIC-EVIDENCE-F-01",
+    "package_tree": "7e10775d423bfb08bc4ad6388875b7277ce3c18c",
+    "subject_commit": "21eca7724a84b4073c98c68e548b1816c52a0ff0",
+    "subject_tree": "a53e693d29d33dddd6bb673ba3f54a2fcedbfe54",
+    "verdict": "ACCEPTED"
+  },
   "product": "use-powershell-safely",
   "public_source": {
     "commit": "13edb84cd1b072cb64926c5ae600714c6f7203e7",

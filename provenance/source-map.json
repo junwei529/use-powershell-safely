@@ -68,8 +68,8 @@
           "source_path": "docs/PROVENANCE.md"
         }
       ],
-      "target_normalized_sha256": "e06b7b27ba9ebbf43dfeb100c35f4ad95984bcad2b5c27138f459ec00ba07353",
-      "target_sha256": "e06b7b27ba9ebbf43dfeb100c35f4ad95984bcad2b5c27138f459ec00ba07353",
+      "target_normalized_sha256": "dba599218d44081b8d1ebb130ae9e1b435f2f5802787925d26de1fb71d9d9510",
+      "target_sha256": "dba599218d44081b8d1ebb130ae9e1b435f2f5802787925d26de1fb71d9d9510",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -83,8 +83,8 @@
           "source_path": "docs/skills/use-powershell-safely/README.md"
         }
       ],
-      "target_normalized_sha256": "be7d4c588ab2cc81e1178b8c787de906e1b996105e0fe1d0eb5cddf2232ec0cf",
-      "target_sha256": "be7d4c588ab2cc81e1178b8c787de906e1b996105e0fe1d0eb5cddf2232ec0cf",
+      "target_normalized_sha256": "7504f373f3e4168e4b86378241dbd15f274cea14aaa9d445c029919aae1a3bb5",
+      "target_sha256": "7504f373f3e4168e4b86378241dbd15f274cea14aaa9d445c029919aae1a3bb5",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -98,8 +98,8 @@
           "source_path": "docs/skills/use-powershell-safely/README.zh-CN.md"
         }
       ],
-      "target_normalized_sha256": "1671c668948f25ccd2f8c49661aa16212de259e9b7d226f8aee489d73c808776",
-      "target_sha256": "1671c668948f25ccd2f8c49661aa16212de259e9b7d226f8aee489d73c808776",
+      "target_normalized_sha256": "278c029fe19d7c7c2b923fd8b280dde315f3c3d31a7909e6f9a9899ff52778cc",
+      "target_sha256": "278c029fe19d7c7c2b923fd8b280dde315f3c3d31a7909e6f9a9899ff52778cc",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -158,8 +158,8 @@
           "source_path": "docs/skills/use-powershell-safely/STATE.md"
         }
       ],
-      "target_normalized_sha256": "ba14961e6042aa27d6295c4dbd3c69e9d53319e574b3e0282e44ad3304d16528",
-      "target_sha256": "ba14961e6042aa27d6295c4dbd3c69e9d53319e574b3e0282e44ad3304d16528",
+      "target_normalized_sha256": "2848b6ce9b824dacb801cff67d316c713793d17a03d5678c7f601984545139bd",
+      "target_sha256": "2848b6ce9b824dacb801cff67d316c713793d17a03d5678c7f601984545139bd",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -173,8 +173,8 @@
           "source_path": "docs/skills/use-powershell-safely/VERIFICATION.md"
         }
       ],
-      "target_normalized_sha256": "1fb1b473d28e6754d77c8d3ee42ceca41c9aec5b98439ff42689b0ba5a59a55e",
-      "target_sha256": "1fb1b473d28e6754d77c8d3ee42ceca41c9aec5b98439ff42689b0ba5a59a55e",
+      "target_normalized_sha256": "2369e22bf2bd81fa0a3d126d12cf5cdda3141c4aecb1e7c21e22f80adb249bde",
+      "target_sha256": "2369e22bf2bd81fa0a3d126d12cf5cdda3141c4aecb1e7c21e22f80adb249bde",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
@@ -278,7 +278,7 @@
       "destination": "release/v0.3.0-public-release-evidence.json",
       "kind": "repository-native",
       "note": "Publication-safe public Release, same-version lifecycle, and stable installed-copy evidence subject",
-      "target_sha256": "a0a2aac75110fa4a2744c75159a21e9ddd006602792d8fec5f5c570c7af912df"
+      "target_sha256": "61949bfd2965014eeae71c7083a4f590b81ebd1e356e2b031e86fada409d4bee"
     },
     {
       "destination": "scripts/check_repository.py",
@@ -301,15 +301,15 @@
           "source_path": "evals/check-powershell-boundaries.ps1"
         }
       ],
-      "target_normalized_sha256": "6211f0a625880b087ce8835d251e49400dab4162c2abd64568248db006942cf9",
-      "target_sha256": "6211f0a625880b087ce8835d251e49400dab4162c2abd64568248db006942cf9",
+      "target_normalized_sha256": "6360bcd021b0817c31387789e2692212ac2ddd990d8ef654f612e211c556f11f",
+      "target_sha256": "6360bcd021b0817c31387789e2692212ac2ddd990d8ef654f612e211c556f11f",
       "transform": "UTF-8 without BOM, LF newlines, standalone ownership and links; product package behavior unchanged"
     },
     {
       "destination": "scripts/check_source_contract.py",
       "kind": "repository-native",
       "note": "Deterministic product-specific SOURCE contract qualification",
-      "target_sha256": "f10aec5c2cb9b2fc25c9317c8f9bf57fef5789929898dd71c463de819c75f71c"
+      "target_sha256": "c481582729c017ac20e9f609d27cdc330337d7356c5ab3b1f0198b23f59db683"
     },
     {
       "destination": "scripts/manage_install.py",
