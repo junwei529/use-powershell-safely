@@ -1,23 +1,30 @@
 # Changelog
 
-## v0.3.0 candidate
+## Use PowerShell Safely v0.3.0
 
-Status: `LOCAL_RELEASE_READY=VERIFIED`; human release-note review remains `PENDING`
+Human release-note review: `PENDING`
 
-Human review: pending before public release.
+First independent release of Use PowerShell Safely, a Codex Skill for
+diagnosing and safely executing boundary-sensitive Windows shell workflows
+across PowerShell, native executables, and WSL.
 
-- Establishes `junwei529/use-powershell-safely` as the approved future public
-  identity while preserving independent versioning after `v0.3.0`.
-- Preserves the installable five-file package byte for byte from source commit
-  `80910a8b2375a11be897e9660c4b00a06d00dd13`.
-- Adds deterministic SOURCE-contract qualification for pre-error selection,
-  native/process, text/encoding, Windows/WSL, permission, and stop boundaries.
-- Adds an explicit-destination lifecycle tool that is dry-run by default and
-  exercises install, update, rollback, drift refusal, and uninstall only in a
-  disposable self-test root during local qualification.
-- Separates local candidate readiness from public Release, persistent
-  installation, stable loaded-copy behavior, model behavior, and broad
-  efficacy.
+### Highlights
 
-No remote, tag, Release, publication, persistent installation, profile, or
-discovery-configuration effect is part of this candidate.
+- Publishes the independently versioned
+  `junwei529/use-powershell-safely` repository.
+- Preserves the installable five-file package byte for byte from the recorded
+  migration source.
+- Includes deterministic SOURCE qualification for pre-error selection,
+  native/process, text/encoding, Windows/WSL, permission, destructive, and stop
+  boundaries.
+- Includes an explicit-destination lifecycle tool with dry-run defaults and
+  disposable install, update, rollback, drift-refusal, foreign-copy-refusal,
+  and uninstall checks.
+
+### Evidence boundaries
+
+- Local release readiness is verified for the accepted immutable candidate,
+  including bounded SOURCE-forward behavior for three frozen scenarios.
+- Publication does not by itself prove selection/load attribution,
+  installed-copy behavior, persistent lifecycle effects, a stable installed
+  copy, live WSL behavior, or broad product efficacy.

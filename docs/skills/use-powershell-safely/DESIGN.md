@@ -44,6 +44,13 @@ exact candidate commit, candidate tree, unchanged package tree, independent
 Planner acceptance, and the hash-addressed bounded Q04 SOURCE-forward evidence
 without recording private task, turn, message, host, or checkout identifiers.
 
+The separate public-source descriptor is intentionally non-circular: it binds
+the accepted B1 receipt, unchanged package tree and package digest, exact
+release-note hash, repository identity, default branch, annotated tag, and
+GitHub Release settings without embedding its own future commit. Its pending
+snapshot can qualify immutable source preparation but cannot prove a public ref
+or an external Release effect.
+
 ## Standalone constraints
 
 - No other Skill package is included.

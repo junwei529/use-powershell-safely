@@ -37,3 +37,9 @@ unchanged package tree. Q04 supplies bounded SOURCE-forward behavior evidence;
 the receipt makes no remote, tag, Release, publication, persistent-installation,
 stable-copy, installed-copy, live-WSL, selection/load-attribution, or broad-
 efficacy claim.
+
+The non-circular public-source descriptor records the intended public
+repository, default branch, annotated tag, Release settings, exact release-note
+hash, B1 receipt lineage, and unchanged package identity. Its
+`PENDING_HUMAN_APPROVAL` snapshot is local preparation evidence only; it does
+not prove that any public ref, tag, GitHub Release, or installed copy exists.

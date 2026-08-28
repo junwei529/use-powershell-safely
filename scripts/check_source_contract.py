@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "use-powershell-safely"
 CANDIDATE = ROOT / "release" / "v0.3.0-candidate.json"
 RECEIPT = ROOT / "release" / "v0.3.0-local-release-receipt.json"
+PUBLIC_RELEASE_CANDIDATE = ROOT / "release" / "v0.3.0-public-release-candidate.json"
 EXPECTED_FILES = {
     "SKILL.md",
     "agents/openai.yaml",
@@ -78,6 +79,15 @@ def git_tree_hash(directory):
 def contains_all(text, fragments):
     normalized = " ".join(text.split())
     return all(" ".join(fragment.split()) in normalized for fragment in fragments)
+
+
+def package_digest(files):
+    records = []
+    for relative in sorted(files):
+        raw = (PACKAGE / relative).read_bytes()
+        records.append([relative, hashlib.sha256(raw).hexdigest()])
+    encoded = json.dumps(records, separators=(",", ":"), ensure_ascii=True).encode("ascii")
+    return hashlib.sha256(encoded).hexdigest()
 
 
 def main():
@@ -291,9 +301,59 @@ def main():
         and source_forward.get("final_messages") == 1
         and source_forward.get("tool_events") == 0
     )
+
+    public_candidate_error = None
+    public_candidate = {}
+    release_notes_sha256 = None
+    try:
+        parsed_public_candidate = json.loads(
+            PUBLIC_RELEASE_CANDIDATE.read_text(encoding="utf-8")
+        )
+        if not isinstance(parsed_public_candidate, dict):
+            raise ValueError("public release candidate must be an object")
+        for field in ("github_release", "lineage", "package", "public_repository"):
+            if not isinstance(parsed_public_candidate.get(field), dict):
+                raise ValueError(f"public release candidate field {field!r} must be an object")
+        release_notes_sha256 = hashlib.sha256((ROOT / "CHANGELOG.md").read_bytes()).hexdigest()
+        public_candidate = parsed_public_candidate
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
+        public_candidate_error = str(error)
+    checks["public_release_candidate.identity"] = (
+        public_candidate.get("schema")
+        == "use-powershell-safely-public-release-candidate/v1"
+        and "commit" not in public_candidate
+        and public_candidate.get("product") == "use-powershell-safely"
+        and public_candidate.get("version") == "0.3.0"
+        and public_candidate.get("public_release_state") == "PENDING_HUMAN_APPROVAL"
+        and public_candidate.get("human_release_notes_review") == "PENDING"
+        and public_candidate.get("release_title") == "Use PowerShell Safely v0.3.0"
+        and public_candidate.get("release_notes") == "CHANGELOG.md"
+        and public_candidate.get("release_notes_sha256") == release_notes_sha256
+        and public_candidate.get("tag") == "v0.3.0"
+        and public_candidate.get("tag_type") == "annotated"
+        and public_candidate.get("github_release")
+        == {"draft": False, "prerelease": False}
+        and public_candidate.get("lineage", {}).get("local_release_receipt")
+        == "release/v0.3.0-local-release-receipt.json"
+        and public_candidate.get("lineage", {}).get("local_release_receipt_commit")
+        == "be782206fb12fd68874ba1e1846787530bb15159"
+        and public_candidate.get("package", {}).get("path")
+        == "skills/use-powershell-safely"
+        and public_candidate.get("package", {}).get("tree") == package_tree
+        and public_candidate.get("package", {}).get("sha256")
+        == (package_digest(actual_files) if actual_files == EXPECTED_FILES else None)
+        and public_candidate.get("public_repository", {}).get("full_name")
+        == "junwei529/use-powershell-safely"
+        and public_candidate.get("public_repository", {}).get("url")
+        == "https://github.com/junwei529/use-powershell-safely"
+        and public_candidate.get("public_repository", {}).get("default_branch") == "main"
+        and public_candidate.get("public_repository", {}).get("visibility") == "public"
+    )
     failures.extend(name for name, passed in checks.items() if not passed)
     if receipt_error:
         failures.append(f"receipt.unreadable: {receipt_error}")
+    if public_candidate_error:
+        failures.append(f"public_release_candidate.unreadable: {public_candidate_error}")
     package_hashes = {
         relative: sha256(raw_files[relative])
         for relative in sorted(raw_files)
@@ -302,6 +362,7 @@ def main():
         "checks": checks,
         "failures": failures,
         "package_files": package_hashes,
+        "package_sha256": package_digest(actual_files) if actual_files == EXPECTED_FILES else None,
         "package_tree": package_tree,
         "proof_class": "deterministic-source-contract",
         "result": "PASS" if not failures else "FAIL",

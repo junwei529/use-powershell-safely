@@ -50,6 +50,15 @@ state gates. The lifecycle self-test uses a disposable temporary root and
 exercises dry-run, install, update, rollback, drift refusal, foreign-copy
 refusal, and uninstall. It does not create persistent installed-copy evidence.
 
+The public-source descriptor
+[`../../../release/v0.3.0-public-release-candidate.json`](../../../release/v0.3.0-public-release-candidate.json)
+records the exact repository identity, public default branch, intended
+annotated tag, public non-draft/non-prerelease Release settings, exact
+release-note hash, B1 receipt lineage, and unchanged package tree/digest. The
+SOURCE checker verifies that local descriptor contract. It does not prove a
+public ref, tag, GitHub Release, persistent lifecycle effect, or installed-copy
+behavior; those require later live evidence bound to exact public source P.
+
 ## Repository check
 
 ```powershell
@@ -142,8 +151,8 @@ pwsh -NoLogo -NoProfile -NonInteractive -File evals/check-powershell-boundaries.
 The focused suite is synthetic and local; accepted Q04 adds only bounded
 current-tree SOURCE-forward behavior for three frozen scenarios. Together with
 the immutable candidate, deterministic checks, and native review, it establishes
-the accepted `LOCAL_RELEASE_READY=VERIFIED` receipt. It does not authorize or
-prove a remote, tag, Release, publication, selection/load attribution, stable or
-other installed-copy behavior, persistent lifecycle, live WSL, or broad product
-efficacy. Human review of release notes also remains pending until the public-
-release phase.
+the accepted `LOCAL_RELEASE_READY=VERIFIED` receipt. The public-source
+descriptor adds only local preparation evidence. Neither proves a remote, tag,
+Release, publication, selection/load attribution, stable or other installed-copy
+behavior, persistent lifecycle, live WSL, or broad product efficacy. Human
+review of the exact Release title and body remains pending.

@@ -1,0 +1,31 @@
+{
+  "github_release": {
+    "draft": false,
+    "prerelease": false
+  },
+  "human_release_notes_review": "PENDING",
+  "lineage": {
+    "local_release_receipt": "release/v0.3.0-local-release-receipt.json",
+    "local_release_receipt_commit": "be782206fb12fd68874ba1e1846787530bb15159"
+  },
+  "package": {
+    "path": "skills/use-powershell-safely",
+    "sha256": "8c4bbdb586d69655e19f9e087cf1f9905c4e55c0b308debb64d3c60a369f8d8d",
+    "tree": "7e10775d423bfb08bc4ad6388875b7277ce3c18c"
+  },
+  "product": "use-powershell-safely",
+  "public_release_state": "PENDING_HUMAN_APPROVAL",
+  "public_repository": {
+    "default_branch": "main",
+    "full_name": "junwei529/use-powershell-safely",
+    "url": "https://github.com/junwei529/use-powershell-safely",
+    "visibility": "public"
+  },
+  "release_notes": "CHANGELOG.md",
+  "release_notes_sha256": "735c7766c1c8bc9a6692b88e63ec88c461638daa91c936ac49abef038d7e8c71",
+  "release_title": "Use PowerShell Safely v0.3.0",
+  "schema": "use-powershell-safely-public-release-candidate/v1",
+  "tag": "v0.3.0",
+  "tag_type": "annotated",
+  "version": "0.3.0"
+}

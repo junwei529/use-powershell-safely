@@ -16,6 +16,13 @@ The approved future public identity is
 `junwei529/use-powershell-safely`. Version `v0.3.0` is the initial independent
 candidate; later versions are independently owned by this repository.
 
+The public-source candidate is
+[`release/v0.3.0-public-release-candidate.json`](../../../release/v0.3.0-public-release-candidate.json).
+It records `PENDING_HUMAN_APPROVAL` for the exact `Use PowerShell Safely
+v0.3.0` title and [`CHANGELOG.md`](../../../CHANGELOG.md) body, an annotated
+`v0.3.0` tag, public non-draft/non-prerelease GitHub Release settings, B1
+receipt lineage, and the unchanged package identity.
+
 ## Evidence state
 
 The migration proves current package byte identity, mapped case and fixture
@@ -43,14 +50,18 @@ persistent install/update/uninstall behavior, stable installed copy, live WSL,
 and broad efficacy remain `UNKNOWN`. Human public release-note review remains
 `PENDING`.
 
+The public-source candidate preserves those states. Its local descriptor does
+not prove that the repository, public `main`, tag, GitHub Release, persistent
+lifecycle effects, or installed-copy behavior exist.
+
 ## Next gate
 
-The next release gate is the separately authorized immutable public source and
-publication route. Any remote, persistent installation, tag, Release,
-publication, discovery/configuration, installed-copy evaluation, or broader
-model-evaluation action requires its own authority and fresh evidence. Ordinary
-local changes must preserve the provenance record or explicitly supersede the
-mapped baseline.
+The next release gate is explicit human approval of the exact Release title and
+body for the immutable public-source candidate. Public repository creation,
+no-force source transfer, tag and Release creation, persistent lifecycle, and
+installed-copy evaluation remain effect-bound gates whose results must be
+recorded separately. Ordinary local changes must preserve the provenance record
+or explicitly supersede the mapped baseline.
 
 ## Recovery entry
 

@@ -8,7 +8,7 @@ This repository is the independent local product repository for `use-powershell-
 installable package is [`skills/use-powershell-safely/`](skills/use-powershell-safely/), preserved byte for
 byte from source commit `80910a8b2375a11be897e9660c4b00a06d00dd13`.
 
-## Local v0.3.0 candidate
+## v0.3.0 public-source candidate
 
 The independently versioned `v0.3.0` candidate targets the approved future
 public identity `junwei529/use-powershell-safely`. Its exact package tree is
@@ -18,8 +18,12 @@ qualification and release-lifecycle material, not package behavior.
 Exact candidate C was accepted and is bound by
 [`release/v0.3.0-local-release-receipt.json`](release/v0.3.0-local-release-receipt.json),
 so `LOCAL_RELEASE_READY` is `VERIFIED`. The immutable candidate descriptor
-retains its original `PENDING_PLANNER_ACCEPTANCE` snapshot. Human review of
-[`CHANGELOG.md`](CHANGELOG.md) remains pending before any public release.
+retains its original `PENDING_PLANNER_ACCEPTANCE` snapshot. The separate
+[`public-source descriptor`](release/v0.3.0-public-release-candidate.json)
+binds the intended public repository, annotated tag, Release settings,
+release-note hash, B1 receipt, and unchanged package identity. Human review of
+the exact [`CHANGELOG.md`](CHANGELOG.md) title and body remains pending before
+tag or GitHub Release creation.
 
 Accepted Q04 proves only bounded SOURCE-forward behavior for three frozen
 scenarios. It does not prove selection/load attribution, installed-copy
@@ -49,5 +53,6 @@ powershell.exe -NoLogo -NoProfile -NonInteractive -File evals/check-powershell-b
 The lifecycle tool is dry-run by default and requires an explicit destination
 plus `--apply` for a real change. Local qualification uses only its disposable
 self-test root. The repository has no implicit dependency on another Skill
-repository. A remote, tag, Release, publication, persistent installation,
-Profile, or discovery-configuration effect remains outside this candidate.
+repository. This public-source candidate does not itself prove a remote ref,
+tag, GitHub Release, publication, persistent installation, Profile, discovery
+configuration, or installed-copy behavior.
