@@ -10,18 +10,20 @@ case or fixture is an exact Git blob from `80910a8b2375a11be897e9660c4b00a06d00d
 
 This repository owns its Git history, documentation, checks, and future version,
 evaluation, installation, and release decisions. It has no implicit dependency
-on another Skill repository and begins with no configured remote.
+on another Skill repository. Its public origin is
+`https://github.com/junwei529/use-powershell-safely.git`.
 
-The approved future public identity is
-`junwei529/use-powershell-safely`. Version `v0.3.0` is the initial independent
-candidate; later versions are independently owned by this repository.
+The public identity is `junwei529/use-powershell-safely`. Version `v0.3.0` is
+the initial independent public Release; later versions are independently owned
+by this repository.
 
-The public-source candidate is
-[`release/v0.3.0-public-release-candidate.json`](../../../release/v0.3.0-public-release-candidate.json).
-It records `PENDING_HUMAN_APPROVAL` for the exact `Use PowerShell Safely
-v0.3.0` title and [`CHANGELOG.md`](../../../CHANGELOG.md) body, an annotated
-`v0.3.0` tag, public non-draft/non-prerelease GitHub Release settings, B1
-receipt lineage, and the unchanged package identity.
+The public-source candidate
+[`release/v0.3.0-public-release-candidate.json`](../../../release/v0.3.0-public-release-candidate.json)
+preserves its `PENDING_HUMAN_APPROVAL` pre-publication snapshot. The separate
+[`public-release evidence`](../../../release/v0.3.0-public-release-evidence.json)
+records exact public source P, annotated tag object, human-approved Release,
+same-version managed lifecycle, origin-aware absence, and final exact installed
+copy. That evidence subject is `PENDING_PLANNER_ACCEPTANCE`.
 
 ## Evidence state
 
@@ -45,23 +47,25 @@ five-file current tree. Its one final response (SHA-256
 passed only the frozen PowerShell native/JSON positive, ordinary-cmdlet
 negative, and POSIX-only negative scenarios.
 
-Selection/load attribution, installed-copy behavior, public Release,
-persistent install/update/uninstall behavior, stable installed copy, live WSL,
-and broad efficacy remain `UNKNOWN`. Human public release-note review remains
-`PENDING`.
+Public source P is commit `13edb84cd1b072cb64926c5ae600714c6f7203e7`
+with tree `6f03b9a5717f823f87d117fc17b5040e0531dcc8`; annotated tag object
+`58cd1276ad43589c93489c919c285ce7fec2d42d` peels to P. GitHub Release
+`v0.3.0` is public, non-draft, and non-prerelease. Exact Release-note review,
+immutable public source, publication, persistent same-version lifecycle,
+origin-aware absence, sole installed-copy discovery, stable installed-copy
+identity, complete five-file load, and bounded three-scenario behavior are
+`VERIFIED` observations pending Planner acceptance of the evidence subject.
 
-The public-source candidate preserves those states. Its local descriptor does
-not prove that the repository, public `main`, tag, GitHub Release, persistent
-lifecycle effects, or installed-copy behavior exist.
+Cross-version update/rollback, live WSL, cross-Harness behavior, untested
+contexts, and broad product efficacy remain `UNKNOWN`. The retained legacy copy
+is preserved outside Skill discovery roots; its private recovery locator remains
+controller-side.
 
 ## Next gate
 
-The next release gate is explicit human approval of the exact Release title and
-body for the immutable public-source candidate. Public repository creation,
-no-force source transfer, tag and Release creation, persistent lifecycle, and
-installed-copy evaluation remain effect-bound gates whose results must be
-recorded separately. Ordinary local changes must preserve the provenance record
-or explicitly supersede the mapped baseline.
+The next gate is independent Planner acceptance of the exact public-release
+evidence subject. Ordinary local changes must preserve the provenance record or
+explicitly supersede the mapped baseline.
 
 ## Recovery entry
 

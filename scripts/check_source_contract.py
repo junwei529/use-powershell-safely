@@ -11,6 +11,7 @@ PACKAGE = ROOT / "skills" / "use-powershell-safely"
 CANDIDATE = ROOT / "release" / "v0.3.0-candidate.json"
 RECEIPT = ROOT / "release" / "v0.3.0-local-release-receipt.json"
 PUBLIC_RELEASE_CANDIDATE = ROOT / "release" / "v0.3.0-public-release-candidate.json"
+PUBLIC_RELEASE_EVIDENCE = ROOT / "release" / "v0.3.0-public-release-evidence.json"
 EXPECTED_FILES = {
     "SKILL.md",
     "agents/openai.yaml",
@@ -349,11 +350,142 @@ def main():
         and public_candidate.get("public_repository", {}).get("default_branch") == "main"
         and public_candidate.get("public_repository", {}).get("visibility") == "public"
     )
+
+    public_evidence_error = None
+    public_evidence = {}
+    try:
+        parsed_public_evidence = json.loads(
+            PUBLIC_RELEASE_EVIDENCE.read_text(encoding="utf-8")
+        )
+        if not isinstance(parsed_public_evidence, dict):
+            raise ValueError("public release evidence must be an object")
+        for field in (
+            "evidence_states",
+            "github_release",
+            "installed_copy_behavior",
+            "persistent_lifecycle",
+            "public_source",
+            "tag",
+        ):
+            if not isinstance(parsed_public_evidence.get(field), dict):
+                raise ValueError(f"public release evidence field {field!r} must be an object")
+        if not isinstance(
+            parsed_public_evidence.get("installed_copy_behavior", {}).get("evidence"),
+            list,
+        ):
+            raise ValueError("installed-copy evidence must be an array")
+        if not isinstance(
+            parsed_public_evidence.get("persistent_lifecycle", {}).get("operations"),
+            list,
+        ):
+            raise ValueError("persistent-lifecycle operations must be an array")
+        public_evidence = parsed_public_evidence
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
+        public_evidence_error = str(error)
+
+    public_states = public_evidence.get("evidence_states", {})
+    public_source = public_evidence.get("public_source", {})
+    public_tag = public_evidence.get("tag", {})
+    github_release = public_evidence.get("github_release", {})
+    persistent_lifecycle = public_evidence.get("persistent_lifecycle", {})
+    installed_copy = public_evidence.get("installed_copy_behavior", {})
+    expected_package_hashes = {
+        relative: sha256(raw_files[relative]) for relative in sorted(raw_files)
+    }
+    checks["public_release_evidence.identity_and_limits"] = (
+        public_evidence.get("schema")
+        == "use-powershell-safely-public-release-evidence/v1"
+        and public_evidence.get("product") == "use-powershell-safely"
+        and public_evidence.get("version") == "0.3.0"
+        and public_evidence.get("evidence_state") == "PENDING_PLANNER_ACCEPTANCE"
+        and public_evidence.get("planner_acceptance") == "PENDING"
+        and public_evidence.get("release_notes_human_approval") == "VERIFIED"
+        and public_source
+        == {
+            "commit": "13edb84cd1b072cb64926c5ae600714c6f7203e7",
+            "package_sha256": "8c4bbdb586d69655e19f9e087cf1f9905c4e55c0b308debb64d3c60a369f8d8d",
+            "package_tree": package_tree,
+            "repository": "junwei529/use-powershell-safely",
+            "tree": "6f03b9a5717f823f87d117fc17b5040e0531dcc8",
+        }
+        and public_tag
+        == {
+            "annotation": "Use PowerShell Safely v0.3.0",
+            "name": "v0.3.0",
+            "object": "58cd1276ad43589c93489c919c285ce7fec2d42d",
+            "peeled_commit": "13edb84cd1b072cb64926c5ae600714c6f7203e7",
+            "type": "annotated",
+        }
+        and github_release
+        == {
+            "body_normalized_lf_sha256": "5c8c787136fd490aebd3b465e8687f59a68863da8d14bd62a92ee624f78b764f",
+            "draft": False,
+            "id": 378386983,
+            "prerelease": False,
+            "published_at": "2026-08-28T09:41:46Z",
+            "title": "Use PowerShell Safely v0.3.0",
+            "url": "https://github.com/junwei529/use-powershell-safely/releases/tag/v0.3.0",
+        }
+        and persistent_lifecycle
+        == {
+            "cross_version_update_rollback": "UNKNOWN",
+            "final_package_sha256": "4e65bac004d683f7b853082314daf209ad1e9b06d3d8065409629a5c2b9686f5",
+            "final_package_tree": package_tree,
+            "final_receipt_sha256": "640a38a072c02ed8e8a1bd7c6bb256c7dd709e0b16ebca033a16a92a18eed659",
+            "final_state": "MANAGED",
+            "legacy_copy_discovery_state": "PRESERVED_OUTSIDE_SKILL_DISCOVERY_ROOT",
+            "legacy_copy_retained": True,
+            "operations": [
+                "install",
+                "same-version update",
+                "same-version rollback",
+                "origin-aware uninstall",
+                "public-source restoration",
+            ],
+            "source_identity": "junwei529/use-powershell-safely",
+            "source_ref": "v0.3.0",
+            "version": "0.3.0",
+        }
+        and installed_copy.get("evidence")
+        == [
+            {
+                "evidence_id": "B2-PS-ABSENCE-01",
+                "result": "ACCEPTED",
+                "scope": "fresh projectless origin-aware absence after managed uninstall",
+            },
+            {
+                "evidence_id": "B2-PS-LOAD-01",
+                "result": "ACCEPTED",
+                "scope": "fresh projectless sole-discovery loaded-copy identity and bounded three-scenario behavior",
+            },
+        ]
+        and installed_copy.get("package_file_sha256") == expected_package_hashes
+        and installed_copy.get("package_tree") == package_tree
+        and installed_copy.get("receipt_sha256")
+        == "640a38a072c02ed8e8a1bd7c6bb256c7dd709e0b16ebca033a16a92a18eed659"
+        and public_states
+        == {
+            "broad_product_efficacy": "UNKNOWN",
+            "cross_harness_behavior": "UNKNOWN",
+            "cross_version_lifecycle": "UNKNOWN",
+            "immutable_public_source": "VERIFIED",
+            "installed_copy_behavior": "VERIFIED_BOUNDED",
+            "live_wsl": "UNKNOWN",
+            "local_release_ready": "VERIFIED",
+            "persistent_same_version_lifecycle": "VERIFIED",
+            "public_release": "VERIFIED",
+            "sole_installed_copy_discovery": "VERIFIED",
+            "stable_installed_copy": "VERIFIED",
+            "untested_contexts": "UNKNOWN",
+        }
+    )
     failures.extend(name for name, passed in checks.items() if not passed)
     if receipt_error:
         failures.append(f"receipt.unreadable: {receipt_error}")
     if public_candidate_error:
         failures.append(f"public_release_candidate.unreadable: {public_candidate_error}")
+    if public_evidence_error:
+        failures.append(f"public_release_evidence.unreadable: {public_evidence_error}")
     package_hashes = {
         relative: sha256(raw_files[relative])
         for relative in sorted(raw_files)
@@ -369,10 +501,9 @@ def main():
         "scope_limits": [
             "this deterministic checker executes no model and transmits no source",
             "Q04 proves only bounded SOURCE-forward behavior for three frozen scenarios",
-            "no persistent install, update, rollback, or uninstall",
-            "no stable installed-copy or loaded-copy proof",
-            "no selection/load attribution or live WSL proof",
-            "no publication proof",
+            "public evidence receipt binds retained publication, same-version lifecycle, and projectless witness results without replaying them",
+            "cross-version lifecycle remains UNKNOWN",
+            "no live WSL or cross-Harness proof",
             "no broad product efficacy proof",
         ],
     }

@@ -38,8 +38,13 @@ the receipt makes no remote, tag, Release, publication, persistent-installation,
 stable-copy, installed-copy, live-WSL, selection/load-attribution, or broad-
 efficacy claim.
 
-The non-circular public-source descriptor records the intended public
-repository, default branch, annotated tag, Release settings, exact release-note
-hash, B1 receipt lineage, and unchanged package identity. Its
-`PENDING_HUMAN_APPROVAL` snapshot is local preparation evidence only; it does
-not prove that any public ref, tag, GitHub Release, or installed copy exists.
+The non-circular public-source descriptor preserves the immutable
+pre-publication snapshot. The separate
+[`release/v0.3.0-public-release-evidence.json`](release/v0.3.0-public-release-evidence.json)
+binds exact public source P, the annotated tag object, approved public Release,
+same-version managed lifecycle, origin-aware absence, and the final exact
+installed copy through publication-safe ids and hashes. It intentionally omits
+private task, host, checkout, destination, and recovery locators. The evidence
+subject is pending independent Planner acceptance and preserves cross-version
+lifecycle, live WSL, cross-Harness behavior, untested contexts, and broad
+efficacy as `UNKNOWN`.

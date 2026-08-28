@@ -59,6 +59,35 @@ SOURCE checker verifies that local descriptor contract. It does not prove a
 public ref, tag, GitHub Release, persistent lifecycle effect, or installed-copy
 behavior; those require later live evidence bound to exact public source P.
 
+## Public v0.3.0 and stable-copy qualification
+
+Exact public source P is commit
+`13edb84cd1b072cb64926c5ae600714c6f7203e7`, tree
+`6f03b9a5717f823f87d117fc17b5040e0531dcc8`, with unchanged package tree
+`7e10775d423bfb08bc4ad6388875b7277ce3c18c`. Annotated tag object
+`58cd1276ad43589c93489c919c285ce7fec2d42d` peels to P. GitHub Release id
+`378386983` is public, non-draft, and non-prerelease; its exact title/body were
+human-approved and its normalized LF body SHA-256 is
+`5c8c787136fd490aebd3b465e8687f59a68863da8d14bd62a92ee624f78b764f`.
+
+The repository-native lifecycle route used an immutable public `v0.3.0` clone
+and exact explicit destinations. It verified managed install, same-version
+update, same-version rollback, origin-aware uninstall and absence, then public-
+source restoration. The final installed package tree is the public package tree
+and its origin-aware receipt SHA-256 is
+`640a38a072c02ed8e8a1bd7c6bb256c7dd709e0b16ebca033a16a92a18eed659`.
+The pre-existing exact public legacy copy is retained byte-unchanged outside
+all Skill discovery roots; its private recovery locator stays controller-side.
+
+`B2-PS-ABSENCE-01` is one fresh projectless witness for exact former USER-origin
+absence after uninstall. `B2-PS-LOAD-01` is a separate fresh projectless witness
+for sole exact-name USER-scope discovery, exact package/receipt identity,
+complete five-file load, and the bounded PowerShell native/JSON positive,
+ordinary-cmdlet negative, and POSIX-only negative scenarios. Both retained
+evidence tasks, prompts, and outputs remain controller-side. The public
+[`evidence subject`](../../../release/v0.3.0-public-release-evidence.json) binds
+only publication-safe ids and hashes and is pending Planner acceptance.
+
 ## Repository check
 
 ```powershell
@@ -148,11 +177,10 @@ pwsh -NoLogo -NoProfile -NonInteractive -File evals/check-powershell-boundaries.
 
 ## Evidence limits
 
-The focused suite is synthetic and local; accepted Q04 adds only bounded
-current-tree SOURCE-forward behavior for three frozen scenarios. Together with
-the immutable candidate, deterministic checks, and native review, it establishes
-the accepted `LOCAL_RELEASE_READY=VERIFIED` receipt. The public-source
-descriptor adds only local preparation evidence. Neither proves a remote, tag,
-Release, publication, selection/load attribution, stable or other installed-copy
-behavior, persistent lifecycle, live WSL, or broad product efficacy. Human
-review of the exact Release title and body remains pending.
+The focused suite is synthetic and local; accepted Q04 adds bounded current-tree
+SOURCE-forward behavior for three frozen scenarios. Separate public and
+projectless evidence proves the exact public source, Release, same-version
+lifecycle, origin-aware absence, stable installed-copy identity and bounded
+loaded-copy behavior. It does not prove cross-version lifecycle, live WSL,
+cross-Harness behavior, untested contexts, or broad product efficacy. The
+public-release evidence subject remains pending independent Planner acceptance.
