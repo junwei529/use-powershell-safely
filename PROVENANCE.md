@@ -29,14 +29,14 @@ unchanged. Historical monorepo operational detail and cross-product release
 state were omitted because full historical continuity is not an acceptance
 requirement and would create a false standalone dependency.
 
-## Current 0.3.2 local source delta
+## Retained 0.3.2 local source delta
 
-The canonical five-file working package now contains repository-native changes
+The retained five-file `0.3.2` package contains repository-native changes
 to `SKILL.md` and the Native/Text references, and the PowerShell boundary case
 has corresponding eval changes. `agents/openai.yaml`, the Windows/WSL
 reference, and the retained fixture remain byte-identical to the managed
 `0.3.1-local.3` copy or frozen baseline as applicable. The current package tree
-is `f76f6deaec88101ecdda4c5dbc47405d8b930a65`, matching the managed `0.3.2`
+was `f76f6deaec88101ecdda4c5dbc47405d8b930a65`, matching the managed `0.3.2`
 USER installation. The old tree `2b1c9fd648bfa7c9b1368d9ca2229501f99e388c`
 remains in a recovery copy outside Skill discovery roots.
 
@@ -48,18 +48,33 @@ publication, and fresh-task runtime consumption remain unproven. The existing
 hashes remain frozen historical identities and are not rewritten to describe
 these working bytes.
 
-The current mapping is [`provenance/source-map-v0.3.2.json`](provenance/source-map-v0.3.2.json).
+## Current 0.3.3 source delta
+
+The user-confirmed `0.3.3` source changes only `SKILL.md` and the Native/Text
+references within the five-file package. Preparation is separate from failure
+diagnosis; verified unchanged-runtime facts and relevant reference sections
+are reused, while changed or contradictory facts are rechecked. The existing
+case records corresponding scenarios without claiming model qualification.
+Package tree is `842b87d85c151a9c944cb855123c0ce7d69be1e5`. Independent source
+acceptance and the same-location USER update completed; management-context
+checks confirm exact installed bytes. After separately approved exact-root ACL
+inheritance repair, ordinary-sandbox checks also verify all five files, receipt
+and managed status. State and Verification retain the initial permission failure
+separately; no fresh-task loading or new model evidence is implied.
+
+The current mapping is [`provenance/source-map-v0.3.3.json`](provenance/source-map-v0.3.3.json).
 It reuses the v2 schema and original migration lineage: changed exact-source
 files become normalized-text rewrites with the original source records retained;
 repository-native validation and identity records retain their own classification.
 The checker pins the current source-mapping projection, checks current target
 bytes and inventory, and independently pins the entire frozen historical map.
 The historical release objects and release notes are checked against that
-immutable map. Neither map hashes itself, and rewrite target hashes are excluded
+immutable map. The `0.3.2` candidate and map are retained byte-for-byte as
+prior-source records. No map hashes itself, and rewrite target hashes are excluded
 from the source-mapping projection so the checker's own target hash is not circular.
 
-[`release/v0.3.2-candidate.json`](release/v0.3.2-candidate.json) binds the current
-five-file package and both digest formats to SOURCE and local installation scope.
+[`release/v0.3.3-candidate.json`](release/v0.3.3-candidate.json) binds the current
+five-file package and both digest formats as a source-assessment snapshot.
 It records no future commit, model qualification, publication, or release receipt.
 
 ## Publication boundary

@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PRODUCT = 'use-powershell-safely'
 BASELINE = '80910a8b2375a11be897e9660c4b00a06d00dd13'
 EXPECTED_SOURCE_TREE = '2ec2574116a9b2c4e8ec9a1bb4cb2636cb6279af'
-EXPECTED_SOURCE_MAPPING_SHA256 = '92f25a1d4153985357050233dcd0ef0605256748613fadbc6f9988ab727d5c16'
+EXPECTED_SOURCE_MAPPING_SHA256 = '6ca9160e40cafcb777c70f74858e8ee77faa05bce0291d56300bafb89bb6147a'
 HISTORICAL_SOURCE_MAPPING_SHA256 = '4a65cc980f74780ae14241845dbbe2a3c40aa94000489a9adebd49671e97625f'
 HISTORICAL_MAP_SHA256 = '87d150637f20beaa802c69dfd7621214ace939522274943733f4d3517be74204'
 EXPECTED_PACKAGE_COUNT = 5
@@ -1198,7 +1198,7 @@ def run_adversarial_matrix() -> int:
     execute_case("current-source-baseline", no_change, checker="check_source_contract.py")
 
     def change_current_tree(repo):
-        path = repo / "release" / "v0.3.2-candidate.json"
+        path = repo / "release" / "v0.3.3-candidate.json"
         value = json.loads(path.read_text(encoding="utf-8"))
         value["package"]["tree"] = "0" * 40
         write_manifest(path, value)
@@ -1206,7 +1206,7 @@ def run_adversarial_matrix() -> int:
     execute_case("wrong-current-tree", change_current_tree,
                  "current_candidate.identity", checker="check_source_contract.py")
     execute_case("missing-current-candidate",
-                 lambda repo: (repo / "release" / "v0.3.2-candidate.json").unlink(),
+                 lambda repo: (repo / "release" / "v0.3.3-candidate.json").unlink(),
                  "current_candidate.unreadable", checker="check_source_contract.py")
     execute_case("changed-current-package",
                  lambda repo: (repo / "skills" / PRODUCT / "SKILL.md").write_bytes(b"changed\\n"),
@@ -1225,7 +1225,7 @@ def run_adversarial_matrix() -> int:
                  lambda repo: (repo / "provenance" / "source-map.json").write_bytes(b"{}\\n"),
                  "frozen source map byte mismatch")
     execute_case("missing-current-map",
-                 lambda repo: (repo / "provenance" / "source-map-v0.3.2.json").unlink(),
+                 lambda repo: (repo / "provenance" / "source-map-v0.3.3.json").unlink(),
                  "unreadable or invalid JSON")
 
 
@@ -1238,13 +1238,13 @@ def run_adversarial_matrix() -> int:
         path.write_bytes(path.read_bytes() + b"\xff")
 
     def mutate_manifest(repo, change):
-        path = repo / "provenance" / "source-map-v0.3.2.json"
+        path = repo / "provenance" / "source-map-v0.3.3.json"
         manifest = json.loads(path.read_text(encoding="utf-8"))
         change(manifest)
         write_manifest(path, manifest)
 
     def inject_escaped_manifest_key(repo):
-        path = repo / "provenance" / "source-map-v0.3.2.json"
+        path = repo / "provenance" / "source-map-v0.3.3.json"
         private_key = "C:" + "\\" + "Users" + "\\" + "sample"
         escaped_key = "".join(f"\\u{ord(character):04x}" for character in private_key)
         text = path.read_text(encoding="utf-8")
@@ -1252,14 +1252,14 @@ def run_adversarial_matrix() -> int:
         path.write_bytes(mutated.encode("utf-8"))
 
     def inject_unpaired_surrogate_manifest(repo):
-        path = repo / "provenance" / "source-map-v0.3.2.json"
+        path = repo / "provenance" / "source-map-v0.3.3.json"
         text = path.read_text(encoding="utf-8")
         marker = '"destination": ".gitattributes"'
         mutated = text.replace(marker, '"destination": "\\ud800"', 1)
         path.write_bytes(mutated.encode("utf-8"))
 
     def inject_duplicate_manifest_key(repo):
-        path = repo / "provenance" / "source-map-v0.3.2.json"
+        path = repo / "provenance" / "source-map-v0.3.3.json"
         private_value = "C:" + "\\" + "Users" + "\\" + "sample"
         escaped_value = "".join(f"\\u{ord(character):04x}" for character in private_value)
         text = path.read_text(encoding="utf-8")
@@ -1497,13 +1497,13 @@ def main() -> int:
     check_generic_regression_matrix(failures)
     check_frozen_history(failures)
 
-    manifest_path = ROOT / "provenance" / "source-map-v0.3.2.json"
+    manifest_path = ROOT / "provenance" / "source-map-v0.3.3.json"
     if has_link_like_component(manifest_path):
         result = {
             "product": PRODUCT,
             "source_commit": BASELINE,
             "mapped_files": 0,
-            "failures": ["provenance/source-map-v0.3.2.json: symlink or junction path is not allowed"],
+            "failures": ["provenance/source-map-v0.3.3.json: symlink or junction path is not allowed"],
             "result": "FAIL",
         }
         print(json.dumps(result, ensure_ascii=False, sort_keys=True) if args.json else f"{PRODUCT}: FAIL")
@@ -1517,7 +1517,7 @@ def main() -> int:
             "product": PRODUCT,
             "source_commit": BASELINE,
             "mapped_files": 0,
-            "failures": [f"provenance/source-map-v0.3.2.json: unreadable or invalid JSON: {error}"],
+            "failures": [f"provenance/source-map-v0.3.3.json: unreadable or invalid JSON: {error}"],
             "result": "FAIL",
         }
         print(json.dumps(result, ensure_ascii=False, sort_keys=True) if args.json else f"{PRODUCT}: FAIL")
@@ -1531,7 +1531,7 @@ def main() -> int:
             "source_commit": BASELINE,
             "mapped_files": 0,
             "source_membership_check": "requested" if args.source_repository is not None else "not_requested",
-            "failures": ["provenance/source-map-v0.3.2.json: unpaired Unicode surrogate is not allowed"],
+            "failures": ["provenance/source-map-v0.3.3.json: unpaired Unicode surrogate is not allowed"],
             "result": "FAIL",
         }
         print(json.dumps(result, ensure_ascii=False, sort_keys=True) if args.json else f"{PRODUCT}: FAIL")
@@ -1584,7 +1584,7 @@ def main() -> int:
     valid_destinations = [value for value in destinations if isinstance(value, str)]
     if len(valid_destinations) != len(set(valid_destinations)):
         failures.append("duplicate provenance destination")
-    expected_files = {value for value in valid_destinations if is_safe_repo_path(value)} | {"provenance/source-map-v0.3.2.json"}
+    expected_files = {value for value in valid_destinations if is_safe_repo_path(value)} | {"provenance/source-map-v0.3.3.json"}
     actual_files = files_on_disk(failures)
     missing, extra = inventory_differences(expected_files, actual_files)
     if missing:
@@ -1635,15 +1635,15 @@ def main() -> int:
             failures.append(f"{relative}: {label}")
 
     if manifest_raw.startswith(b"\xef\xbb\xbf"):
-        failures.append("provenance/source-map-v0.3.2.json: UTF-8 BOM is not allowed")
+        failures.append("provenance/source-map-v0.3.3.json: UTF-8 BOM is not allowed")
     for number, line in enumerate(manifest_text.splitlines(), start=1):
         if line.endswith((" ", "\t")):
-            failures.append(f"provenance/source-map-v0.3.2.json:{number}: trailing whitespace")
+            failures.append(f"provenance/source-map-v0.3.3.json:{number}: trailing whitespace")
     manifest_private_labels = set(private_labels(manifest_text))
     for value in iter_text_values(manifest):
         manifest_private_labels.update(private_labels(value))
     for label in sorted(manifest_private_labels):
-        failures.append(f"provenance/source-map-v0.3.2.json: {label}")
+        failures.append(f"provenance/source-map-v0.3.3.json: {label}")
 
     package_root = ROOT / "skills" / PRODUCT
     package_files = {

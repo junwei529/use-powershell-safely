@@ -8,8 +8,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "use-powershell-safely"
-CURRENT_CANDIDATE = ROOT / "release" / "v0.3.2-candidate.json"
-CURRENT_PACKAGE_TREE = "f76f6deaec88101ecdda4c5dbc47405d8b930a65"
+CURRENT_CANDIDATE = ROOT / "release" / "v0.3.3-candidate.json"
+CURRENT_PACKAGE_TREE = "842b87d85c151a9c944cb855123c0ce7d69be1e5"
 HISTORICAL_PACKAGE_TREE = "7e10775d423bfb08bc4ad6388875b7277ce3c18c"
 HISTORICAL_MAP_SHA256 = "87d150637f20beaa802c69dfd7621214ace939522274943733f4d3517be74204"
 CANDIDATE = ROOT / "release" / "v0.3.0-candidate.json"
@@ -121,8 +121,8 @@ def check_current_candidate(value, package_tree, package_hashes):
         "schema": "use-powershell-safely-local-release-candidate/v1",
         "product": "use-powershell-safely",
         "public_identity": "junwei529/use-powershell-safely",
-        "version": "0.3.2",
-        "candidate_state": "CURRENT_SOURCE_AND_LOCAL_INSTALLATION",
+        "version": "0.3.3",
+        "candidate_state": "SOURCE_READY_FOR_ASSESSMENT",
         "package": {
             "path": "skills/use-powershell-safely",
             "file_count": 5,

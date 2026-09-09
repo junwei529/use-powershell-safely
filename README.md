@@ -53,7 +53,7 @@ This repository is the independent local product repository for
 [`skills/use-powershell-safely/`](skills/use-powershell-safely/). The frozen
 migration and `v0.3.0` baseline preserved package bytes from source commit
 `80910a8b2375a11be897e9660c4b00a06d00dd13`; the current working source contains
-a `0.3.2` local increment described in [State](docs/skills/use-powershell-safely/STATE.md).
+a `0.3.3` source increment described in [State](docs/skills/use-powershell-safely/STATE.md).
 
 ## v0.3.0 public release
 
@@ -82,19 +82,30 @@ USER-scope exact installed copy's selection, full five-file load, and the same
 three bounded scenarios. Cross-version lifecycle, live WSL, cross-Harness
 behavior, untested contexts, and broad efficacy remain `UNKNOWN`.
 
-## Current 0.3.2 local installation
+## Retained 0.3.2 local installation
 
-The working five-file package and PowerShell boundary case now include a
+The retained `0.3.2` five-file package and its PowerShell boundary case include a
 source-only increment for proportionate harness diagnosis, wrapper-aware text
 contracts, JSON representation limits, explicit Python UTF-8 handling, and
-related eval coverage. The current package tree is
+related eval coverage. Its package tree is
 `f76f6deaec88101ecdda4c5dbc47405d8b930a65`. The user-confirmed `0.3.2`
-USER installation matches all five source files and is readable in the ordinary
-sandbox. The old `0.3.1-local.3` copy is retained for recovery. Fresh-task
+USER installation matched all five `0.3.2` source files and was readable in the ordinary
+sandbox. It and the older `0.3.1-local.3` copy are retained for recovery. Fresh-task
 loading, model qualification, and publication are not established for `0.3.2`;
 the frozen `v0.3.0` evidence remains unchanged.
 See [Verification](docs/skills/use-powershell-safely/VERIFICATION.md) for the
 current verification entry points and retained historical failure records.
+
+## Current 0.3.3 source
+
+The user-confirmed `0.3.3` source separates pre-command boundary preparation
+from failure diagnosis, reuses verified unchanged-runtime evidence, and loads
+reference details only for the material question. Its candidate is a source
+assessment snapshot, not installation or model-behavior evidence. Independent
+source acceptance and the USER update to the matching `0.3.3` copy are complete.
+Following separately approved exact-root ACL inheritance repair, ordinary-sandbox
+checks verify all five files, receipt and managed status. Fresh-task loading and
+model behavior remain unproven; see [State](docs/skills/use-powershell-safely/STATE.md).
 
 ## Repository contents
 
@@ -103,7 +114,7 @@ current verification entry points and retained historical failure records.
 - Evaluation cases and fixtures: [`evals/`](evals/README.md)
 - Standalone verification: [`scripts/check_repository.py`](scripts/check_repository.py)
 - Source mapping: [`PROVENANCE.md`](PROVENANCE.md),
-  [current mapping](provenance/source-map-v0.3.2.json), and
+  [current mapping](provenance/source-map-v0.3.3.json), and
   [frozen historical mapping](provenance/source-map.json)
 
 ## Verify

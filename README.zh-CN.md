@@ -52,7 +52,7 @@ $use-powershell-safely
 [`skills/use-powershell-safely/`](skills/use-powershell-safely/)。冻结的 migration
 与 `v0.3.0` baseline 保留了源提交
 `80910a8b2375a11be897e9660c4b00a06d00dd13` 的 package 字节；当前 working
-source 已包含 [State](docs/skills/use-powershell-safely/STATE.md) 记录的 `0.3.2` 本地增量。
+source 已包含 [State](docs/skills/use-powershell-safely/STATE.md) 记录的 `0.3.3` 源码增量。
 
 ## v0.3.0 public Release
 
@@ -79,17 +79,26 @@ installed copy 的 selection、五文件完整加载与同样三个 bounded scen
 cross-version lifecycle、live WSL、cross-Harness behavior、untested contexts 与
 broad efficacy 仍为 `UNKNOWN`。
 
-## 当前 0.3.2 本地安装
+## 保留的 0.3.2 本地安装记录
 
-当前五文件 working package 与 PowerShell boundary case 已加入 source-only
+保留的 `0.3.2` 五文件 package 与其 PowerShell boundary case 包含 source-only
 增量，覆盖比例化 harness 诊断、wrapper-aware 文本合同、JSON 表示限制、Python
-显式 UTF-8 处理及相关 eval。当前 package tree 为
+显式 UTF-8 处理及相关 eval。其 package tree 为
 `f76f6deaec88101ecdda4c5dbc47405d8b930a65`。用户确认的 `0.3.2` USER
-安装已完成，五文件与 source 一致，普通沙箱可读。旧 `0.3.1-local.3` 副本保留
+安装当时已完成，五文件与 `0.3.2` source 一致，普通沙箱可读。该副本与更早的 `0.3.1-local.3` 均保留
 用于恢复。新任务加载、模型 qualification 与 publication 尚未证明；冻结的
 `v0.3.0` 证据保持不变。当前验证入口及保留的历史失败记录见
 [Verification](docs/skills/use-powershell-safely/VERIFICATION.md)；当前来源映射为
-[`provenance/source-map-v0.3.2.json`](provenance/source-map-v0.3.2.json)。
+[`provenance/source-map-v0.3.3.json`](provenance/source-map-v0.3.3.json)。
+
+## 当前 0.3.3 源码
+
+用户确认的 `0.3.3` source 区分命令前的材料边界准备与故障诊断，复用已验证且
+未变化的运行环境证据，并仅按实际问题读取引用细节。candidate 是源码验收
+快照，不是安装或模型行为证据。独立源码验收与匹配源码的 USER `0.3.3` 更新
+已完成。经单独批准，仅恢复安装根目录的 ACL 继承后，普通沙箱已验证五文件、
+receipt 与 managed 状态；新任务加载和模型行为仍未验证，详见
+[State](docs/skills/use-powershell-safely/STATE.md)。
 
 ## 仓库内容
 

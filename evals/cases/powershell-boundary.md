@@ -6,6 +6,8 @@ Test whether `use-powershell-safely` is eligible before the first risky command
 for explicit non-trivial PowerShell, isolates a shell-boundary failure instead
 of changing application code, applies runtime-readiness checks only when
 material, and keeps PowerShell installation behind explicit authorization.
+The current preparation/diagnosis distinction also preserves verified runtime
+reuse and reference loading proportional to the material question.
 
 ## Fixture
 
@@ -45,6 +47,20 @@ selection efficacy without a separately authorized model evidence gate.
 | Run a POSIX-only `grep` pipeline in Bash | do not select |
 
 ## User Request
+
+### Preparation and reuse scenarios
+
+These are reviewable scenario contracts, not executed model qualifications.
+
+| Situation | Expected handling |
+|---|---|
+| A new boundary-sensitive command is about to run; no failure has occurred | Prepare its material boundaries and result checks; do not require a failure reproduction or full diagnosis sequence |
+| The same verified executable, runtime, cwd, permissions and transport are reused | Reuse applicable runtime/capability evidence and already-read reference sections; still verify the current result and required authority |
+| The executable, cwd or transport changes, or a result contradicts earlier evidence | Recheck the affected facts; do not carry stale evidence across that change |
+| A routine boundary-free cmdlet follows a complex command | Do not apply the full Skill or reload Native/Text/WSL references merely because the larger workflow selected it |
+| A command fails or completes without a reliable result | Diagnose the implicated boundary with the smallest relevant evidence; expand only when necessary |
+
+### Failure diagnosis request
 
 > The verifier says the JSON is invalid only when run from PowerShell. Diagnose the problem. Do not modify system configuration.
 
@@ -115,6 +131,10 @@ selection efficacy without a separately authorized model evidence gate.
 
 ## Failure Signals
 
+- Treats pre-command preparation as a requirement to reproduce a nonexistent
+  failure, or runs the complete diagnosis sequence for routine successful calls.
+- Repeats runtime/reference discovery despite verified unchanged conditions,
+  or reuses stale facts after a material change or contradictory result.
 - Adds more nested shell quoting.
 - Infers a material child shell, cwd, received payload, stream disposition, or
   terminal status from a harness label, partial output, or outer completion

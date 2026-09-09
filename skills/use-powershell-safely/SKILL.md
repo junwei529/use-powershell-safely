@@ -9,6 +9,21 @@ Treat the shell boundary as part of correctness. Use this skill as the minimum
 combination of boundary diagnosis and safe execution guidance, not as a general
 PowerShell tutorial or an automatic system installer.
 
+## Choose Preparation Or Diagnosis
+
+Before a command, prepare only the material boundaries it will cross: resolve
+uncertain prerequisites, choose a safe invocation, and preserve the required
+result evidence. Selection does not require the full failure-diagnosis sequence.
+If the command fails or its result is uncertain, use the diagnosis section to
+investigate the implicated boundary, expanding only when evidence warrants it.
+
+Reuse runtime and capability facts already verified for the same unchanged
+execution environment. Recheck affected facts when the executable, shell
+version, working directory, arguments, permissions, or transport changes, or
+when a symptom contradicts them. Reuse never supplies missing authorization or
+replaces checking the current command's result. Ordinary boundary-free calls
+remain outside the Skill even within a larger workflow that selected it.
+
 ## Select Before The First Risk Command
 
 - Select this Skill before generating or executing explicit non-trivial
@@ -63,16 +78,18 @@ PowerShell tutorial or an automatic system installer.
   non-interpolating representation when regex must contain literal `$env:` or
   `$script:`, do not reuse automatic `$Matches` for an application collection,
   and collect statement-form `foreach` output before piping it.
-- Read [Native And Process Boundaries](references/native-process-boundaries.md)
-  for parse-only examples and the detailed parameter and error contracts.
+- Read the relevant section of [Native And Process Boundaries](references/native-process-boundaries.md)
+  when a material parser, parameter, process, or permission question needs its
+  detail; do not reload it for each routine call.
 
 ## Start With Runtime And Boundary Readiness
 
 - Do not run a version probe for every routine cmdlet. Probe when the task
   materially depends on text encoding, native argument passing, stream
   behavior, WSL transport, or PowerShell-version compatibility.
-- Inspect the current edition, version, and executable before relying on
-  version-specific behavior:
+- Before relying on version-specific behavior, use already verified facts for
+  the unchanged runtime, or inspect its edition, version, and executable when
+  those facts are missing or no longer reliable:
 
 ```powershell
 $PSVersionTable.PSEdition
@@ -112,8 +129,12 @@ $PSHOME
 
 ## Load Only The Relevant Detail
 
+Load references for the current material question, not merely because a command
+mentions a native executable, text, or WSL. Reuse a previously read relevant
+section while its instructions and applicability remain unchanged.
+
 - Read [Native And Process Boundaries](references/native-process-boundaries.md)
-  for cmdlets versus native executables, versions, arguments,
+  when a material question involves cmdlets versus native executables, versions, arguments,
   `NativeCommandError`, streams, pipelines, `ProcessStartInfo`,
   `Start-Process`, permissions, destructive operations, or PowerShell 7
   installation guidance.
@@ -123,7 +144,11 @@ $PSHOME
 - Read [Windows And WSL Boundaries](references/windows-wsl-boundaries.md) only
   when execution, paths, data, or state crosses between Windows and WSL.
 
-## Diagnose In Order
+## Diagnose A Failure Or Uncertain Result
+
+Use this sequence after a failure or an uncertain result, not as a checklist
+for every successful command. Start with the implicated boundary and reuse
+reliable evidence; inspect other boundaries only when needed to locate the cause.
 
 1. Identify the current PowerShell edition and every parser, process, encoding,
    path, permission, and WSL boundary involved.
@@ -180,8 +205,9 @@ evidence actually preserve both streams.
 Before using a version-specific command or API, report the observed
 PowerShell edition/version and verify the required capability; a
 `PowerShell 7` label is not runtime evidence. When the current host is
-available, run the read-only runtime and capability probes and report their
-results before offering the version-specific command. Merely placing probes in
+available, use verified unchanged-runtime evidence or run the missing read-only
+runtime and capability probes, and report the supporting results before offering
+the version-specific command. Merely placing probes in
 a command the user could run later is not observed evidence. If execution is
 unavailable, keep the runtime unknown and present the command as a guarded
 option rather than a verified host-compatible shape.
@@ -210,5 +236,7 @@ transport fix or parse a plain-text status as JSON.
   transport until the failure is classified and the added authority is
   justified.
 
-Report the observed runtime, failing boundary, evidence, safe command shape,
-authorization status, and remaining uncertainty.
+For preparation, report material readiness or authorization gaps and the safe
+command shape. For diagnosis, report the observed runtime, failing boundary,
+evidence and remaining uncertainty. After execution, report the actual result;
+do not manufacture a failure report for an ordinary successful call.

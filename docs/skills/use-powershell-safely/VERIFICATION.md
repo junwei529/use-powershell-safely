@@ -91,9 +91,9 @@ only publication-safe ids and hashes. The Planner accepted exact subject F
 `a53e693d29d33dddd6bb673ba3f54a2fcedbfe54`, at public evidence id
 `B2-PS-PUBLIC-EVIDENCE-F-01`.
 
-## Current 0.3.2 source and local installation
+## Retained 0.3.2 source and local installation
 
-The canonical working package now has tree
+The retained `0.3.2` package has tree
 `f76f6deaec88101ecdda4c5dbc47405d8b930a65` and digest
 `bdbbe8e85e5d5d086c1f6fc4f760f1e5868b4803f54278080d80c6d987bc1d0b`.
 It changes `SKILL.md` and the Native/Text references relative to the retained
@@ -165,7 +165,7 @@ This is byte/readability and bounded local lifecycle evidence. No fresh-task
 discovery or model-load/behavior run was performed. Historical identity-gate
 failures remain failures; they were not converted to qualification PASS.
 
-## Current 0.3.2 verification entry points
+## Retained 0.3.2 verification entry points
 
 The user authorized a current candidate and a separate current source map while
 retaining the original map and four `v0.3.0` release objects byte-for-byte.
@@ -193,6 +193,72 @@ passing. Its external-link sentinel used the deterministic index-link-mode
 branch, not a real host symlink. This adds checker rejection evidence, not model
 qualification or new installed-copy behavior.
 
+## Current 0.3.3 verification subject
+
+The current source tree is `842b87d85c151a9c944cb855123c0ce7d69be1e5`, with
+SOURCE-list digest `461cb805672dbe3bda67151227692845a34e0c6ddbf2a88c29d4b733c6aea478`.
+`release/v0.3.3-candidate.json` and `provenance/source-map-v0.3.3.json` bind
+this source-assessment snapshot; the old `0.3.2` candidate/map remain unchanged.
+The same SOURCE, repository and focused checks now target `0.3.3`. Lifecycle
+self-test defaults to its independently pinned tree; exact old sources retain
+explicit `--expected-version 0.3.0` and `--expected-version 0.3.2` routes.
+Production install/update/rollback and ACL handling are unchanged.
+
+The existing scenario case now distinguishes preparation, failure diagnosis,
+unchanged-runtime reuse, changed-condition rechecking and routine-call exclusion.
+These scenarios need independent content assessment; deterministic checks alone
+do not prove actual model selection, loading, behavior or efficacy. Independent
+source acceptance preceded the USER `0.3.3` update. Management-context checks
+verify exact source bytes, receipt and managed status. Ordinary-sandbox checks
+also pass after separately approved exact-root ACL inheritance repair, with the
+initial failure preserved below.
+
+At this source checkpoint, Skill structure validation, SOURCE's 14 checks,
+repository verification for 38 mapped files, both PowerShell runtimes' 59
+focused assertions, and the disposable `0.3.3` lifecycle self-test pass. The
+lifecycle result explicitly reports no persistent effect. These results do not
+relabel earlier failed checkpoints or establish USER installation usability.
+
+### 0.3.3 same-location update and readability verification
+
+Preparation verified the old `0.3.2` tree and receipt, retained both outside
+discovery roots, and bound the accepted `0.3.3` source snapshot and distinct
+SOURCE-list/installer-mapping digests. Update dry-run passed. One live managed
+update completed with exit 0 and returned the accepted tree plus installer
+mapping digest `ec5e05c5a144285952f05a7e31935e2d16efa3831bcf5de3286681ce4d763d9c`.
+
+Ordinary-sandbox verification exited 1: all five package files and receipt
+returned permission denied. A separate management-context read-only check
+exited 0 and verified every accepted file hash, strict UTF-8/no-BOM/LF, receipt,
+`MANAGED 0.3.3`, retained `0.3.2` recovery bytes and rollback dry-run. Receipt
+SHA-256 is `a8e004e9e00887bfb76555bd8c56e0a6a26d5893bec6a6651447680d1de23c48`.
+Privileged readability does not replace the failed ordinary-sandbox result.
+
+Read-only ACL inspection found the replacement root's inheritance protected;
+the parent still supplies sandbox read permission. Following separate explicit
+approval, inheritance was enabled on that exact root only, preserving explicit
+entries, without a recursive switch or changes to the parent. The command exited
+0 with one directory processed and zero failures; inheritance is now enabled.
+The same verifier then exited 0 in the ordinary sandbox: all five files and
+receipt readable, exact accepted hashes, strict UTF-8/no-BOM/LF, `MANAGED 0.3.3`,
+retained recovery bytes and rollback dry-run passed. The receipt hash is unchanged.
+The earlier failed run remains failure evidence. No second installation, live
+rollback or fresh-task model run was performed. Independent assessment accepted
+the exact source and local installation after separately checking ordinary-
+sandbox bytes, receipt, managed status, ACL inheritance and retained recovery
+identity. This acceptance adds no fresh-task loading or model-behavior evidence.
+
+### Retained two-commit push completion
+
+After separate explicit user approval, read-only checks confirmed the original
+actor, repository and `main` baseline, with exactly the two already-reviewed
+commits `9dccf92af9dbea3a84f551f47eb7088880be5688` and
+`92ad426f3bfc358a8df21fe633264edffbb994c0` in the fast-forward range. One
+normally approved non-force Git push exited 0; a separate remote-ref read
+confirmed `main` at `92ad426f3bfc358a8df21fe633264edffbb994c0`.
+The original pre-process approval rejection remains history. No new `0.3.3`
+commit, tag, Release, PR, history rewrite or cleanup was performed.
+
 ## Repository check
 
 ```powershell
@@ -202,7 +268,7 @@ python -B scripts/check_repository.py --json
 This verifies exact Git-blob identity for unchanged exact inputs, rewritten
 target hashes and retained original source mappings, expected package and
 evaluation shape, UTF-8/BOM and Markdown-link boundaries, and publication safety.
-The default route uses `provenance/source-map-v0.3.2.json`, checks its pinned
+The default route uses `provenance/source-map-v0.3.3.json`, checks its pinned
 source-mapping projection, and separately verifies the frozen historical map and
 release objects. It does not assume the former source repository is present.
 An identity mismatch is a failing current check, not an accepted closeout state.
@@ -282,7 +348,7 @@ disposable symlink or used the deterministic index-link-mode branch.
 pwsh -NoLogo -NoProfile -NonInteractive -File evals/check-powershell-boundaries.ps1
 ```
 
-For current `0.3.2`, this command verifies its pinned package manifest and then
+For current `0.3.3`, this command verifies its pinned package manifest and then
 runs all focused assertions. The earlier checkpoint stopped at the old package
 manifest gate and did not run its later assertions.
 

@@ -10,6 +10,8 @@ Diagnoses and safely executes boundary-sensitive Windows shell workflows across 
 
 冻结的 migration 与 `v0.3.0` 快照保留源提交
 `80910a8b2375a11be897e9660c4b00a06d00dd13` 的 package 字节。当前规范 source
-已有 [State](STATE.md) 记录的 `0.3.2` 已本地安装的 repository-native 增量；baseline
+已有 [State](STATE.md) 记录的 `0.3.3` 准备/诊断区分增量；源码已验收并完成 USER
+更新。经单独批准修复安装根目录的 ACL 继承后，普通沙箱的字节、receipt 与
+managed 状态检查已通过；新任务加载和模型行为仍未验证。baseline
 source-blob 映射仍是历史 identity 证据，而不是当前 working bytes 的断言。独立
 文档不重标历史 candidate、installed-copy、release 或 efficacy 证据。

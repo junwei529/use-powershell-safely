@@ -23,8 +23,11 @@ destructive operations, and PowerShell 7 installation guidance.
 
 ## Runtime Readiness
 
-Probe only when version-specific behavior is material. Start with the current
-host and a read-only lookup:
+Probe only when version-specific behavior is material and the needed facts
+have not already been verified for the unchanged execution environment. Reuse
+known runtime and capability evidence; a changed executable, transport or
+contradictory symptom requires rechecking affected facts. When needed, start
+with the current host and a read-only lookup:
 
 ```powershell
 $currentHost = [pscustomobject]@{
@@ -459,8 +462,9 @@ Do not write “capture stdout and stderr separately” next to an invocation th
 inherits, merges, or discards them. State what the command actually does and
 what remains unobserved.
 
-When the current host is accessible, execute the read-only runtime and
-capability probes and report the observed values before relying on
+When the current host is accessible, reuse verified unchanged-runtime evidence
+or execute the missing read-only runtime and capability probes. Report the
+supporting observed values before relying on
 version-specific syntax. A probe embedded in a future user command is a guard,
 not evidence that the current host already passed it. When execution is
 unavailable, state that limitation and keep compatibility unknown.

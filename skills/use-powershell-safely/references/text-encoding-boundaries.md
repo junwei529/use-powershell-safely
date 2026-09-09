@@ -19,7 +19,12 @@ model.
 
 ## Diagnose Before Rewriting
 
-Use this order:
+For a new command, establish only its material producer/consumer text contract
+and result checks; reuse reliable unchanged-boundary evidence. The sequence
+below investigates an observed text failure or uncertain result before any
+remedial rewrite. It is not required for every successful text operation.
+
+Use this order when diagnosis is needed:
 
 1. Preserve the original bytes.
 2. Identify the producer, consumer, declared format, and required byte or text

@@ -18,7 +18,7 @@ cannot grant authority or create a hard dependency.
 The package contains exactly 5 files. `SKILL.md` owns
 selection and entry behavior; directly linked references and assets own detailed
 guidance and templates. The repository checker verifies current paths and bytes
-against `provenance/source-map-v0.3.2.json`. It separately verifies the unchanged
+against `provenance/source-map-v0.3.3.json`. It separately verifies the unchanged
 historical map and release evidence. Original migration source records stay in
 the current map, while explicit rewrite records identify repository-native
 changes without claiming exact original byte identity.
@@ -32,9 +32,9 @@ current PowerShell boundary case may extend that repository-native evaluation
 contract while the fixture remains unchanged. Model runs, installation, and
 release remain separately authorized evidence classes.
 
-## Current 0.3.2 local increment
+## Retained 0.3.2 local increment
 
-The current source increment keeps the same five-file product shape while
+The retained `0.3.2` increment keeps the same five-file product shape while
 adding proportionate harness-versus-child diagnosis, callback-aware terminal
 routing, wrapper-aware text contracts, JSON representation limits, explicit
 Python UTF-8 handling, and matching eval coverage. It preserves the accepted
@@ -43,14 +43,29 @@ user-confirmed `0.3.2` local installation source. Installation and ordinary
 sandbox readability are recorded in State; model qualification, public release,
 and fresh-task runtime consumption are not established.
 
+## Current 0.3.3 source increment
+
+The current five-file source separates preparation of material command boundaries
+from investigation after failure or uncertain output. It reuses verified runtime
+and capability facts only while relevant conditions remain unchanged; affected
+facts are rechecked on change or contradiction. Native/Text/WSL details are loaded
+for the actual question, and routine boundary-free calls do not inherit a full
+diagnostic sequence from their surrounding workflow. Existing authority, parser,
+byte, result and destructive-operation safeguards remain in force.
+
+This changes the entrypoint and Native/Text guidance, with corresponding case
+scenarios. Agent metadata and Windows/WSL guidance are unchanged. The `0.3.3`
+candidate and current map describe this source; retained `0.3.2` records are not
+rewritten. Independent source acceptance precedes the authorized USER update.
+
 ## Independent release qualification
 
-The `0.3.2` candidate identifies current SOURCE and local installation only.
+The `0.3.3` candidate records a source-assessment snapshot, not installed behavior.
 SOURCE checks compare historical evidence to its historical package and current
-evidence to the accepted current package. The focused checker pins the current
+evidence to the pinned current package. The focused checker pins the current
 package manifest before running the same synthetic assertions. Lifecycle
-self-test defaults to the independently pinned `0.3.2` source and also accepts
-`--expected-version 0.3.0` when supplied an exact historical source directory.
+self-test defaults to the independently pinned `0.3.3` source and also accepts
+`--expected-version 0.3.0` or `--expected-version 0.3.2` for exact historical sources.
 Production install/update/rollback trust and ACL behavior are unchanged.
 
 The local `v0.3.0` candidate binds the unchanged five-file package tree and a
