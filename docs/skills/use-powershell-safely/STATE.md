@@ -131,13 +131,23 @@ controller-side.
 
 B2 public-release and stable-copy acceptance is durably recorded. No further B2
 effect is authorized by this state transition. The confirmed `0.3.2` local
-installation is complete. Current verification and Git commit/push closeout are
-authorized; completion requires successful mandatory checks, native review and
-verified Git results. Historical mappings remain frozen. Tag/Release and new
-model or runtime-effect claims are outside this closeout.
+installation is complete. The local source commit
+`9dccf92af9dbea3a84f551f47eb7088880be5688` completed verification and native
+review. The subsequent root README update passed independent documentation
+assessment and changes no package behavior. The user authorized its separate
+native-review and commit gate, followed by an ordinary fast-forward push of
+both commits to the existing GitHub origin's `main` branch. Git history and
+live remote-ref verification establish completion of those Git effects; this
+authorization is not itself completion evidence. Historical evidence remains
+frozen. Tag/Release and new model or runtime-effect claims remain outside this
+closeout.
 
 ## Documentation impact
 
+- README follow-up: the root bilingual entry now explains purpose, usage and
+  an illustrative scenario, with existing version, installation, verification
+  and evidence limits retained in a closing disclosure. The scenario is not a
+  new test result; package and installed-copy evidence are unchanged.
 - Updated: the root README pair, product README pair, Design, this State,
   Verification, `PROVENANCE.md`, and `evals/README.md` now distinguish the
   frozen `v0.3.0` evidence from the current `0.3.2` source and local installed

@@ -2,6 +2,52 @@
 
 [English](README.md)
 
+**帮助 AI 在 Windows 上把命令执行对。**
+
+Use PowerShell Safely 是面向 Codex 的 Windows 命令执行与故障诊断 Skill。它关注 PowerShell、外部程序、文本文件和 WSL 之间容易出错的连接处，帮助 AI 在执行前检查关键条件、出错后定位原因、执行后核对实际结果。
+
+它适合包含复杂参数、中文路径、文件编码、子进程或 Windows／WSL 交互的任务。
+
+## 它能帮助你
+
+- **执行前检查关键条件。** 根据任务涉及的版本、参数、路径和权限选择合适的命令写法。
+- **把问题定位到具体环节。** 区分应用代码、命令解析、参数传递、输出处理和运行环境问题，让修正针对实际原因。
+- **核对真正的执行结果。** 检查进程是否结束、退出状态是否可靠，以及输出文件和文本内容是否符合预期。
+
+## 一个使用场景
+
+PowerShell 调用 Python 处理包含中文的 JSON。命令看起来已经结束，输出内容却不正确。
+
+这时需要核对 Python 实际收到的参数、文件的读写编码和进程退出结果，并用最小复现定位问题。确认原因后，再决定该调整命令、环境还是代码。
+
+## 开始使用
+
+执行复杂命令之前：
+
+```text
+$use-powershell-safely
+我要用 PowerShell 调用 Python，处理包含中文路径的 JSON 文件。
+请先检查参数传递、编码和退出状态的处理，再执行已授权的操作。
+```
+
+遇到问题之后：
+
+```text
+这条命令显示已经结束，但没有得到预期文件。
+请先定位失败环节，并说明依据，再提出修正方案。
+```
+
+相关运行条件已经确认且没有变化时，可以复用这些证据；按当前问题读取必要的诊断细节。
+
+## 进一步了解
+
+[设计说明](docs/skills/use-powershell-safely/DESIGN.md) ·
+[验证范围](docs/skills/use-powershell-safely/VERIFICATION.md) ·
+[评估场景](evals/cases/powershell-boundary.md)
+
+<details>
+<summary>安装与验证、版本沿革和证据限制</summary>
+
 本仓库是 `use-powershell-safely` 的独立本地产品仓库。规范可编辑 package 位于
 [`skills/use-powershell-safely/`](skills/use-powershell-safely/)。冻结的 migration
 与 `v0.3.0` baseline 保留了源提交
@@ -70,3 +116,5 @@ Lifecycle 工具默认只做 dry-run；真实操作必须同时给出明确 dest
 source、publication、same-version lifecycle 与 loaded-copy behavior 分层；它不主张
 cross-version lifecycle、Profile mutation、live WSL、cross-Harness behavior、
 untested contexts 或 broad product efficacy。
+
+</details>

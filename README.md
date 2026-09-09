@@ -2,7 +2,51 @@
 
 [简体中文](README.zh-CN.md)
 
-Diagnoses and safely executes boundary-sensitive Windows shell workflows across PowerShell, native executables, and WSL.
+**Help AI run commands correctly on Windows.**
+
+Use PowerShell Safely is a Windows command-execution and troubleshooting Skill for Codex. It focuses on the error-prone boundaries between PowerShell, external programs, text files, and WSL, helping AI check key conditions before execution, locate causes after a failure, and verify actual results afterward.
+
+It is useful for tasks involving complex arguments, paths containing Chinese characters, file encodings, subprocesses, or Windows/WSL interaction.
+
+## How it helps
+
+- **Check key conditions before execution.** Choose a suitable command form based on the versions, arguments, paths, and permissions involved in the task.
+- **Pinpoint the failing step.** Distinguish application-code issues from command parsing, argument passing, output handling, and runtime-environment problems, so fixes address the actual cause.
+- **Verify the real result.** Check whether the process has finished, whether its exit status is reliable, and whether output files and text contents match expectations.
+
+## An example scenario
+
+PowerShell calls Python to process JSON containing Chinese text. The command appears to have finished, but the output is incorrect.
+
+Check the arguments Python actually received, the encodings used to read and write the file, and the process exit result. Use a minimal reproduction to locate the problem. Once the cause is clear, decide whether the command, environment, or code needs to change.
+
+## Get started
+
+Before executing a complex command:
+
+```text
+$use-powershell-safely
+I want to call Python from PowerShell to process a JSON file whose path contains Chinese characters.
+Check argument passing, encoding, and exit-status handling first, then perform the authorized operations.
+```
+
+After encountering a problem:
+
+```text
+This command says it has finished, but the expected file was not produced.
+Locate the failing step and explain the evidence before proposing a fix.
+```
+
+When relevant runtime conditions have already been verified and remain unchanged, reuse that evidence; read only the diagnostic details needed for the current problem.
+
+## Learn more
+
+[Design](docs/skills/use-powershell-safely/DESIGN.md) ·
+[Verification scope](docs/skills/use-powershell-safely/VERIFICATION.md) ·
+[Evaluation scenarios](evals/cases/powershell-boundary.md)
+
+<details>
+<summary>Installation and verification, version history, and evidence limits</summary>
 
 This repository is the independent local product repository for
 `use-powershell-safely`. Its canonical editable package is
@@ -79,3 +123,5 @@ another Skill repository. The retained public evidence distinguishes immutable
 source, publication, same-version lifecycle, and loaded-copy behavior; it does
 not claim cross-version lifecycle, Profile mutation, live WSL, cross-Harness
 behavior, untested contexts, or broad product efficacy.
+
+</details>
