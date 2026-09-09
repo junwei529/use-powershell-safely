@@ -193,6 +193,23 @@ check, not proof of parameter compatibility, runtime success, or side-effect
 correctness. Do not add a second shell, encoded command, or more complex
 quoting to make an unparsed payload launch.
 
+When a launching harness or tool is part of the suspected material boundary,
+keep it separate from the process it starts. Reuse reliable facts from its
+documented or already verified contract and inspect only uncertain facts that
+could change the diagnosis: the actual child executable/version, effective
+working directory, relevant wrapper/parser layers, and the argument vector or
+payload that reaches the child. A UI label, API method name, requested shell,
+or displayed command alone is not evidence that the intended shell parsed an
+uncertain payload. A routine call with a known contract needs no full harness
+inventory.
+
+This distinction is especially important for nested `pwsh -Command`. An outer
+PowerShell expands variables in a double-quoted payload before the child starts,
+so the child can receive literal values where child-scope variable references
+were intended. Inspect the payload after outer construction. Prefer a `.ps1`
+file; when inline source is unavoidable, keep code non-interpolating and pass
+data separately instead of adding another quoting layer.
+
 Keep these high-value traps explicit:
 
 - delimit a variable before a literal colon, for example `${name}:` rather
@@ -355,6 +372,52 @@ are already separate array elements, concatenate untrusted strings into a
 command, or repair quoting by adding `cmd.exe /c`, another `powershell
 -Command`, or `Invoke-Expression`.
 
+Treat a Git revision expression containing braces as one native argument. In
+PowerShell, a bare `HEAD^{tree}` or `HEAD^{commit}` is tokenized as `HEAD^`
+followed by a ScriptBlock before Git runs. Quote the complete revspec or add it
+as one string element in the native argument array, such as
+`$nativeArgs += 'HEAD^{tree}'`:
+
+```powershell
+git rev-parse 'HEAD^{tree}'
+$treeExitCode = $LASTEXITCODE
+
+git rev-parse 'HEAD^{commit}'
+$commitExitCode = $LASTEXITCODE
+```
+
+Do not substitute a different ref or glob merely to avoid quoting unless it is
+semantically equivalent for the requested Git operation.
+
+Quote a complete Git format option containing `%(...)` for the same reason. In
+PowerShell, an unquoted `--format=%(refname)` can evaluate `(refname)` before
+Git starts, leaving no Git exit code. Pass `'--format=%(refname)'` literally or
+place the complete option in one native-argument array element.
+
+When a repository or worktree is known to have been created or owned by a
+different or elevated identity than the current process, treat the first Git
+invocation as a Git trust/tool boundary before it runs. Resolve the exact
+absolute repository or worktree path through the approved task/workspace route
+and confirm that its ownership/trust context is the one being authorized. Only
+then scope the exception to each required Git command, including the first
+probe:
+
+```powershell
+$repoPath = (Resolve-Path -LiteralPath $approvedRepoPath).Path
+$gitRepoPath = $repoPath.Replace('\', '/')
+git -c "safe.directory=$gitRepoPath" -C $repoPath status --short
+$exitCode = $LASTEXITCODE
+```
+
+If that transition was not known and Git instead reports `fatal: detected
+dubious ownership`, apply the same identity checks before retrying. Classify
+the diagnostic as a Git trust/tool boundary, not as evidence of a
+repository-content defect or clean/dirty state.
+
+Do not write global or system Git configuration, use `safe.directory=*`, trust
+a parent directory, or substitute a nearby checkout. Stop when the repository,
+owner/trust context, or approved target identity is unclear.
+
 PowerShell 7.3 changed native argument passing. On Windows,
 `$PSNativeCommandArgumentPassing` normally uses `Windows` mode, which falls
 back to legacy behavior for `cmd.exe`, Windows Script Host, and common batch or
@@ -420,6 +483,14 @@ unavailable, state that limitation and keep compatibility unknown.
 - If output is missing, truncated, reordered, or reformatted, remove
   formatting and filtering stages, use a minimal command, and capture streams
   independently before changing application code.
+- Keep launcher completion separate from child-process completion. Follow the
+  harness's defined completion route, whether callback/event delivery or a
+  caller-owned continuation. Only when that contract assigns the current
+  caller a returned process/session handle should it retain and continue that
+  exact handle to terminal status. Do not add generic polling or take over a
+  handle owned by another role. Partial output, an elapsed yield window, or
+  outer-wrapper completion is not terminal proof; do not rerun a consequential
+  or one-shot command merely to replace missing terminal evidence.
 
 ## Process APIs
 

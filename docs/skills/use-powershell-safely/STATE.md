@@ -3,8 +3,24 @@
 ## Current implementation
 
 Canonical editable source is the 5-file package under
-[`skills/use-powershell-safely/`](../../../skills/use-powershell-safely/). Every package file and retained
-case or fixture is an exact Git blob from `80910a8b2375a11be897e9660c4b00a06d00dd13`.
+[`skills/use-powershell-safely/`](../../../skills/use-powershell-safely/). It is
+currently the user-confirmed `0.3.2` local installation source with package tree
+`f76f6deaec88101ecdda4c5dbc47405d8b930a65` and package digest
+`bdbbe8e85e5d5d086c1f6fc4f760f1e5868b4803f54278080d80c6d987bc1d0b`.
+It preserves the accepted local Git brace-revspec and command-local
+`safe.directory` guidance and adds proportionate harness diagnosis,
+callback-aware terminal routing, wrapper-aware text contracts, JSON
+representation limits, explicit Python UTF-8 handling, and matching eval
+coverage.
+
+The managed USER copy is now `0.3.2`, with all five files byte-identical to
+current source. Its installer mapping digest is
+`ff909615ea97bcc60dad59b66a6d2ee5cdf3b2ac6620aec7e6c98615001b6003`;
+the SOURCE digest above hashes a sorted list rather than the installer's
+mapping, so the two digest values are not interchangeable. The old
+`0.3.1-local.3` package tree `2b1c9fd648bfa7c9b1368d9ca2229501f99e388c`
+and original receipt are retained outside Skill discovery roots for recovery.
+This is a local installation, with no new public release or model qualification.
 
 ## Repository ownership
 
@@ -30,9 +46,10 @@ copy. The Planner accepted exact evidence subject F
 
 ## Evidence state
 
-The migration proves current package byte identity, mapped case and fixture
-byte identity, local link and publication-safety checks, and repository-local
-verification. Candidate C is immutable commit
+The migration and release records prove package, mapped case, and fixture byte
+identity plus local link, publication-safety, and repository verification for
+their named frozen subjects; they do not prove current working-source byte
+identity. Candidate C is immutable commit
 `ad8f056b110ee3798a5f92ed9715c1085e45fe72`, tree
 `4a2597202b89b91c330e559f86d04fc288894bea`, and exact package tree
 `7e10775d423bfb08bc4ad6388875b7277ce3c18c`. The Planner accepted exact C with
@@ -45,10 +62,56 @@ package tree `22c230...` and is not forwarded to this candidate. Q01 and Q02
 remain sealed transport/permission stops with behavior `UNKNOWN_NOT_ASSESSED`;
 Q03 remains a sealed preflight stop with no SOURCE transmission. Accepted Q04
 is one projectless, read-only, no-tool `gpt-5.6-sol/high` turn against the exact
-five-file current tree. Its one final response (SHA-256
+five-file `v0.3.0` candidate tree. Its one final response (SHA-256
 `8fba2576f76755e77d848574b60e19b2276d378e5e5de46027b9dcd97774c085`)
 passed only the frozen PowerShell native/JSON positive, ordinary-cmdlet
 negative, and POSIX-only negative scenarios.
+
+### Accepted source-only checkpoint history
+
+At that checkpoint, the increment passed Skill structure validation, `git diff --check`,
+and every non-identity deterministic SOURCE content check. Read-only examples
+on PowerShell Core 7.6.3 confirmed nested outer-variable interpolation, quoted
+Git `--format=%(...)`, empty-name JSON conversion guarded by live
+`-AsHashtable` capability, and explicit Python UTF-8 decoding with optional
+process-local `-X utf8`.
+
+The SOURCE contract then returned failure for the frozen candidate, receipt,
+public-source, and public-evidence identities. Repository verification reported
+only the corresponding mapped byte/blob identity mismatches. The focused
+PowerShell checker stopped at its first frozen package-manifest identity gate, so
+its later assertions did not run and are not claimed as passing. No new model
+qualification, installed-copy execution, cross-Harness proof, or runtime
+consumption evidence was produced by that source-only acceptance.
+
+### Current 0.3.2 verification
+
+The user authorized current candidate and source-mapping records and the four
+existing validation entry points. Current SOURCE checks now validate both the
+frozen historical subjects and the accepted current package independently.
+PowerShell 7 and Windows PowerShell 5.1 each complete all 59 boundary checks;
+the `0.3.2` disposable lifecycle completes install/update/rollback and refusal
+checks. Current inventory and provenance are owned by
+`provenance/source-map-v0.3.2.json`; the historical map and all four `v0.3.0`
+release objects remain byte-identical. The complete staged-index adversarial
+matrix passes, including current-identity and frozen-history rejection cases.
+This does not retroactively pass the
+earlier failed commands or add model qualification.
+
+### Local 0.3.2 installation
+
+The existing installer completed an explicit-tree update to `0.3.2`.
+A private-directory rehearsal verified old-package install, update to `0.3.2`,
+and rollback to `0.3.1-local.3`; live rollback was dry-run only. The new live
+receipt SHA-256 is
+`e782b1fa9555db2710b4051c42cb4674b13f6346b3303020b6c84cfa3c15735f`.
+The staged directory initially blocked sandbox reading through a protected ACL.
+After explicit approval, parent ACL inheritance was enabled only on the
+installed package directory, preserving existing entries. Ordinary sandbox
+verification then read all five files and receipt, confirmed strict UTF-8/LF,
+and verified source identity and managed status. Future installer replacements
+may need the same permission check; installer behavior was not changed.
+Fresh-task discovery, model loading and behavior remain `UNKNOWN`.
 
 Public source P is commit `13edb84cd1b072cb64926c5ae600714c6f7203e7`
 with tree `6f03b9a5717f823f87d117fc17b5040e0531dcc8`; annotated tag object
@@ -59,7 +122,7 @@ origin-aware absence, sole installed-copy discovery, stable installed-copy
 identity, complete five-file load, and bounded three-scenario behavior are
 `VERIFIED` observations accepted by the Planner for exact evidence subject F.
 
-Cross-version update/rollback, live WSL, cross-Harness behavior, untested
+Broad cross-version update/rollback, live WSL, cross-Harness behavior, untested
 contexts, and broad product efficacy remain `UNKNOWN`. The retained legacy copy
 is preserved outside Skill discovery roots; its private recovery locator remains
 controller-side.
@@ -67,8 +130,27 @@ controller-side.
 ## Next gate
 
 B2 public-release and stable-copy acceptance is durably recorded. No further B2
-effect is authorized by this state transition. Ordinary local changes must
-preserve the provenance record or explicitly supersede the mapped baseline.
+effect is authorized by this state transition. The confirmed `0.3.2` local
+installation is complete. Current verification and Git commit/push closeout are
+authorized; completion requires successful mandatory checks, native review and
+verified Git results. Historical mappings remain frozen. Tag/Release and new
+model or runtime-effect claims are outside this closeout.
+
+## Documentation impact
+
+- Updated: the root README pair, product README pair, Design, this State,
+  Verification, `PROVENANCE.md`, and `evals/README.md` now distinguish the
+  frozen `v0.3.0` evidence from the current `0.3.2` source and local installed
+  copy; the old local package remains a recovery copy.
+- Current validation: the candidate, current source map, four existing
+  validation entry points and their documentation identify `0.3.2` separately
+  from historical release evidence. The full staged `0.3.2` increment changes
+  three installable package files: `SKILL.md` and the Native/Text references.
+  The subsequent validation-only follow-up makes no further package changes
+  beyond that accepted source increment.
+- Checked with no change: `CHANGELOG.md`, release candidates, receipts, public
+  evidence, and `provenance/source-map.json` remain frozen historical identity
+  records; the fixture README still describes an unchanged fixture.
 
 ## Recovery entry
 

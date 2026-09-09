@@ -18,10 +18,10 @@ binds the package, future public identity, evidence states, release-note review,
 and verification commands.
 
 Historical `c42eef3...` exact-commit model/loaded-copy evidence is not
-admissible for current SOURCE-forward behavior because its package tree is
-`22c230...`, not the current `7e1077...`. The current tree's historical
-59-assertion deterministic evidence is reused only as bounded SOURCE history
-and is re-executed through the focused checks.
+admissible for the `v0.3.0` candidate's SOURCE-forward behavior because its
+package tree is `22c230...`, not candidate tree `7e1077...`. That candidate
+tree's historical 59-assertion deterministic evidence is retained only as
+bounded SOURCE history.
 
 Accepted Q04 is one fresh projectless, read-only, no-tool
 `gpt-5.6-sol/high` qualification against exact candidate C. The frozen request
@@ -91,17 +91,121 @@ only publication-safe ids and hashes. The Planner accepted exact subject F
 `a53e693d29d33dddd6bb673ba3f54a2fcedbfe54`, at public evidence id
 `B2-PS-PUBLIC-EVIDENCE-F-01`.
 
+## Current 0.3.2 source and local installation
+
+The canonical working package now has tree
+`f76f6deaec88101ecdda4c5dbc47405d8b930a65` and digest
+`bdbbe8e85e5d5d086c1f6fc4f760f1e5868b4803f54278080d80c6d987bc1d0b`.
+It changes `SKILL.md` and the Native/Text references relative to the retained
+managed `0.3.1-local.3` package tree
+`2b1c9fd648bfa7c9b1368d9ca2229501f99e388c`; the agent metadata and Windows/WSL
+reference remain byte-identical. The PowerShell boundary case has matching
+eval changes. The user confirmed `0.3.2` and its USER installation is now
+verified below. No new model qualification, publication, or fresh-task
+runtime-consumption claim is attached to this source.
+
+The accepted source-only checkpoint was checked with:
+
+```powershell
+python -B "$env:USERPROFILE\.codex\skills\.system\skill-creator\scripts\quick_validate.py" skills\use-powershell-safely
+git diff --check
+python -B scripts/check_source_contract.py --json
+python -B scripts/check_repository.py --json
+pwsh -NoLogo -NoProfile -NonInteractive -File evals/check-powershell-boundaries.ps1
+```
+
+- Skill structure validation and `git diff --check` pass.
+- Every non-identity SOURCE contract check passes, including exact five-file
+  shape, strict UTF-8/LF/no-BOM, narrow positive/negative selection, Native,
+  Text, permission/destructive, and WSL contracts. The command still exits
+  nonzero for the frozen candidate, receipt, public-source, and public-evidence
+  identities.
+- Read-only PowerShell Core 7.6.3 examples confirm premature outer expansion
+  in a nested `pwsh -Command` payload, quoted versus unquoted Git
+  `--format=%(refname)`, guarded empty-name JSON hashtable representation, and
+  explicit strict Python UTF-8 subprocess decoding with optional process-local
+  `-X utf8`.
+- Repository verification exits nonzero only for mapped target/source/hash/blob
+  identity differences caused by the authorized working changes.
+- The focused checker stops at its first frozen package-manifest identity gate.
+  No later focused assertion ran, so none is reported as passing for the
+  current source.
+
+These results are content and example evidence, not successor qualification.
+The frozen candidate, receipt, source map, and public evidence remain unchanged.
+
+### Local installation verification
+
+The existing `manage_install.py` accepted explicit trusted old and new package
+trees for a private frozen `0.3.2` installation snapshot. A rehearsal in a
+directory outside discovery roots completed old-package install, update to
+`0.3.2`, and rollback to `0.3.1-local.3`. The live update completed with exit 0
+and `MANAGED`; live rollback was checked in dry-run mode only. The old five
+files and original receipt remain retained outside discovery roots.
+
+SOURCE-list digest is
+`bdbbe8e85e5d5d086c1f6fc4f760f1e5868b4803f54278080d80c6d987bc1d0b`;
+installer-mapping digest is
+`ff909615ea97bcc60dad59b66a6d2ee5cdf3b2ac6620aec7e6c98615001b6003`.
+A preparation assertion initially compared these different serialization
+contracts and failed before any copy or installation. Correcting the private
+assertion preserved both production algorithms and exact file identities.
+
+After installation, ordinary sandbox reads initially failed with access denied:
+the staged directory had a protected ACL. Following explicit approval, parent
+ACL inheritance was enabled only on the exact installation directory, retaining
+existing entries. The same verification then completed in the ordinary sandbox
+with exit 0: all five files and receipt readable, all file hashes equal to
+source, strict UTF-8/no-BOM/LF checks passing, `MANAGED 0.3.2`, and rollback
+dry-run accepted. The receipt hash is recorded in State. The installer still
+creates protected staging directories on this observed route; future updates
+or rollback must verify readability and cannot inherit this run's success.
+
+This is byte/readability and bounded local lifecycle evidence. No fresh-task
+discovery or model-load/behavior run was performed. Historical identity-gate
+failures remain failures; they were not converted to qualification PASS.
+
+## Current 0.3.2 verification entry points
+
+The user authorized a current candidate and a separate current source map while
+retaining the original map and four `v0.3.0` release objects byte-for-byte.
+`check_source_contract.py` checks the historical objects against their original
+package identity, verifies their frozen bytes, and independently checks the
+current `0.3.2` candidate and accepted five-file package. Its current 14 checks
+pass; the earlier four identity failures remain part of checkpoint history.
+During this update one intermediate run still used current tree values in two
+historical public-evidence comparisons and failed; those comparisons now use
+the historical tree, with no historical-file mutation.
+
+The focused script pins the current package manifest and has completed all 59
+assertions on both PowerShell 7 and Windows PowerShell 5.1. The existing
+`manage_install.py self-test --source .` now defaults to independently trusted
+`0.3.2` and completes its disposable lifecycle. For an exact historical source,
+`--expected-version 0.3.0` retains the old self-test subject. Production
+install/update/rollback trust and ACL behavior are unchanged.
+
+Repository adversarial tests use the complete staged index. They retain the
+existing mapping/privacy/path cases and add current candidate/tree and frozen
+history rejection cases. Run the producer staging step before this consumer;
+prior empty-index or pre-manifest runs provide no current adversarial evidence.
+The current complete staged-index matrix completed with exit 0 and every case
+passing. Its external-link sentinel used the deterministic index-link-mode
+branch, not a real host symlink. This adds checker rejection evidence, not model
+qualification or new installed-copy behavior.
+
 ## Repository check
 
 ```powershell
 python -B scripts/check_repository.py --json
 ```
 
-This verifies exact Git-blob identity for package/case/fixture/license inputs,
-the adapted-file hashes and source mappings, expected package and evaluation
-shape, UTF-8/BOM and Markdown-link boundaries, and publication safety.
-The default standalone route preserves a checker-pinned source-identity map;
-it does not assume the former source repository is present.
+This verifies exact Git-blob identity for unchanged exact inputs, rewritten
+target hashes and retained original source mappings, expected package and
+evaluation shape, UTF-8/BOM and Markdown-link boundaries, and publication safety.
+The default route uses `provenance/source-map-v0.3.2.json`, checks its pinned
+source-mapping projection, and separately verifies the frozen historical map and
+release objects. It does not assume the former source repository is present.
+An identity mismatch is a failing current check, not an accepted closeout state.
 
 When the exact source Git object store is available during migration audit, run:
 
@@ -178,10 +282,14 @@ disposable symlink or used the deterministic index-link-mode branch.
 pwsh -NoLogo -NoProfile -NonInteractive -File evals/check-powershell-boundaries.ps1
 ```
 
+For current `0.3.2`, this command verifies its pinned package manifest and then
+runs all focused assertions. The earlier checkpoint stopped at the old package
+manifest gate and did not run its later assertions.
+
 ## Evidence limits
 
-The focused suite is synthetic and local; accepted Q04 adds bounded current-tree
-SOURCE-forward behavior for three frozen scenarios. Separate public and
+The focused suite is synthetic and local; accepted Q04 adds bounded
+candidate-tree SOURCE-forward behavior for three frozen scenarios. Separate public and
 projectless evidence proves the exact public source, Release, same-version
 lifecycle, origin-aware absence, stable installed-copy identity and bounded
 loaded-copy behavior. It does not prove cross-version lifecycle, live WSL,

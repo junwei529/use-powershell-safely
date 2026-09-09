@@ -44,6 +44,13 @@ newline sequence, or BOM are correct.
 | UTF-8-without-BOM scripts containing non-ASCII | Can be interpreted through the active ANSI code page | Treated as UTF-8 |
 | `-Encoding Ansi` | Not available | Available beginning in 7.4 and maps to the current culture's ANSI code page |
 
+This table describes PowerShell's own baseline, not an end-to-end harness
+guarantee. A harness may decode, re-encode, merge, or redirect stdin/stdout.
+When that bridge is material, use its actual launcher, producer, and consumer
+contracts plus byte evidence; do not infer the transported encoding from the
+shell version alone. Reuse a reliable tool contract and inspect only the
+unresolved link.
+
 Prefer a supported PowerShell 7 release for modern text workflows, but still
 specify and verify encoding when another program, an exact file format, or a
 byte hash defines the contract.
@@ -67,6 +74,25 @@ encoding defaults. Use explicit call-site behavior or a byte-oriented writer.
   other binary data.
 - Validate JSON or a schema semantically after decoding; do not infer validity
   from display output.
+- Keep JSON grammar validity separate from the selected PowerShell object
+  representation. The default `ConvertFrom-Json` `PSCustomObject` form cannot
+  represent an empty property name and can reject otherwise valid JSON. When
+  the consumer permits a hashtable, first verify that the target runtime
+  actually exposes `-AsHashtable`:
+
+  ```powershell
+  $convertFromJson = Get-Command ConvertFrom-Json -CommandType Cmdlet
+  if (-not $convertFromJson.Parameters.ContainsKey('AsHashtable')) {
+      throw 'This runtime cannot represent the required JSON as a hashtable.'
+  }
+  $value = & $convertFromJson -InputObject $text `
+      -AsHashtable -ErrorAction Stop
+  ```
+
+  This changes the PowerShell representation; it does not repair encoding or
+  prove the consumer accepts a hashtable. Do not claim that `-AsHashtable`
+  preserves duplicate JSON member names. If duplicate identity is material,
+  reject the input or choose a parser whose explicit contract satisfies it.
 - Do not rewrite the input before reproducing a parser failure. A rewrite can
   remove the evidence by changing BOM, newline, normalization, or encoding.
 - Distinguish a semantic text hash from a raw byte hash. State whether newline
@@ -112,6 +138,19 @@ that no `0D` remains before them, and that the consumer does not receive a
 trailing carriage return as data. Apply the same check to temporary test
 bridges: a test adapter that rewrites LF to CRLF can invalidate an otherwise
 correct production path.
+
+When Python owns a known UTF-8 file or subprocess text pipe, set the encoding
+at the Python API call site, such as `Path.read_text(encoding="utf-8")` or
+`subprocess.run(..., text=True, encoding="utf-8", errors="strict")`. Decide
+nonzero-exit handling from the child tool's contract rather than from decoded
+text alone.
+
+After verifying that the selected Python interpreter accepts it, the
+process-local option `python -X utf8` is an optional guard for code that still
+relies on Python's default text encoding. Pass `-X` and `utf8` as separate
+native arguments. It does not define another program's stream encoding,
+rewrite existing bytes, or replace explicit encodings at known protocol
+boundaries.
 
 ## Native Text Streams
 
@@ -185,3 +224,6 @@ Stop and ask when:
 - [about_Redirection](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_redirection)
 - [Introduction to character encoding in .NET](https://learn.microsoft.com/en-us/dotnet/standard/base-types/character-encoding-introduction)
 - [UTF8Encoding class](https://learn.microsoft.com/en-us/dotnet/api/system.text.utf8encoding)
+- [ConvertFrom-Json](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/convertfrom-json)
+- [Python UTF-8 Mode](https://docs.python.org/3/library/os.html#python-utf-8-mode)
+- [Python subprocess](https://docs.python.org/3/library/subprocess.html)

@@ -22,6 +22,14 @@ PowerShell tutorial or an automatic system installer.
 - Treat destructive filesystem work as a material boundary and select before
   generating or executing it. Authorization and literal-target containment
   remain separate requirements.
+- When a repository or worktree is known to have been created or owned by a
+  different or elevated identity and the current process is about to run its
+  first Git command, treat that transition as a material permission/trust
+  boundary. After the exact repository, ownership/trust context, and approved
+  target are established, read [Native And Process Boundaries](references/native-process-boundaries.md)
+  before the command and use exact command-local `safe.directory`; stop if any
+  identity is unclear. Ordinary Git work without this cue stays outside this
+  rule.
 - Keep an ordinary version-independent cmdlet with no boundary risk or symptom,
   a simple documented native call with no boundary symptom, general Windows
   work, and POSIX-only work outside the Skill.
@@ -32,6 +40,15 @@ PowerShell tutorial or an automatic system installer.
   pipelines in a `.ps1` file when practical. If inline PowerShell is required,
   parse the exact payload without executing it in the same PowerShell
   executable and version that will run it, and stop on any parser error.
+- When a harness, task runner, IDE, or API participates in a material
+  PowerShell boundary, or an observed symptom makes its transport relevant,
+  keep its outer contract separate from the child-process contract. Reuse any
+  reliable launcher or runtime contract and inspect only facts that could
+  change the diagnosis, such as the actual executable/version, effective
+  working directory, relevant wrapper/parser layers, received arguments or
+  payload, stream handling, and terminal route. A tool label, partial output,
+  or launcher completion alone does not prove an uncertain child fact; do not
+  turn a routine known-contract call into a full environment probe.
 - Do not repair complex inline code by adding `cmd.exe`, another PowerShell
   process, encoded transport, or another quoting layer.
 - Check the target cmdlet or script's actual parameter set before reusing a

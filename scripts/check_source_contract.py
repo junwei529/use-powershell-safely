@@ -8,6 +8,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "use-powershell-safely"
+CURRENT_CANDIDATE = ROOT / "release" / "v0.3.2-candidate.json"
+CURRENT_PACKAGE_TREE = "f76f6deaec88101ecdda4c5dbc47405d8b930a65"
+HISTORICAL_PACKAGE_TREE = "7e10775d423bfb08bc4ad6388875b7277ce3c18c"
+HISTORICAL_MAP_SHA256 = "87d150637f20beaa802c69dfd7621214ace939522274943733f4d3517be74204"
 CANDIDATE = ROOT / "release" / "v0.3.0-candidate.json"
 RECEIPT = ROOT / "release" / "v0.3.0-local-release-receipt.json"
 PUBLIC_RELEASE_CANDIDATE = ROOT / "release" / "v0.3.0-public-release-candidate.json"
@@ -91,6 +95,50 @@ def package_digest(files):
     return hashlib.sha256(encoded).hexdigest()
 
 
+def reject_duplicate_keys(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError(f"duplicate JSON key: {key}")
+        result[key] = value
+    return result
+
+
+def read_json(path):
+    if is_link_like(path):
+        raise ValueError("link-like JSON input")
+    return json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=reject_duplicate_keys)
+
+
+def check_current_candidate(value, package_tree, package_hashes):
+    source_digest = sha256(json.dumps(
+        sorted(package_hashes.items()), separators=(",", ":"), ensure_ascii=True
+    ).encode("ascii"))
+    mapping_digest = sha256(json.dumps(
+        package_hashes, sort_keys=True, separators=(",", ":"), ensure_ascii=True
+    ).encode("ascii"))
+    return value == {
+        "schema": "use-powershell-safely-local-release-candidate/v1",
+        "product": "use-powershell-safely",
+        "public_identity": "junwei529/use-powershell-safely",
+        "version": "0.3.2",
+        "candidate_state": "CURRENT_SOURCE_AND_LOCAL_INSTALLATION",
+        "package": {
+            "path": "skills/use-powershell-safely",
+            "file_count": 5,
+            "tree": CURRENT_PACKAGE_TREE,
+            "sha256": source_digest,
+            "installer_mapping_sha256": mapping_digest,
+            "files": package_hashes,
+        },
+        "evidence_limits": {
+            "model_qualification": "UNKNOWN",
+            "fresh_task_loading_and_behavior": "UNKNOWN",
+            "public_release": "UNKNOWN",
+        },
+    } and package_tree == CURRENT_PACKAGE_TREE and set(package_hashes) == EXPECTED_FILES
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--json", action="store_true")
@@ -140,7 +188,42 @@ def main():
         and not raw.endswith(b"\n\n")
         for raw in raw_files.values()
     )
+    historical_hashes = {}
+    historical_bytes_valid = False
+    try:
+        historical_map_path = ROOT / "provenance" / "source-map.json"
+        historical_map = read_json(historical_map_path)
+        if sha256(historical_map_path.read_bytes()) != HISTORICAL_MAP_SHA256:
+            raise ValueError("frozen source map byte mismatch")
+        historical_hashes = {
+            entry["destination"].removeprefix("skills/use-powershell-safely/"): entry["target_sha256"]
+            for entry in historical_map["entries"]
+            if entry["destination"].startswith("skills/use-powershell-safely/")
+        }
+        frozen_paths = {
+            "CHANGELOG.md", "release/v0.3.0-candidate.json",
+            "release/v0.3.0-local-release-receipt.json",
+            "release/v0.3.0-public-release-candidate.json",
+            "release/v0.3.0-public-release-evidence.json",
+        }
+        historical_bytes_valid = all(
+            not is_link_like(ROOT / entry["destination"])
+            and sha256((ROOT / entry["destination"]).read_bytes()) == entry["target_sha256"]
+            for entry in historical_map["entries"] if entry["destination"] in frozen_paths
+        )
+    except (OSError, ValueError, KeyError, TypeError) as error:
+        failures.append(f"history.unreadable: {error}")
+    current_hashes = {relative: sha256(raw) for relative, raw in sorted(raw_files.items())}
+    current_candidate_valid = False
+    try:
+        current_candidate_valid = check_current_candidate(
+            read_json(CURRENT_CANDIDATE), package_tree, current_hashes
+        )
+    except (OSError, ValueError, TypeError) as error:
+        failures.append(f"current_candidate.unreadable: {error}")
     checks = {
+        "history.frozen_bytes": historical_bytes_valid,
+        "current_candidate.identity": current_candidate_valid,
         "package.exact_five_file_shape": actual_files == EXPECTED_FILES,
         "package.strict_utf8_lf_no_bom": len(raw_files) == 5 and text_bytes_valid,
         "candidate.identity": (
@@ -152,7 +235,7 @@ def main():
             and candidate.get("human_release_notes_review") == "PENDING"
             and candidate.get("package", {}).get("path") == "skills/use-powershell-safely"
             and candidate.get("package", {}).get("file_count") == 5
-            and candidate.get("package", {}).get("tree") == package_tree
+            and candidate.get("package", {}).get("tree") == HISTORICAL_PACKAGE_TREE
         ),
         "selection.pre_error_positive_and_narrow_negatives": contains_all(
             skill + "\n" + metadata,
@@ -247,7 +330,7 @@ def main():
         == "release/v0.3.0-candidate.json"
         and receipt.get("candidate", {}).get("tree")
         == "4a2597202b89b91c330e559f86d04fc288894bea"
-        and receipt.get("candidate", {}).get("package_tree") == package_tree
+        and receipt.get("candidate", {}).get("package_tree") == HISTORICAL_PACKAGE_TREE
         and receipt.get("planner_acceptance", {}).get("evidence_id") == "Q04"
         and receipt.get("planner_acceptance", {}).get("verdict") == "ACCEPTED"
         and evidence_states.get("local_release_ready") == "VERIFIED"
@@ -290,7 +373,7 @@ def main():
         and source_forward.get("result") == "ACCEPTED"
         and source_forward.get("scope")
         == "fresh projectless read-only no-tool exact-SOURCE three-scenario"
-        and source_forward.get("package_tree") == package_tree
+        and source_forward.get("package_tree") == HISTORICAL_PACKAGE_TREE
         and source_forward.get("request_payload_sha256")
         == "cfa75604ca5dbf49f6f5f7452e9c9dfe6eb927981ac6028c08d9dd7b602f538c"
         and source_forward.get("controller_rubric_sha256")
@@ -340,9 +423,9 @@ def main():
         == "be782206fb12fd68874ba1e1846787530bb15159"
         and public_candidate.get("package", {}).get("path")
         == "skills/use-powershell-safely"
-        and public_candidate.get("package", {}).get("tree") == package_tree
+        and public_candidate.get("package", {}).get("tree") == HISTORICAL_PACKAGE_TREE
         and public_candidate.get("package", {}).get("sha256")
-        == (package_digest(actual_files) if actual_files == EXPECTED_FILES else None)
+        == sha256(json.dumps(sorted(historical_hashes.items()), separators=(",", ":"), ensure_ascii=True).encode("ascii"))
         and public_candidate.get("public_repository", {}).get("full_name")
         == "junwei529/use-powershell-safely"
         and public_candidate.get("public_repository", {}).get("url")
@@ -390,9 +473,7 @@ def main():
     github_release = public_evidence.get("github_release", {})
     persistent_lifecycle = public_evidence.get("persistent_lifecycle", {})
     installed_copy = public_evidence.get("installed_copy_behavior", {})
-    expected_package_hashes = {
-        relative: sha256(raw_files[relative]) for relative in sorted(raw_files)
-    }
+    expected_package_hashes = historical_hashes
     checks["public_release_evidence.identity_and_limits"] = (
         public_evidence.get("schema")
         == "use-powershell-safely-public-release-evidence/v1"
@@ -402,7 +483,7 @@ def main():
         and public_evidence.get("planner_acceptance")
         == {
             "evidence_id": "B2-PS-PUBLIC-EVIDENCE-F-01",
-            "package_tree": package_tree,
+            "package_tree": HISTORICAL_PACKAGE_TREE,
             "subject_commit": "21eca7724a84b4073c98c68e548b1816c52a0ff0",
             "subject_tree": "a53e693d29d33dddd6bb673ba3f54a2fcedbfe54",
             "verdict": "ACCEPTED",
@@ -412,7 +493,7 @@ def main():
         == {
             "commit": "13edb84cd1b072cb64926c5ae600714c6f7203e7",
             "package_sha256": "8c4bbdb586d69655e19f9e087cf1f9905c4e55c0b308debb64d3c60a369f8d8d",
-            "package_tree": package_tree,
+            "package_tree": HISTORICAL_PACKAGE_TREE,
             "repository": "junwei529/use-powershell-safely",
             "tree": "6f03b9a5717f823f87d117fc17b5040e0531dcc8",
         }
@@ -438,7 +519,7 @@ def main():
         == {
             "cross_version_update_rollback": "UNKNOWN",
             "final_package_sha256": "4e65bac004d683f7b853082314daf209ad1e9b06d3d8065409629a5c2b9686f5",
-            "final_package_tree": package_tree,
+            "final_package_tree": HISTORICAL_PACKAGE_TREE,
             "final_receipt_sha256": "640a38a072c02ed8e8a1bd7c6bb256c7dd709e0b16ebca033a16a92a18eed659",
             "final_state": "MANAGED",
             "legacy_copy_discovery_state": "PRESERVED_OUTSIDE_SKILL_DISCOVERY_ROOT",
@@ -468,7 +549,7 @@ def main():
             },
         ]
         and installed_copy.get("package_file_sha256") == expected_package_hashes
-        and installed_copy.get("package_tree") == package_tree
+        and installed_copy.get("package_tree") == HISTORICAL_PACKAGE_TREE
         and installed_copy.get("receipt_sha256")
         == "640a38a072c02ed8e8a1bd7c6bb256c7dd709e0b16ebca033a16a92a18eed659"
         and public_states
@@ -508,7 +589,7 @@ def main():
         "result": "PASS" if not failures else "FAIL",
         "scope_limits": [
             "this deterministic checker executes no model and transmits no source",
-            "Q04 proves only bounded SOURCE-forward behavior for three frozen scenarios",
+            "Q04 proves only the historical 0.3.0 SOURCE behavior for three frozen scenarios",
             "public evidence receipt binds retained publication, same-version lifecycle, and projectless witness results without replaying them",
             "cross-version lifecycle remains UNKNOWN",
             "no live WSL or cross-Harness proof",

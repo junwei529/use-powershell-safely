@@ -75,18 +75,25 @@ selection efficacy without a separately authorized model evidence gate.
 | Routine native executable with a simple documented contract | Use a direct invocation; add no shell layers | Stop if the contract is unknown |
 | Executable discovery or pipeline output may contain zero, one, or many values | Normalize with `@(...)`, inspect `Count`, restrict executable lookup to `Application`, and select one exact object under an explicit precedence or identity rule | Stop on no candidate or unresolved multiple candidates; never index a possible scalar or concatenate paths |
 | Spaces, quotes, empty arguments, JSON, or regex in native arguments | Use one array item per argument; inspect PowerShell 7.3+ native argument mode when relevant | Stop before string concatenation or `Invoke-Expression` |
+| A harness, task runner, IDE, or API participates in a material PowerShell boundary, or an observed symptom obscures the child process | Reuse its reliable contract, separate outer and child facts, follow its defined callback/event/continuation route, and inspect only uncertain facts that could change the diagnosis | Stop while a material child or transport fact remains unknown; do not full-probe a routine known-contract call, poll a callback-owned route, or take over another role's handle |
+| An outer PowerShell builds a nested `pwsh -Command` payload containing intended child-scope variables | Inspect the exact constructed payload and detect premature outer interpolation; prefer a `.ps1`, or keep inline code non-interpolating and pass data separately | Stop before adding escaping guesses, encoded transport, or another shell layer |
+| Git revision expression contains braces, such as `HEAD^{tree}` or `HEAD^{commit}` | Use `git rev-parse 'HEAD^{tree}'`, `git rev-parse 'HEAD^{commit}'`, or pass the complete revspec as one native-argument array element; classify bare-form ScriptBlock tokenization as a PowerShell parser/transport defect rather than a Git result | Stop before adding another shell or substituting a semantically different ref or glob |
+| Git format option contains `%(...)`, such as `--format=%(refname)` | Quote the complete option or pass it as one native-argument array element; recognize that unquoted PowerShell can evaluate `(refname)` before Git starts and therefore leave no Git exit code | Stop before diagnosing Git or treating a later outer exit `0` as Git success |
+| A repository or worktree is known to have been created or owned by a different/elevated identity before the current process's first Git probe, or Git unexpectedly reports `fatal: detected dubious ownership` | Treat the known transition as a pre-action Git trust/tool boundary: establish the exact absolute repository, ownership/trust context, and approved target identities, then use exact command-local `git -c safe.directory=<absolute-repo> -C <absolute-repo> ...` from the first related probe. For an unexpected fatal, apply the same checks before retrying and classify it as a trust/tool boundary rather than a repository-content defect | Do not deliberately let the first known probe fail; an unexpected failed probe is not repository-content or clean-state evidence. Stop on identity ambiguity and never write global/system config, use `safe.directory=*`, trust a parent, or substitute a nearby checkout |
 | Windows PowerShell reports `NativeCommandError` while `$ErrorActionPreference` is `Stop` | Treat the record as PowerShell stream/error-boundary evidence, preserve the native stdout, stderr, and numeric exit contract, and inspect version/preferences before changing them | Stop before suppressing errors globally or declaring the application defective |
 | stdout and stderr disagree with visible success | Capture streams according to the tool contract and save `$LASTEXITCODE` immediately | Escalate only if complete output still cannot be obtained |
 | PowerShell object pipeline versus native stdin/stdout | Identify every conversion and reproduce without the pipeline first | Stop if a binary stream would cross a text-only stage |
 | Nested `-Command`, heredoc, stdin, or long inline shell payload | Count every parser and remove the outer transports until a direct command works; move genuinely multiline logic to the script owned by the target shell | Stop before adding another shell, base64 wrapper, or `Invoke-Expression` |
 | Loop, `try`/`catch`, regex, hashtable, object construction, or complex pipeline is about to run inline | Prefer a `.ps1`; if inline is unavoidable, parse the exact payload without executing it in the same PowerShell executable/version that will run it | Stop on parser errors or before adding another shell or more complex quoting |
 | A familiar path parameter is about to be reused on another cmdlet | Inspect the actual parameter set when uncertain; `New-Item` uses `-Path` and does not support `-LiteralPath` | Stop before treating one cmdlet's parameter shape as universal |
-| A critical cmdlet emits a non-terminating error but later output or the outer process is green | Use narrow terminating behavior such as supported `-ErrorAction Stop`, handle it in a focused scope, and verify the expected artifact or state | Fail closed when the artifact or state is absent; do not use `$LASTEXITCODE` as the cmdlet contract |
+| A critical cmdlet emits a non-terminating error, a later statement succeeds, the required artifact is absent, and the enclosing PowerShell exits `0` | Use narrow terminating behavior such as supported `-ErrorAction Stop`, handle it in a focused scope, and verify the expected artifact or state | Fail closed when the artifact or state is absent; do not use the outer exit or `$LASTEXITCODE` as the cmdlet contract |
 | Inline source contains `$var:`, literal `$env:`/`$script:` regex text, application `$Matches`, or `foreach (...) { ... } | Delimit `${var}:`, prevent interpolation of literal scope text, rename the application collection, and collect statement-form `foreach` output before piping | Stop on parser errors or automatic-variable collision |
 | Native redirection or binary pipeline | Qualify PowerShell 7.4+ byte-preservation behavior and avoid merged stderr | Stop or choose an output-file API on older or ambiguous runtimes |
 | UTF-8 JSON/schema/text | Load text guidance, preserve bytes, decode explicitly, then parse | Stop before rewriting the evidence |
+| Valid JSON contains an empty property name that the default `PSCustomObject` representation cannot express | Keep syntax validity separate from object representation; use `ConvertFrom-Json -AsHashtable` only after the target runtime exposes it and the consumer accepts a hashtable | Stop before calling valid JSON corrupt, and never claim that `-AsHashtable` preserves duplicate member names |
 | BOM, newline, normalization, or hash mismatch | Distinguish semantic text from raw bytes and state the hash contract | Ask when the required identity is unknown |
-| PowerShell, Python, Bash, or WSL bridge changes line endings | Define the consumer's encoding, BOM, newline, and final-newline contract; use UTF-8 without BOM and LF only when that contract requires it; inspect bytes after the final bridge | Stop before relying on platform defaults or rewriting unrelated production files |
+| PowerShell, Python, Bash, WSL, or a harness bridge changes encoding, line endings, stdin/stdout, or redirection | Treat the version table as a shell baseline; reuse reliable tool facts, define the actual producer/bridge/consumer encoding, BOM, newline, and final-newline contract, and inspect bytes after the material unresolved bridge | Stop before inferring end-to-end encoding from the shell version, relying on platform defaults, or rewriting unrelated production files |
+| Python reads a known UTF-8 file or subprocess text pipe | Set `encoding="utf-8"` and strict decoding at the Python API boundary; optionally use process-local `python -X utf8` only after verifying interpreter support | Stop before treating `-X utf8` as another program's stream contract or as a substitute for explicit encoding |
 | Supported usable PowerShell 7 | Prefer it when compatible; do not claim it removes all boundary risk | Keep 5.1 if a required workload is incompatible |
 | Only Windows PowerShell 5.1 | Continue a compatible route; recommend 7 only when it materially reduces this task's risk | Ask before any installation |
 | `pwsh` resolves but fails, or its support state is uncertain | Inspect the exact executable and current official lifecycle | Ask before repair or update |
@@ -109,6 +116,15 @@ selection efficacy without a separately authorized model evidence gate.
 ## Failure Signals
 
 - Adds more nested shell quoting.
+- Infers a material child shell, cwd, received payload, stream disposition, or
+  terminal status from a harness label, partial output, or outer completion
+  alone, or probes unrelated child facts despite a reliable known contract.
+- Polls a callback/event-owned completion route or takes over a process/session
+  handle that the current caller does not own.
+- Lets an outer interpolating string consume intended child-scope variables in
+  a nested `pwsh -Command` payload.
+- Passes a Git `--format=%(...)` option unquoted and then diagnoses Git even
+  though PowerShell evaluated the parenthesized expression first.
 - Waits for the first PowerShell error even though the request explicitly
   requires a non-trivial `.ps1`, `pwsh`, or `powershell.exe` workflow.
 - Applies the Skill to an ordinary boundary-free cmdlet or a POSIX-only task.
@@ -140,7 +156,11 @@ selection efficacy without a separately authorized model evidence gate.
   because an argument-transport defect was also found.
 - Parses a plain-text native status as JSON or otherwise checks a different
   producer/consumer contract than the task actually uses.
+- Treats JSON validity as proof that `PSCustomObject` can represent every member
+  name, or claims that `ConvertFrom-Json -AsHashtable` preserves duplicates.
 - Rewrites the JSON with an ambiguous default encoding.
+- Relies on Python's platform default for a known UTF-8 contract, or treats
+  process-local `python -X utf8` as the external program's stream encoding.
 - Relies on platform-default newlines across a Bash or Unix text boundary.
 - Joins an already rooted or previously resolved path to another cwd or root.
 - Uses `Directory.Delete` merely because `Remove-Item` failed, without proving

@@ -397,22 +397,32 @@ def create_test_source(root, version, marker):
     return source
 
 
-def self_test(source=None):
+def self_test(source=None, expected_version="0.3.2"):
     source_a = resolved(source) if source is not None else ROOT
-    metadata_a = candidate_metadata(source_a, "0.3.0")
+    # Self-test subjects are explicit accepted trees, not trust derived from
+    # the candidate being tested. Production install trust is unchanged.
+    test_trees = {
+        "0.3.0": TRUSTED_PACKAGE_TREES["0.3.0"],
+        "0.3.2": "f76f6deaec88101ecdda4c5dbc47405d8b930a65",
+    }
+    if expected_version not in test_trees:
+        raise LifecycleError("unsupported self-test source version")
+    metadata_a = candidate_metadata(source_a, expected_version)
     _, _, tree_a = package_files(source_a, metadata_a["package"]["tree"])
-    if TRUSTED_PACKAGE_TREES["0.3.0"] != tree_a:
-        raise AssertionError("current candidate tree does not match the built-in trusted tree")
+    if test_trees[expected_version] != tree_a:
+        raise AssertionError("current candidate tree does not match the trusted self-test tree")
     with tempfile.TemporaryDirectory(prefix="use-powershell-safely-lifecycle-") as temporary:
         root = Path(temporary)
         source_b = create_test_source(root, "0.3.1", "b")
         tree_b = candidate_metadata(source_b, "0.3.1")["package"]["tree"]
         destination = root / "managed" / PRODUCT
 
-        dry_install = synchronize("install", source_a, destination, "0.3.0", False)
+        dry_install = synchronize("install", source_a, destination, expected_version, False,
+                                  trusted_target_tree=tree_a)
         assert dry_install["effect"] == "DRY_RUN" and not destination.exists()
-        synchronize("install", source_a, destination, "0.3.0", True)
-        assert current_state(destination, tree_a)["version"] == "0.3.0"
+        synchronize("install", source_a, destination, expected_version, True,
+                    trusted_target_tree=tree_a)
+        assert current_state(destination, tree_a)["version"] == expected_version
 
         dry_update = synchronize(
             "update",
@@ -424,7 +434,7 @@ def self_test(source=None):
             trusted_target_tree=tree_b,
         )
         assert dry_update["effect"] == "DRY_RUN"
-        assert current_state(destination, tree_a)["version"] == "0.3.0"
+        assert current_state(destination, tree_a)["version"] == expected_version
         synchronize(
             "update",
             source_b,
@@ -439,12 +449,12 @@ def self_test(source=None):
             "rollback",
             source_a,
             destination,
-            "0.3.0",
+            expected_version,
             True,
             trusted_current_tree=tree_b,
             trusted_target_tree=tree_a,
         )
-        assert current_state(destination, tree_a)["version"] == "0.3.0"
+        assert current_state(destination, tree_a)["version"] == expected_version
 
         changed = destination / "SKILL.md"
         original = changed.read_text(encoding="utf-8")
@@ -477,6 +487,7 @@ def self_test(source=None):
         "result": "PASS",
         "scope": "disposable dry-run/install/update/rollback/drift-refusal/foreign-refusal/uninstall",
         "source_package_tree": tree_a,
+        "source_version": expected_version,
     }
 
 
@@ -500,6 +511,7 @@ def main():
     uninstall_parser.add_argument("--apply", action="store_true")
     self_test_parser = subparsers.add_parser("self-test")
     self_test_parser.add_argument("--source", required=False)
+    self_test_parser.add_argument("--expected-version", choices=("0.3.0", "0.3.2"), default="0.3.2")
     args = parser.parse_args()
 
     try:
@@ -524,7 +536,7 @@ def main():
                 trusted_tree=args.trusted_current_package_tree,
             )
         else:
-            result = self_test(args.source)
+            result = self_test(args.source, args.expected_version)
     except (LifecycleError, OSError, AssertionError) as error:
         print(json.dumps({"error": str(error), "result": "FAIL"}, sort_keys=True))
         return 1

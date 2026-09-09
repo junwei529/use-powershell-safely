@@ -3,8 +3,12 @@
 ## Product boundary
 
 Diagnoses and safely executes boundary-sensitive Windows shell workflows across PowerShell, native executables, and WSL. The canonical installable source is
-[`skills/use-powershell-safely/`](../../../skills/use-powershell-safely/). Package instructions, references,
-assets, and metadata preserve the exact source blobs from `80910a8b2375a11be897e9660c4b00a06d00dd13`.
+[`skills/use-powershell-safely/`](../../../skills/use-powershell-safely/). The
+frozen migration and `v0.3.0` baseline preserved package instructions,
+references, assets, and metadata as exact source blobs from
+`80910a8b2375a11be897e9660c4b00a06d00dd13`. The current editable package may
+contain repository-native increments explicitly recorded in [State](STATE.md)
+without relabeling that historical identity.
 
 The repository owns one Skill product. Cross-Skill composition is optional and
 cannot grant authority or create a hard dependency.
@@ -13,18 +17,41 @@ cannot grant authority or create a hard dependency.
 
 The package contains exactly 5 files. `SKILL.md` owns
 selection and entry behavior; directly linked references and assets own detailed
-guidance and templates. The repository checker fails if any package byte or
-expected path differs from the recorded baseline mapping.
+guidance and templates. The repository checker verifies current paths and bytes
+against `provenance/source-map-v0.3.2.json`. It separately verifies the unchanged
+historical map and release evidence. Original migration source records stay in
+the current map, while explicit rewrite records identify repository-native
+changes without claiming exact original byte identity.
 
 ## Evaluation surface
 
 - `evals/cases/powershell-boundary.md`
 
-Cases and fixtures are exact source blobs. They define deterministic inputs and
-expected boundaries; model runs, installation, and release remain separately
-authorized evidence classes.
+The `v0.3.0` case and fixture baseline consists of exact source blobs. The
+current PowerShell boundary case may extend that repository-native evaluation
+contract while the fixture remains unchanged. Model runs, installation, and
+release remain separately authorized evidence classes.
+
+## Current 0.3.2 local increment
+
+The current source increment keeps the same five-file product shape while
+adding proportionate harness-versus-child diagnosis, callback-aware terminal
+routing, wrapper-aware text contracts, JSON representation limits, explicit
+Python UTF-8 handling, and matching eval coverage. It preserves the accepted
+local Git brace-revspec and command-local `safe.directory` guidance. This is a
+user-confirmed `0.3.2` local installation source. Installation and ordinary
+sandbox readability are recorded in State; model qualification, public release,
+and fresh-task runtime consumption are not established.
 
 ## Independent release qualification
+
+The `0.3.2` candidate identifies current SOURCE and local installation only.
+SOURCE checks compare historical evidence to its historical package and current
+evidence to the accepted current package. The focused checker pins the current
+package manifest before running the same synthetic assertions. Lifecycle
+self-test defaults to the independently pinned `0.3.2` source and also accepts
+`--expected-version 0.3.0` when supplied an exact historical source directory.
+Production install/update/rollback trust and ACL behavior are unchanged.
 
 The local `v0.3.0` candidate binds the unchanged five-file package tree and a
 deterministic SOURCE contract. Repository-local lifecycle tooling accepts an
