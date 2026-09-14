@@ -21,7 +21,7 @@ Run `python -B scripts/check_source_contract.py --json` and
 `python -B scripts/check_repository.py --json` from the repository root. The
 focused PowerShell boundary checker remains the executable synthetic contract.
 The local lifecycle self-test operates only in a disposable temporary root.
-Its default source subject is `0.3.3`; exact historical sources can be checked
+Its default source subject is `0.3.4`; exact historical sources can be checked
 with `--expected-version 0.3.0` or `--expected-version 0.3.2`. Current SOURCE and repository checks retain
 frozen historical identity checks separately from the current candidate/map.
 

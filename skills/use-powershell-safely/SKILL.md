@@ -1,6 +1,6 @@
 ---
 name: use-powershell-safely
-description: Diagnose and safely execute material Windows shell boundaries across PowerShell, native executables, text, permissions, and WSL. Use before the first relevant command when a non-trivial PowerShell workflow has a material parser, version, argument, stream, encoding, path, permission, destructive filesystem, process, or WSL boundary, or when symptoms such as NativeCommandError, misleading exit status, missing output, quoting drift, byte mismatch, sandbox denial, or cross-shell transport require diagnosis. Do not use for ordinary version-independent cmdlets, simple documented native calls with no boundary symptom, general Windows work, or POSIX-only work.
+description: Use before the first relevant command when a non-trivial PowerShell workflow has a material parser, version, argument, stream, encoding, path, permission, destructive filesystem, process, or WSL boundary, or to diagnose related failures or uncertain results. Skip ordinary version-independent cmdlets without boundary risks, simple documented native calls without symptoms, general Windows work, and POSIX-only work.
 ---
 
 # Use PowerShell Safely

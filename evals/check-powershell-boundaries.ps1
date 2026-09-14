@@ -248,7 +248,7 @@ Assert-True (
 Assert-True (
     (Get-CanonicalPackageManifestSha256 -Root (
         Join-Path $repoRoot 'skills\use-powershell-safely'
-    )) -ceq '05394a983d4846734aa4470b61deb6585a04182fbc0fd01edac42e556a063b2b'
+    )) -ceq '227ed5f8bd7a2adf2880b74d46cc0735e20e50bf43124fb6eee3464eab0f8b9b'
 ) 'The current PowerShell package manifest does not match its exact SOURCE bytes.'
 
 foreach ($case in @($readiness.pwsh_readiness_cases)) {

@@ -1,5 +1,35 @@
 # Use PowerShell Safely Verification
 
+## v0.3.4 publication verification
+
+The publication target is the complete reviewed source diff plus current
+documentation and provenance consumers, with package tree `0547154333ea4da6ed307b851becad6c8b52c9b4`.
+Run the affected source check before the final repository check and independent
+review; bind their results to this input. The public commit, annotated tag and
+Release require readback after the authorized transaction. This checkpoint
+claims no new installer lifecycle, model, fresh-task loading or efficacy result.
+
+## Current verification selection
+
+Read the existing owner for the current decision and reuse unchanged reads.
+Run the repository check once against the final candidate when mapped content,
+package bytes or provenance change. Select focused SOURCE, metadata, behavior,
+lifecycle or adversarial checks for the mechanism actually changed; repeat only
+for changed inputs, failures, explicit applicable gates or material risks.
+An ordinary text or repository-guidance edit alone does not require a complete
+installer or historical adversarial matrix. Actual installation retains its
+identity, permission and postflight checks, and frozen prior contracts retain
+their original gates. Historical results below are not fresh runs by implication.
+
+The current repository-guidance refinement changes AGENTS and documentation;
+the already checked package description revision retains its existing bytes
+and version. Final repository checks passed on the actual updated source
+with 40 mapped files. Independent review found no unresolved findings in
+this refinement. Earlier paired installation attempts were rejected before
+process creation and remain retained evidence. After direct user approval,
+the reviewed local update and ordinary-reader verification completed with exit 0;
+current identity, permissions and recovery evidence are recorded below.
+
 ## Accepted migration baseline
 
 - Source commit: `80910a8b2375a11be897e9660c4b00a06d00dd13`
@@ -193,7 +223,46 @@ passing. Its external-link sentinel used the deterministic index-link-mode
 branch, not a real host symlink. This adds checker rejection evidence, not model
 qualification or new installed-copy behavior.
 
-## Current 0.3.3 verification subject
+## Current 0.3.4 verification subject
+
+The user-confirmed revision shortens only the catalog description, preserving
+pre-command material-boundary and diagnostic triggers and ordinary-task
+exclusions. SKILL.md body and all other package files remain byte-identical
+to 0.3.3. The 0.3.4 candidate and source map bind this new input; existing
+SOURCE, repository, focused PowerShell and disposable lifecycle checks follow
+that identity. Production install/update/rollback and historical trust remain
+unchanged. Local verification on 2026-09-12 returned terminal exit code 0
+for SOURCE (14 checks), repository validation (40 mapped files), Skill Creator
+metadata validation, PowerShell 7 and Windows PowerShell 5.1 (59 focused
+assertions each), and the disposable 0.3.4 lifecycle self-test. The self-test
+reported no persistent effect. Package-body comparison confirms the remaining
+four files and SKILL.md body are unchanged. Independent read-only technical
+review inspected the bound 14-path source candidate and found no actionable or
+blocking findings. The primary owner accepted the source delivery. Application
+of the reviewed source returned exit 0; SOURCE and repository checks also
+returned exit 0 at the actual source root.
+
+A separate installation-preparation review confirmed the new five-file package
+and receipt against the old managed installation: all nine staged/live nodes
+matched their expected bytes, strict UTF-8, owner and full security descriptor.
+The same-filesystem swap plan retains the old copy outside discovery roots.
+Earlier temporary preparation failures are retained: a parser rejection, a
+restricted-token Set-Acl failure, and inherited-permission mismatches. The final
+preparation copied the existing Skill-parent permission model only to a new
+staging parent and then matched the complete original descriptors. Actual Skill
+files and parent permissions were not changed by preparation.
+
+Earlier automatic approval reviews rejected the real update before process
+creation, citing the need for direct user installation authorization. Those
+attempts performed no live rename or new receipt and remain retained evidence.
+After direct user approval, the same reviewed update and ordinary-reader
+verification each completed with terminal exit 0. All nine nodes and the full
+0.3.3 backup match their expected bytes, owners and security descriptors.
+Native status is MANAGED 0.3.4, tree `0547154333ea4da6ed307b851becad6c8b52c9b4`,
+installer mapping digest `057eedc74067dfa5915233bb6274f3e2f222bb9bde6605bdbd426be09d6d0806`.
+Fresh-task selection, loading, model behavior and cost improvement remain UNKNOWN.
+
+## Retained 0.3.3 verification subject
 
 The current source tree is `842b87d85c151a9c944cb855123c0ce7d69be1e5`, with
 SOURCE-list digest `461cb805672dbe3bda67151227692845a34e0c6ddbf2a88c29d4b733c6aea478`.
@@ -268,7 +337,7 @@ python -B scripts/check_repository.py --json
 This verifies exact Git-blob identity for unchanged exact inputs, rewritten
 target hashes and retained original source mappings, expected package and
 evaluation shape, UTF-8/BOM and Markdown-link boundaries, and publication safety.
-The default route uses `provenance/source-map-v0.3.3.json`, checks its pinned
+The default route uses `provenance/source-map-v0.3.4.json`, checks its pinned
 source-mapping projection, and separately verifies the frozen historical map and
 release objects. It does not assume the former source repository is present.
 An identity mismatch is a failing current check, not an accepted closeout state.
@@ -348,7 +417,7 @@ disposable symlink or used the deterministic index-link-mode branch.
 pwsh -NoLogo -NoProfile -NonInteractive -File evals/check-powershell-boundaries.ps1
 ```
 
-For current `0.3.3`, this command verifies its pinned package manifest and then
+For current `0.3.4`, this command verifies its pinned package manifest and then
 runs all focused assertions. The earlier checkpoint stopped at the old package
 manifest gate and did not run its later assertions.
 

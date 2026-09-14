@@ -1,5 +1,13 @@
 # Provenance And Transformation Boundary
 
+## v0.3.4 publication boundary
+
+The publication packages the accepted current source unchanged. Its installable
+package tree is `0547154333ea4da6ed307b851becad6c8b52c9b4`. Publication record edits affect existing
+documentation and the current mapping/checker pin only. Historical candidates,
+receipts and source maps remain frozen. The [current state](docs/skills/use-powershell-safely/STATE.md#v034-publication)
+owns the publication transaction and its observed public identities.
+
 ## Migration source identity
 
 This standalone repository was materialized from named Git tree entries at
@@ -48,7 +56,7 @@ publication, and fresh-task runtime consumption remain unproven. The existing
 hashes remain frozen historical identities and are not rewritten to describe
 these working bytes.
 
-## Current 0.3.3 source delta
+## Retained 0.3.3 source delta
 
 The user-confirmed `0.3.3` source changes only `SKILL.md` and the Native/Text
 references within the five-file package. Preparation is separate from failure
@@ -62,7 +70,7 @@ inheritance repair, ordinary-sandbox checks also verify all five files, receipt
 and managed status. State and Verification retain the initial permission failure
 separately; no fresh-task loading or new model evidence is implied.
 
-The current mapping is [`provenance/source-map-v0.3.3.json`](provenance/source-map-v0.3.3.json).
+The retained 0.3.3 mapping is [`provenance/source-map-v0.3.3.json`](provenance/source-map-v0.3.3.json).
 It reuses the v2 schema and original migration lineage: changed exact-source
 files become normalized-text rewrites with the original source records retained;
 repository-native validation and identity records retain their own classification.
@@ -76,6 +84,16 @@ from the source-mapping projection so the checker's own target hash is not circu
 [`release/v0.3.3-candidate.json`](release/v0.3.3-candidate.json) binds the current
 five-file package and both digest formats as a source-assessment snapshot.
 It records no future commit, model qualification, publication, or release receipt.
+
+## Current 0.3.4 description delta
+
+Only SKILL.md description changes inside the five-file package. The body and
+all other package files retain their 0.3.3 bytes. The new candidate and
+[map](provenance/source-map-v0.3.4.json) bind the resulting package while
+retaining the original migration lineage, all earlier candidates, the 0.3.3
+map, and historical release evidence. Existing validation inputs follow the
+new identity; production installation behavior and trust rules are unchanged.
+Text length and static qualification do not establish selection or efficacy.
 
 ## Publication boundary
 

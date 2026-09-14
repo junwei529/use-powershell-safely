@@ -397,7 +397,7 @@ def create_test_source(root, version, marker):
     return source
 
 
-def self_test(source=None, expected_version="0.3.3"):
+def self_test(source=None, expected_version="0.3.4"):
     source_a = resolved(source) if source is not None else ROOT
     # Self-test subjects are explicitly pinned trees, not trust derived from
     # the candidate being tested. Production install trust is unchanged.
@@ -405,6 +405,7 @@ def self_test(source=None, expected_version="0.3.3"):
         "0.3.0": TRUSTED_PACKAGE_TREES["0.3.0"],
         "0.3.2": "f76f6deaec88101ecdda4c5dbc47405d8b930a65",
         "0.3.3": "842b87d85c151a9c944cb855123c0ce7d69be1e5",
+        "0.3.4": "0547154333ea4da6ed307b851becad6c8b52c9b4",
     }
     if expected_version not in test_trees:
         raise LifecycleError("unsupported self-test source version")
@@ -512,7 +513,7 @@ def main():
     uninstall_parser.add_argument("--apply", action="store_true")
     self_test_parser = subparsers.add_parser("self-test")
     self_test_parser.add_argument("--source", required=False)
-    self_test_parser.add_argument("--expected-version", choices=("0.3.0", "0.3.2", "0.3.3"), default="0.3.3")
+    self_test_parser.add_argument("--expected-version", choices=("0.3.0", "0.3.2", "0.3.3", "0.3.4"), default="0.3.4")
     args = parser.parse_args()
 
     try:

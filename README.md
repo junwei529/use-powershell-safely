@@ -2,6 +2,8 @@
 
 [简体中文](README.zh-CN.md)
 
+Version **v0.3.4**. [Publication status](docs/skills/use-powershell-safely/STATE.md#v034-publication).
+
 **Help AI run commands correctly on Windows.**
 
 Use PowerShell Safely is a Windows command-execution and troubleshooting Skill for Codex. It focuses on the error-prone boundaries between PowerShell, external programs, text files, and WSL, helping AI check key conditions before execution, locate causes after a failure, and verify actual results afterward.
@@ -53,7 +55,7 @@ This repository is the independent local product repository for
 [`skills/use-powershell-safely/`](skills/use-powershell-safely/). The frozen
 migration and `v0.3.0` baseline preserved package bytes from source commit
 `80910a8b2375a11be897e9660c4b00a06d00dd13`; the current working source contains
-a `0.3.3` source increment described in [State](docs/skills/use-powershell-safely/STATE.md).
+a `0.3.4` source increment described in [State](docs/skills/use-powershell-safely/STATE.md).
 
 ## v0.3.0 public release
 
@@ -96,7 +98,17 @@ the frozen `v0.3.0` evidence remains unchanged.
 See [Verification](docs/skills/use-powershell-safely/VERIFICATION.md) for the
 current verification entry points and retained historical failure records.
 
-## Current 0.3.3 source
+## Current 0.3.4 source
+
+The user-confirmed 0.3.4 revision shortens only the catalog description while
+retaining the material pre-command and diagnostic triggers and ordinary-task
+exclusions. Body instructions, references, agent metadata, and case definitions
+are unchanged. [State](docs/skills/use-powershell-safely/STATE.md) and
+[Verification](docs/skills/use-powershell-safely/VERIFICATION.md) distinguish this
+source and verified 0.3.4 local installation from the retained 0.3.3 rollback
+copy and historical evidence.
+
+## Retained 0.3.3 source and installation
 
 The user-confirmed `0.3.3` source separates pre-command boundary preparation
 from failure diagnosis, reuses verified unchanged-runtime evidence, and loads
@@ -114,8 +126,51 @@ model behavior remain unproven; see [State](docs/skills/use-powershell-safely/ST
 - Evaluation cases and fixtures: [`evals/`](evals/README.md)
 - Standalone verification: [`scripts/check_repository.py`](scripts/check_repository.py)
 - Source mapping: [`PROVENANCE.md`](PROVENANCE.md),
-  [current mapping](provenance/source-map-v0.3.3.json), and
+  [current mapping](provenance/source-map-v0.3.4.json), and
   [frozen historical mapping](provenance/source-map.json)
+
+## Managed install, update and rollback
+
+Use an immutable checkout of the published tag and verify its resolved commit.
+The tool's built-in trust map contains only `0.3.0`. For `0.3.4`, retain the
+package tree published in the GitHub Release independently of that checkout:
+`0547154333ea4da6ed307b851becad6c8b52c9b4`. Do not take a new trust value solely
+from the candidate or installed receipt that it is meant to verify.
+
+Run these examples from the verified `v0.3.4` repository root and replace quoted
+placeholders with your exact paths or independently verified identities. These
+commands are dry-runs; `install` requires an absent destination, while `update`
+and `rollback` require an unchanged managed copy with a valid receipt.
+
+```text
+python -B scripts/manage_install.py install --source . --destination "<destination>" --expected-version 0.3.4 --trusted-target-package-tree 0547154333ea4da6ed307b851becad6c8b52c9b4
+python -B scripts/manage_install.py update --source . --destination "<destination>" --expected-version 0.3.4 --trusted-current-package-tree "<independently-retained-current-tree>" --trusted-target-package-tree 0547154333ea4da6ed307b851becad6c8b52c9b4
+```
+
+`--trusted-target-package-tree` verifies the version being installed.
+`--trusted-current-package-tree` verifies the version already at the destination;
+it is required when that version is absent from the built-in map, including
+`0.3.4`. For a current `0.3.0` copy, the current-tree argument may be omitted.
+After an authorized `0.3.4` update, verify status with its published tree:
+
+```text
+python -B scripts/manage_install.py status --destination "<destination>" --trusted-current-package-tree 0547154333ea4da6ed307b851becad6c8b52c9b4
+```
+
+To roll back from `0.3.4`, retain the older immutable source and its independently
+verified tree; a successful update may remove its temporary backup. Use the
+current tool with the older source and version as the target:
+
+```text
+python -B scripts/manage_install.py rollback --source "<verified-older-checkout>" --destination "<destination>" --expected-version "<older-version>" --trusted-current-package-tree 0547154333ea4da6ed307b851becad6c8b52c9b4 --trusted-target-package-tree "<independently-retained-older-tree>"
+```
+
+`uninstall` takes the same destination and current-tree options as `status` and
+is also a dry-run by default. Review a dry-run's version, destination and tree,
+then append `--apply` to the same mutating command only when the actual effect
+is authorized. `status` never takes `--apply`. Stop on drift or a foreign copy;
+do not change the trust value to make a rejection pass. These instructions
+describe the tool contract, not a new cross-version or host-permission test.
 
 ## Verify
 

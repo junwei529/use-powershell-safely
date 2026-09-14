@@ -1,19 +1,50 @@
 # Use PowerShell Safely State
 
+## v0.3.4 publication
+
+The user authorized final checks and independent review, commit and normal
+fast-forward push, then a new annotated `v0.3.4` tag and public GitHub Release.
+This publication includes the accepted source and local installation records;
+it does not repeat or extend their runtime or installed-copy qualifications.
+The package tree is `0547154333ea4da6ed307b851becad6c8b52c9b4`.
+
+This is the pre-publication source checkpoint: remote effects are pending.
+After publication, record the observed commit, peeled tag and Release identity
+here without moving the tag. Preserve all previous candidates, failed evidence,
+tags and Releases. The next gate is final-input review and the authorized
+publication transaction; new installs, global configuration and model experiments
+are outside this publication scope.
+
+## Current repository guidance refinement
+
+Authorized refinement replaces fixed pre-reading and repeated validation with
+relevant-owner reading and checks for the changed mechanism. Package bytes and
+the current description version are unchanged. Source application and final
+repository verification completed with exit 0, following independent review
+of this refinement. The primary owner verified delivery; no separate Planner
+acceptance is claimed. Earlier installation-authorization refusals remain
+retained evidence. After the user's direct approval, the reviewed local update
+and ordinary-reader postflight completed; current installation evidence is below.
+
 ## Current implementation
 
 Canonical editable source is the 5-file package under
 [`skills/use-powershell-safely/`](../../../skills/use-powershell-safely/). It is
-currently the user-confirmed `0.3.3` source with package tree
-`842b87d85c151a9c944cb855123c0ce7d69be1e5` and SOURCE-list digest
-`461cb805672dbe3bda67151227692845a34e0c6ddbf2a88c29d4b733c6aea478`.
-It distinguishes material pre-command preparation from failure diagnosis,
-reuses verified unchanged-runtime evidence, and loads reference details only
-as needed. Only the entrypoint and Native/Text references change from `0.3.2`;
-existing safeguards, agent metadata and Windows/WSL guidance are retained.
+currently the user-confirmed 0.3.4 source with package tree
+0547154333ea4da6ed307b851becad6c8b52c9b4 and SOURCE-list digest 07487f2c94805bd1a76411464a0b6905ef025d03f35f18e803413b4bfc2c1339.
+Only the catalog description changes from 0.3.3, retaining material pre-command
+and diagnostic triggers and ordinary-task exclusions. The body and the other
+four package files are byte-identical to 0.3.3; existing safeguards, runtime
+reuse and reference routing remain in their previous owners.
 
-The managed USER update to `0.3.3` completed once. Management-context
-verification confirms all five files match the accepted source tree above.
+The current managed USER copy is `0.3.4`, matching the source tree above.
+The actual update, ordinary-reader verification and native managed status
+passed. All original permissions are preserved, and the complete previous
+`0.3.3` copy and receipt are retained outside discovery roots for rollback.
+
+The earlier managed USER update to `0.3.3` completed once. Management-context
+verification at that checkpoint confirmed all five files matched its source tree
+842b87d85c151a9c944cb855123c0ce7d69be1e5.
 After separately approved exact-root ACL inheritance repair, ordinary-sandbox
 checks verify all five files, receipt and managed status. Its installer mapping digest is
 `ec5e05c5a144285952f05a7e31935e2d16efa3831bcf5de3286681ce4d763d9c`;
@@ -49,6 +80,20 @@ copy. The Planner accepted exact evidence subject F
 
 ## Evidence state
 
+The 0.3.4 description and necessary identity/record updates passed local
+verification and independent read-only technical review with no actionable or
+blocking findings. The primary owner accepted the bounded source delivery.
+Installation preparation also passed separate independent review, but automatic
+approval review rejected the actual update before process creation because it
+required direct user authorization for the persistent installation effect.
+After direct user approval, the reviewed update and ordinary-reader postflight
+completed with exit 0. The live copy is now MANAGED 0.3.4 with matching source
+bytes, unchanged permissions and retained 0.3.3 rollback input. This does not
+establish fresh-task selection or model behavior. Current checks and limits are recorded in
+[Verification](VERIFICATION.md#current-034-verification-subject).
+
+### Retained 0.3.3 source and installation evidence
+
 The `0.3.3` candidate retains its source-assessment snapshot. Independent source
 acceptance is complete. The same-location USER update and management-context
 byte verification are complete. Ordinary-sandbox readability and identity checks
@@ -56,7 +101,7 @@ also pass after the separately approved exact-root ACL inheritance repair.
 These separate observations are not inferred from candidate generation. New scenario contracts are
 not model qualification or fresh-task loading/behavior evidence.
 
-Current local checks pass: Skill structure, SOURCE 14 checks, repository 38-file
+At the 0.3.3 checkpoint, local checks passed: Skill structure, SOURCE 14 checks, repository 38-file
 inventory/provenance, PowerShell 7 and Windows PowerShell 5.1 each 59 focused
 assertions, and the disposable `0.3.3` lifecycle self-test.
 
@@ -166,6 +211,13 @@ controller-side.
 
 ## Next gate
 
+Complete the approved [v0.3.4 publication](#v034-publication)
+using the final reviewed input, then record the observed public identities.
+Retain prior installation and approval-failure evidence and all recovery copies.
+Fresh-task loading, runtime behavior and performance remain separately scoped.
+
+### Retained delivery and installation scopes
+
 B2 public-release and stable-copy acceptance is durably recorded. No further B2
 effect is authorized by this state transition. The confirmed `0.3.2` local
 installation is complete. The local source commit
@@ -186,6 +238,10 @@ No further environment changes are authorized. Commit, push, tag/Release and
 new model/runtime-effect claims are not established by this source work.
 
 ## Documentation impact
+
+- 0.3.4: one catalog description, current candidate/map, validation identity
+  pins and existing documentation consumers. Prior candidates/maps and release
+  records remain unchanged; production installation logic is unchanged.
 
 - `0.3.3`: entrypoint and Native/Text references plus the existing case record
   own the preparation/reuse change. Root presentation content is retained;
