@@ -2,12 +2,27 @@
 
 ## v0.3.4 publication verification
 
-The publication target is the complete reviewed source diff plus current
-documentation and provenance consumers, with package tree `0547154333ea4da6ed307b851becad6c8b52c9b4`.
-Run the affected source check before the final repository check and independent
-review; bind their results to this input. The public commit, annotated tag and
-Release require readback after the authorized transaction. This checkpoint
-claims no new installer lifecycle, model, fresh-task loading or efficacy result.
+SOURCE 14 checks and repository 40 mapped files passed for the final publication
+input, with terminal exit code 0. Where applicable, SOURCE preceded repository
+validation; actual-source checks after applying reviewed records also passed.
+The complete diff and Release notes received independent read-only review.
+R1 identified PUB-R1-01 (P2): the new PowerShell Release linked to
+missing lifecycle trust instructions. Both README languages now describe
+independent current/target trust, exact source, dry-run and apply, and
+recovery limits. R2 closed the finding with no new findings.
+
+Reviewed source was committed as `08ee94624254ddeff750ead062358108d15d10f3`. Staged blob identity,
+the commit's package tree `0547154333ea4da6ed307b851becad6c8b52c9b4`, and clean postcommit
+working-tree state were verified. The public annotated tag and Release were
+created with the approved version and read back against the exact commit.
+Title and body matched the reviewed notes (normalizing line endings and final
+newlines); the Release was public, non-prerelease and Latest, with old tags
+unchanged. [State](STATE.md#v034-publication) owns public identities.
+
+This closeout changes existing publication records and their mapping/checker
+consumers only. Package, installer, historical candidates, tagged source and
+published notes retain their bytes. No additional installer lifecycle, model,
+fresh-task loading, cross-Harness or efficacy result is claimed.
 
 ## Current verification selection
 

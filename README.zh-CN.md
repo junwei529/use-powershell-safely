@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-当前版本 **v0.3.4**。[发布状态](docs/skills/use-powershell-safely/STATE.md#v034-publication)。
+最新正式版本：**[v0.3.4](https://github.com/junwei529/use-powershell-safely/releases/tag/v0.3.4)**。[发布核验记录](docs/skills/use-powershell-safely/STATE.md#v034-publication)。
 
 **帮助 AI 在 Windows 上把命令执行对。**
 

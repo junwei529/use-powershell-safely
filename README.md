@@ -2,7 +2,7 @@
 
 [简体中文](README.zh-CN.md)
 
-Version **v0.3.4**. [Publication status](docs/skills/use-powershell-safely/STATE.md#v034-publication).
+Latest release: **[v0.3.4](https://github.com/junwei529/use-powershell-safely/releases/tag/v0.3.4)**. [Verified publication](docs/skills/use-powershell-safely/STATE.md#v034-publication).
 
 **Help AI run commands correctly on Windows.**
 

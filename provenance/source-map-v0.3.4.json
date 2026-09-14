@@ -83,8 +83,8 @@
           "source_path": "docs/skills/use-powershell-safely/README.md"
         }
       ],
-      "target_normalized_sha256": "350c7c475e29eb3a8027ea2cb1c4b3513fd1708c0e336925c984a1a6a7bde15f",
-      "target_sha256": "350c7c475e29eb3a8027ea2cb1c4b3513fd1708c0e336925c984a1a6a7bde15f",
+      "target_normalized_sha256": "f35b4aaf47e47e38e0813c4b1e8b07cc9437c0b2e054ef32ea00a966f3bc4525",
+      "target_sha256": "f35b4aaf47e47e38e0813c4b1e8b07cc9437c0b2e054ef32ea00a966f3bc4525",
       "transform": "Repository-native 0.3.3 source, validation or documentation update; original source identity retained"
     },
     {
@@ -98,8 +98,8 @@
           "source_path": "docs/skills/use-powershell-safely/README.zh-CN.md"
         }
       ],
-      "target_normalized_sha256": "b7ff76934347291596659ec47b2602750551ea4aea9e209212ac1b6692d63042",
-      "target_sha256": "b7ff76934347291596659ec47b2602750551ea4aea9e209212ac1b6692d63042",
+      "target_normalized_sha256": "06c7738a88e4bfe191f4c619cd641768ce9e8c8d55eea342a5bce4ba34579f5e",
+      "target_sha256": "06c7738a88e4bfe191f4c619cd641768ce9e8c8d55eea342a5bce4ba34579f5e",
       "transform": "Repository-native 0.3.3 source, validation or documentation update; original source identity retained"
     },
     {
@@ -158,8 +158,8 @@
           "source_path": "docs/skills/use-powershell-safely/STATE.md"
         }
       ],
-      "target_normalized_sha256": "8d18e26efc100683c2f4913e9b0992fc3efcb8e7a3dbb224fbc53b862cc1cf8f",
-      "target_sha256": "8d18e26efc100683c2f4913e9b0992fc3efcb8e7a3dbb224fbc53b862cc1cf8f",
+      "target_normalized_sha256": "4b9a5e57c725eec962262c95db25e17bbf57f7df4c30cf988ab5dfa5648022e8",
+      "target_sha256": "4b9a5e57c725eec962262c95db25e17bbf57f7df4c30cf988ab5dfa5648022e8",
       "transform": "Repository-native 0.3.3 source, validation or documentation update; original source identity retained"
     },
     {
@@ -173,8 +173,8 @@
           "source_path": "docs/skills/use-powershell-safely/VERIFICATION.md"
         }
       ],
-      "target_normalized_sha256": "5d8c8d577c7d8dea0a48c0f52bfaef07d1c5dd12f0ba6519f76939cc8941af3e",
-      "target_sha256": "5d8c8d577c7d8dea0a48c0f52bfaef07d1c5dd12f0ba6519f76939cc8941af3e",
+      "target_normalized_sha256": "5f3efe1253b69075d83d08b3da05863542c17fac2e0c251d5f56b0691fdeeed9",
+      "target_sha256": "5f3efe1253b69075d83d08b3da05863542c17fac2e0c251d5f56b0691fdeeed9",
       "transform": "Repository-native 0.3.3 source, validation or documentation update; original source identity retained"
     },
     {

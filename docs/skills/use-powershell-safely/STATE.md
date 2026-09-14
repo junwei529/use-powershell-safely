@@ -2,18 +2,24 @@
 
 ## v0.3.4 publication
 
-The user authorized final checks and independent review, commit and normal
-fast-forward push, then a new annotated `v0.3.4` tag and public GitHub Release.
-This publication includes the accepted source and local installation records;
-it does not repeat or extend their runtime or installed-copy qualifications.
-The package tree is `0547154333ea4da6ed307b851becad6c8b52c9b4`.
+Status: **PUBLISHED_VERIFIED**, observed `2026-09-14T03:17:25Z`.
 
-This is the pre-publication source checkpoint: remote effects are pending.
-After publication, record the observed commit, peeled tag and Release identity
-here without moving the tag. Preserve all previous candidates, failed evidence,
-tags and Releases. The next gate is final-input review and the authorized
-publication transaction; new installs, global configuration and model experiments
-are outside this publication scope.
+| Public identity | Verified value |
+| --- | --- |
+| Immutable source commit | `08ee94624254ddeff750ead062358108d15d10f3` |
+| Annotated tag | `v0.3.4`; object `271ca54ddff960aa9adfa1e9f8cd1ceb0f7f310c`, peeled to the source commit above |
+| GitHub Release | [v0.3.4](https://github.com/junwei529/use-powershell-safely/releases/tag/v0.3.4), id `388128636`; non-draft, non-prerelease, Latest at publication |
+| Installable package tree | `0547154333ea4da6ed307b851becad6c8b52c9b4` |
+
+The authenticated repository owner, push capability, exact remote main and absent
+new tag were checked before publication. Main and the new annotated tag were
+pushed atomically, then the Release title, reviewed body, target commit and Latest
+state were read back. The old `v0.3.0` tag object remained unchanged.
+
+The default branch may advance with this records-only closeout or later changes;
+the immutable tag continues to identify the source commit above. Publication
+does not extend the earlier local installation, model, loading or efficacy
+evidence. Historical candidates, failures and recovery records retain their scope.
 
 ## Current repository guidance refinement
 
@@ -211,10 +217,10 @@ controller-side.
 
 ## Next gate
 
-Complete the approved [v0.3.4 publication](#v034-publication)
-using the final reviewed input, then record the observed public identities.
-Retain prior installation and approval-failure evidence and all recovery copies.
-Fresh-task loading, runtime behavior and performance remain separately scoped.
+The [v0.3.4 publication](#v034-publication) is complete.
+No publication action remains. Verify current Git state before new work, retain
+prior installation and approval-failure evidence and recovery records, and keep
+fresh-task loading, runtime behavior and performance separately scoped.
 
 ### Retained delivery and installation scopes
 
