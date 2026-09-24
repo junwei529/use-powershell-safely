@@ -1,5 +1,112 @@
 # Use PowerShell Safely Verification
 
+## v0.3.6 publication gate
+
+The publication source must retain the accepted five-file package tree
+`3e5e3f6463ad582e1279a94e27c36b07225127e2`. The full outgoing diff,
+including untracked candidate and mapping files, requires independent commit
+review after the current documentation and Release body are stable. SOURCE
+and repository/provenance checks must pass on those final bytes. Fast-forward
+main, annotated tag, Release target/body/state and any post-publication records
+are separate observed results, not implied by local source checks. The frozen
+v0.3.0 `CHANGELOG.md` cannot be rewritten as a 0.3.6 note without invalidating
+historical evidence.
+
+## Unreleased 0.3.6 verification
+
+The current 0.3.6 entrypoint links to the existing Native reference's Runtime
+Readiness procedure. The five-file shape and the retained 0.3.5 evidence below
+are unchanged. Current SOURCE, repository/provenance, focused boundary and
+managed-install checks bind the v0.3.6 candidate and source map; test results
+are distinct from installation evidence. SOURCE passed 14/14 checks, the
+repository/provenance check passed 44 mapped files, the focused boundary
+checker passed 59 assertions on each of PowerShell 7 and Windows PowerShell
+5.1, metadata validation passed, and the disposable managed lifecycle self-test
+passed for 0.3.6. All returned terminal exit 0. The current managed-install
+dry run bound source identity and target tree without applying a write.
+
+The independent cold R1 inspected the cumulative actual diff, four untracked
+candidate/map identities, necessary consumers and source checks, with no
+actionable finding. Automatic approval rejected the first two exact update
+attempts before process start, including one after a direct readback of the
+original user authorization. A direct user reply in the action task then
+authorized the exact managed update and ACL check. That one update installed
+MANAGED 0.3.6 and produced five source-matching files and a valid receipt.
+
+The update wrapper returned exit 1 because its exact-SDDL postflight found
+Windows-reordered inherited allow ACEs on eight nodes. Read-only follow-up
+confirmed unchanged owner/control fields and the same allow ACE multiset on
+all nine nodes; the root SDDL was exact. No further ACL mutation was made.
+Ordinary sandbox access read all five files and the receipt, with 5/5 hashes
+matching the 0.3.6 candidate. The complete old package, receipt, ACL record
+and rollback source are retained outside discovery roots; the 0.3.6-to-0.3.5
+manager rollback dry run passed with terminal exit 0. The same independent R
+reviewed these permission and installation results without a new finding.
+Fresh-task loading and
+natural adherence remain `UNKNOWN`.
+
+## Retained 0.3.5 verification
+
+That checkpoint's subject was the bounded timestamp-guidance source revision.
+SOURCE passed all 14 existing checks, followed by the repository binding check
+with 42 mapped files; metadata validation passed. The existing PowerShell
+checker passed 59 assertions on both PowerShell 7 and Windows PowerShell 5.1
+with the updated package pin. These results have terminal exit code 0.
+
+A separate synthetic method sample passed 13 assertions on PowerShell 7.6.3
+and 7 on Windows PowerShell 5.1. The former returned DateTime by default,
+preserved the raw strings with `DateKind String`, and retained explicit offsets
+with `Offset`; the latter had no `DateKind` parameter but its default parser
+preserved the sample strings. Equivalent offsets, the open lower and closed
+upper endpoints, and the timezone-free coverage gap were verified from the
+explicit original values. This does not generalize a parser guarantee to
+unexamined inputs or turn parameter absence into a required shell upgrade.
+
+The first 5.1 sample failed before timestamp assertions because the temporary
+harness wrapped its array result as one pipeline object. A read-only probe
+isolated that representation difference; direct-assignment normalization
+corrected the harness. The failed result remains evidence and did not justify
+changing the package scope. Independent read-only R1 inspected all 15 changed
+paths, the full reconstructed diff, 41 baseline and 43 candidate identities,
+necessary semantic context and the exact-target application script. It returned
+no actionable findings. The primary maintainer's mechanical record closeout
+changes only State, Verification and their source-map bindings; package,
+candidate and other reviewed inputs remain unchanged. Repository binding is
+refreshed for those records before exact source application and readback.
+
+The first real application stopped at its Git ownership preflight before any
+source writes. A command-scoped trust setting for the exact fixed repository
+address resolved that execution boundary without changing Git configuration.
+The same independent reviewer inspected the complete one-line application
+script difference and record closeout as R2, with no findings. The reviewed
+application then returned exit code 0 and verified all 43 source file hashes.
+Only State, Verification and their source-map bindings change in the final
+records-only closeout; package and other reviewed source inputs are unchanged.
+
+The source delivery did not include installation. A subsequent, separately
+authorized local update received independent R3 review with no findings.
+Review covered the exact target and source bindings, package and receipt,
+link and path checks, all nine nodes' owner and permissions, retained recovery
+input, the one-use application marker, same-volume directory replacement and
+bounded failure recovery. Ordinary access to the private preparation evidence
+was denied; an authorized read-only inspection confirmed the prepared inputs
+and unchanged live copy. That denial remains preparation evidence.
+
+The actual update and ordinary-reader postflight both completed with exit
+code 0. Status is MANAGED 0.3.5, package tree
+`e92783850c3a26c6427e8b1bf7742e702b5aaae2`, and receipt SHA-256
+`f1e4afb9c72b3099e9dc4e38939a64e9631cdf24e7a3d1572e09333c04c600b7`.
+All five installed files match the source package; nine nodes' original owner
+and permissions and the destination parent context are preserved. The old
+0.3.4 package, receipt and permission recovery input remain outside discovery
+roots. The final records-only closeout updates State, Verification, both README
+languages and their source-map bindings; reviewed package bytes are unchanged.
+
+No new model qualification, host-setting change or full historical
+lifecycle/adversarial matrix was run. Passing deterministic checks, installation
+or a written case does not establish fresh-task loading or natural model
+adherence. Prior 0.3.4 evidence below retains its original scope.
+
 ## v0.3.4 publication verification
 
 SOURCE 14 checks and repository 40 mapped files passed for the final publication
@@ -36,9 +143,9 @@ installer or historical adversarial matrix. Actual installation retains its
 identity, permission and postflight checks, and frozen prior contracts retain
 their original gates. Historical results below are not fresh runs by implication.
 
-The current repository-guidance refinement changes AGENTS and documentation;
+The earlier repository-guidance refinement changed AGENTS and documentation;
 the already checked package description revision retains its existing bytes
-and version. Final repository checks passed on the actual updated source
+and version at that checkpoint. Final repository checks passed on that source
 with 40 mapped files. Independent review found no unresolved findings in
 this refinement. Earlier paired installation attempts were rejected before
 process creation and remain retained evidence. After direct user approval,
@@ -238,7 +345,7 @@ passing. Its external-link sentinel used the deterministic index-link-mode
 branch, not a real host symlink. This adds checker rejection evidence, not model
 qualification or new installed-copy behavior.
 
-## Current 0.3.4 verification subject
+## Retained 0.3.4 verification subject
 
 The user-confirmed revision shortens only the catalog description, preserving
 pre-command material-boundary and diagnostic triggers and ordinary-task
@@ -352,7 +459,7 @@ python -B scripts/check_repository.py --json
 This verifies exact Git-blob identity for unchanged exact inputs, rewritten
 target hashes and retained original source mappings, expected package and
 evaluation shape, UTF-8/BOM and Markdown-link boundaries, and publication safety.
-The default route uses `provenance/source-map-v0.3.4.json`, checks its pinned
+The default route uses `provenance/source-map-v0.3.6.json`, checks its pinned
 source-mapping projection, and separately verifies the frozen historical map and
 release objects. It does not assume the former source repository is present.
 An identity mismatch is a failing current check, not an accepted closeout state.
@@ -432,7 +539,7 @@ disposable symlink or used the deterministic index-link-mode branch.
 pwsh -NoLogo -NoProfile -NonInteractive -File evals/check-powershell-boundaries.ps1
 ```
 
-For current `0.3.4`, this command verifies its pinned package manifest and then
+For current `0.3.6`, this command verifies its pinned package manifest and then
 runs all focused assertions. The earlier checkpoint stopped at the old package
 manifest gate and did not run its later assertions.
 

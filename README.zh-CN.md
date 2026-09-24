@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-最新正式版本：**[v0.3.4](https://github.com/junwei529/use-powershell-safely/releases/tag/v0.3.4)**。[发布核验记录](docs/skills/use-powershell-safely/STATE.md#v034-publication)。
+最新正式版本见 [GitHub Releases](https://github.com/junwei529/use-powershell-safely/releases)；源码、安装与发布证据见 [State](docs/skills/use-powershell-safely/STATE.md)。
 
 **帮助 AI 在 Windows 上把命令执行对。**
 
@@ -54,7 +54,7 @@ $use-powershell-safely
 [`skills/use-powershell-safely/`](skills/use-powershell-safely/)。冻结的 migration
 与 `v0.3.0` baseline 保留了源提交
 `80910a8b2375a11be897e9660c4b00a06d00dd13` 的 package 字节；当前 working
-source 已包含 [State](docs/skills/use-powershell-safely/STATE.md) 记录的 `0.3.4` 描述精简增量。
+source 已包含 [State](docs/skills/use-powershell-safely/STATE.md) 记录的 `0.3.6` 入口精简及保留的 `0.3.5` 时间与 JSON 增量。
 
 ## v0.3.0 public Release
 
@@ -91,9 +91,31 @@ broad efficacy 仍为 `UNKNOWN`。
 用于恢复。新任务加载、模型 qualification 与 publication 尚未证明；冻结的
 `v0.3.0` 证据保持不变。当前验证入口及保留的历史失败记录见
 [Verification](docs/skills/use-powershell-safely/VERIFICATION.md)；当前来源映射为
-[`provenance/source-map-v0.3.4.json`](provenance/source-map-v0.3.4.json)。
+[`provenance/source-map-v0.3.6.json`](provenance/source-map-v0.3.6.json)。
 
-## 当前 0.3.4 源码
+## 当前 0.3.6 源码
+
+用户确认的未发布 0.3.6 让 Skill 入口复用同包现有的
+[Runtime Readiness](skills/use-powershell-safely/references/native-process-boundaries.md#runtime-readiness)
+步骤。运行时和能力证据、5.1/7 兼容性、版本与安装决定、进程终态及授权边界
+仍由原有内容维护。当前候选和映射分别为
+[v0.3.6](release/v0.3.6-candidate.json) 与
+[source-map-v0.3.6](provenance/source-map-v0.3.6.json)；交付证据和限制见
+[State](docs/skills/use-powershell-safely/STATE.md) 与
+[Verification](docs/skills/use-powershell-safely/VERIFICATION.md)。正式发布仍为 0.3.4。
+本机托管副本现为 0.3.6，五个文件与源码一致；授权与 ACL 后置检查证据见 State。
+
+## 保留的 0.3.5 源码
+
+保留的未单独发布的 0.3.5 在现有 Text reference 中补充 JSON 时间戳的实际类型、
+时区和区间比较语义，以及 `DateKind` 的运行时能力检查；既有案例和身份消费者
+同步当前候选。[State](docs/skills/use-powershell-safely/STATE.md) 和
+[Verification](docs/skills/use-powershell-safely/VERIFICATION.md) 分开记录源码检查、
+安装和自然效果。经单独授权的本地托管安装在该检查点为 0.3.5，源码身份、普通读者
+访问和原权限保留均已核验；正式发布仍为 0.3.4。新任务加载和自然遵循效果
+仍未验证。
+
+## 保留的 0.3.4 源码
 
 用户确认的 0.3.4 仅精简目录中的 description，保留命令前的材料边界触发、
 故障诊断和普通任务排除条件。正文、references、agent metadata 和案例定义不变。
@@ -122,33 +144,33 @@ receipt 与 managed 状态；新任务加载和模型行为仍未验证，详见
 ## 托管安装、更新与回退
 
 使用已发布 tag 的不可变 checkout，并核对它解析到的准确 commit。工具内置的
-信任表仅包含 `0.3.0`。对于 `0.3.4`，应独立于待验证 checkout 保留 GitHub Release
-公布的 package tree：`0547154333ea4da6ed307b851becad6c8b52c9b4`。
-不能只从待验证的 candidate 或已安装 receipt 中抄取信任值。
+信任表仅包含 `0.3.0`。本次 `0.3.6` 预定 package tree 为
+`3e5e3f6463ad582e1279a94e27c36b07225127e2`；发布后应独立核对 GitHub Release
+并在 checkout 之外保留该信任值，不能只从待验证的 candidate 或已安装 receipt 中抄取。
 
-在已核对的 `v0.3.4` 仓库根目录运行以下示例，并将带引号的占位符替换为准确路径
+在已核对的 `v0.3.6` 仓库根目录运行以下示例，并将带引号的占位符替换为准确路径
 或独立核实的身份。以下命令均为 dry-run；`install` 要求目标不存在，`update` 和
 `rollback` 要求目标为未漂移、带有效 receipt 的托管副本。
 
 ```text
-python -B scripts/manage_install.py install --source . --destination "<destination>" --expected-version 0.3.4 --trusted-target-package-tree 0547154333ea4da6ed307b851becad6c8b52c9b4
-python -B scripts/manage_install.py update --source . --destination "<destination>" --expected-version 0.3.4 --trusted-current-package-tree "<independently-retained-current-tree>" --trusted-target-package-tree 0547154333ea4da6ed307b851becad6c8b52c9b4
+python -B scripts/manage_install.py install --source . --destination "<destination>" --expected-version 0.3.6 --trusted-target-package-tree 3e5e3f6463ad582e1279a94e27c36b07225127e2
+python -B scripts/manage_install.py update --source . --destination "<destination>" --expected-version 0.3.6 --trusted-current-package-tree "<independently-retained-current-tree>" --trusted-target-package-tree 3e5e3f6463ad582e1279a94e27c36b07225127e2
 ```
 
 `--trusted-target-package-tree` 验证将要安装的版本；
 `--trusted-current-package-tree` 验证目标位置的当前版本。当前版本不在内置信任表中时
-必须提供后者，包括当前副本已经是 `0.3.4` 的情况；当前为 `0.3.0` 时可省略后者。
-实际获准完成 `0.3.4` 更新后，用其公开 tree 核对状态：
+必须提供后者，包括当前副本已经是 `0.3.6` 的情况；当前为 `0.3.0` 时可省略后者。
+实际获准完成 `0.3.6` 更新后，用其独立核对的 tree 检查状态：
 
 ```text
-python -B scripts/manage_install.py status --destination "<destination>" --trusted-current-package-tree 0547154333ea4da6ed307b851becad6c8b52c9b4
+python -B scripts/manage_install.py status --destination "<destination>" --trusted-current-package-tree 3e5e3f6463ad582e1279a94e27c36b07225127e2
 ```
 
-从 `0.3.4` 回退时，应提前保留旧版不可变 source 及其独立核实的 tree；更新成功后，
+从 `0.3.6` 回退时，应提前保留旧版不可变 source 及其独立核实的 tree；更新成功后，
 工具可能清理临时备份。使用当前工具，将旧 source 和版本作为回退目标：
 
 ```text
-python -B scripts/manage_install.py rollback --source "<verified-older-checkout>" --destination "<destination>" --expected-version "<older-version>" --trusted-current-package-tree 0547154333ea4da6ed307b851becad6c8b52c9b4 --trusted-target-package-tree "<independently-retained-older-tree>"
+python -B scripts/manage_install.py rollback --source "<verified-older-checkout>" --destination "<destination>" --expected-version "<older-version>" --trusted-current-package-tree 3e5e3f6463ad582e1279a94e27c36b07225127e2 --trusted-target-package-tree "<independently-retained-older-tree>"
 ```
 
 `uninstall` 使用与 `status` 相同的 destination 和 current-tree 参数，也默认 dry-run。

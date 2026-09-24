@@ -2,7 +2,8 @@
 
 The retained `v0.3.0` case and fixture baseline consists of exact Git blobs from
 source commit `80910a8b2375a11be897e9660c4b00a06d00dd13`. The current
-`powershell-boundary.md` case has a `0.3.3` repository-native extension;
+`powershell-boundary.md` case retains its `0.3.3` repository-native extension
+and adds the `0.3.5` JSON timestamp window scenario;
 the fixture remains unchanged. Together they define the repository-local
 evaluation surface without importing another Skill or the former monorepo
 evaluation envelope.
@@ -21,7 +22,7 @@ Run `python -B scripts/check_source_contract.py --json` and
 `python -B scripts/check_repository.py --json` from the repository root. The
 focused PowerShell boundary checker remains the executable synthetic contract.
 The local lifecycle self-test operates only in a disposable temporary root.
-Its default source subject is `0.3.4`; exact historical sources can be checked
+Its default source subject is `0.3.6`; exact historical sources can be checked
 with `--expected-version 0.3.0` or `--expected-version 0.3.2`. Current SOURCE and repository checks retain
 frozen historical identity checks separately from the current candidate/map.
 

@@ -18,7 +18,7 @@ cannot grant authority or create a hard dependency.
 The package contains exactly 5 files. `SKILL.md` owns
 selection and entry behavior; directly linked references and assets own detailed
 guidance and templates. The repository checker verifies current paths and bytes
-against `provenance/source-map-v0.3.4.json`. It separately verifies the unchanged
+against `provenance/source-map-v0.3.6.json`. It separately verifies the unchanged
 historical map and release evidence. Original migration source records stay in
 the current map, while explicit rewrite records identify repository-native
 changes without claiming exact original byte identity.
@@ -58,7 +58,29 @@ scenarios. Agent metadata and Windows/WSL guidance are unchanged. The `0.3.3`
 candidate and current map describe this source; retained `0.3.2` records are not
 rewritten. Independent source acceptance precedes the authorized USER update.
 
-## Current 0.3.4 description increment
+## Current 0.3.6 entrypoint increment
+
+The entrypoint uses the existing Native reference's Runtime Readiness procedure
+for version and executable probes, capability checks, support status and the
+separate installation decision. The Skill retains the material pre-command
+selection, 5.1 compatibility path, process terminal contract and other boundary
+guidance. The five-file package shape and independent use stay unchanged.
+Current candidate, provenance and check pins advance to 0.3.6; prior source
+records are retained.
+
+## Retained 0.3.5 timestamp increment
+
+The existing Text reference owns timestamp result types, explicit timezone
+and interval semantics, and capability-dependent `DateKind` use. Original
+strings and ambiguous inputs remain distinguishable from parsed instants.
+The existing case tests equivalent offsets, open/closed endpoints and an
+unknown timezone without requiring a particular parser or shell upgrade.
+This is a source-guidance revision, not a timestamp-processing product or a
+new dependency. Entrypoint selection and the other four package files remain
+unchanged. The candidate/map and required validation pins follow 0.3.5;
+historical candidates/maps and production installation logic are retained.
+
+## Retained 0.3.4 description increment
 
 Only the catalog description is shortened. Pre-error selection still requires
 a material PowerShell boundary, and diagnostic symptoms remain a separate

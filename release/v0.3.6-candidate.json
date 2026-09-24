@@ -1,0 +1,26 @@
+{
+  "candidate_state": "SOURCE_READY_FOR_ASSESSMENT",
+  "evidence_limits": {
+    "fresh_task_loading_and_behavior": "UNKNOWN",
+    "model_qualification": "UNKNOWN",
+    "public_release": "UNKNOWN"
+  },
+  "package": {
+    "file_count": 5,
+    "files": {
+      "SKILL.md": "7133ec11c0de5f3f6c2b0401c8b076b3f2158e1eeed247f5769bf0092178635f",
+      "agents/openai.yaml": "3b61f94eec7d23407bd114a80281e2ddee7ea463d39cfc50d1ab3d172cf142df",
+      "references/native-process-boundaries.md": "b1b4c821bc78a85196953917f2ad9a1678a062e142b5c9ec5e9aba06b4c74e75",
+      "references/text-encoding-boundaries.md": "513e17e974e60b9cc8c2af3529aa92566f76139d56f75f39b1e6fc9111d70c19",
+      "references/windows-wsl-boundaries.md": "a492416e56d669fca71a5d3f3d94e744301959eda45780913091f489360e55fa"
+    },
+    "installer_mapping_sha256": "f162275f1aac1d0576f90a64ecfa107597c960ac7649ece2d2dc3284c935ef8a",
+    "path": "skills/use-powershell-safely",
+    "sha256": "4196bcd484d06b51e95eded6d2c93a56c5616c090f6ba3aff6deff18409aa98d",
+    "tree": "3e5e3f6463ad582e1279a94e27c36b07225127e2"
+  },
+  "product": "use-powershell-safely",
+  "public_identity": "junwei529/use-powershell-safely",
+  "schema": "use-powershell-safely-local-release-candidate/v1",
+  "version": "0.3.6"
+}

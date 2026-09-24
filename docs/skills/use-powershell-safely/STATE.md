@@ -1,5 +1,81 @@
 # Use PowerShell Safely State
 
+## v0.3.6 publication preparation
+
+The authorized publication subject is the accepted five-file 0.3.6 package,
+tree `3e5e3f6463ad582e1279a94e27c36b07225127e2`. It cumulatively includes
+the unpublished 0.3.5 JSON timestamp guidance and case, then the 0.3.6
+Runtime Readiness entrypoint reuse. The public target is this repository's
+`main`, a new annotated `v0.3.6` tag and a formal GitHub Release. At source
+freeze these external effects are pending; their observed identities belong
+in a separate post-publication record. The 0.3.6 package and local managed
+copy already match, so publication does not repeat installation or ACL work.
+
+`CHANGELOG.md` remains the frozen v0.3.0 release-note identity checked by the
+historical candidate and repository verifier. The cumulative 0.3.5/0.3.6
+changes are described in this State, both README languages and the reviewed
+v0.3.6 Release body. No earlier tag, candidate, map, receipt, failure or
+publication evidence is reinterpreted as a new version's effect.
+
+## Unreleased 0.3.6 entrypoint revision
+
+The user-confirmed 0.3.6 source shortens the entrypoint's duplicate runtime
+readiness checklist by linking to the existing Native reference procedure.
+It retains the 5.1/7 compatibility choice, capability and support checks,
+installation authorization, and original process-result contract. The
+[candidate](../../../release/v0.3.6-candidate.json) and
+[current map](../../../provenance/source-map-v0.3.6.json) bind the five-file
+package and its repository consumers. Prior 0.3.5 source, installation and
+review evidence remains a separate, retained checkpoint below. This revision
+does not publish a new release or establish fresh-task loading or natural
+adherence. See [Verification](VERIFICATION.md#unreleased-036-verification) for
+current checks and limits.
+
+The source checks and first cold independent review passed without a new
+finding. The execution environment first rejected the managed update twice
+before process start: authorization in task history and delegation did not
+count as direct authorization in the action task. After the user explicitly
+authorized the exact target and 0.3.6 update in that task, the same managed
+update ran once. The installed copy is MANAGED 0.3.6; all five files match
+the source candidate and are readable under ordinary sandbox permissions.
+
+The update wrapper returned exit 1 at its exact SDDL postflight: Windows
+reordered inherited allow ACEs on eight of nine nodes. Subsequent read-only
+checks found the same owner/control fields and ACE multiset on all nine nodes,
+with only allow ACEs; the root SDDL remained byte-identical. No additional ACL
+write or rollback was needed. The complete previous 0.3.5 package, receipt,
+original ACL record and a manager-compatible rollback source remain outside
+Skill discovery roots; a 0.3.6-to-0.3.5 rollback dry run passed. This local
+installation does not establish fresh-task loading or natural adherence.
+
+## Retained 0.3.5 timestamp revision
+
+The user-confirmed 0.3.5 source revises the existing Text reference's JSON
+timestamp guidance, one existing evaluation case, and required documentation
+and identity consumers. The [candidate](../../../release/v0.3.5-candidate.json)
+binds the five-file package. Source maintenance, necessary checks, independent
+read-only review and same-scope correction were authorized. Source checks and
+independent review are complete. R1 inspected the whole 15-path increment and
+necessary context with no findings. R2 reviewed a command-scoped Git trust
+adjustment to the application script and the mechanical records, also with no
+findings. Exact source application and all 43 file readbacks completed with
+exit code 0. The source writer is closed after this records-only closeout; no
+separate Planner acceptance layer is added. The package remains uncommitted
+and unpublished.
+
+The source delivery initially excluded installation. After separate direct
+authorization, the local managed copy was updated to 0.3.5 and verified under
+ordinary reader permissions. The reviewed installation preserves all nine
+nodes' owner and permissions, the destination parent context, and the complete
+previous 0.3.4 package and receipt outside discovery roots for rollback. Both
+the update and ordinary-reader postflight completed with exit code 0. The
+source and installation writers are closed after the records-only closeout;
+there is no remaining installation action. The published release remains
+0.3.4. Commit, push and release remain separate effects; personal settings
+and host permissions are unchanged. Historical candidates, maps, failures, reviews and
+installation evidence retain their scope. [Verification](VERIFICATION.md#unreleased-035-verification)
+owns current checks and limits; natural adherence remains `UNKNOWN`.
+
 ## v0.3.4 publication
 
 Status: **PUBLISHED_VERIFIED**, observed `2026-09-14T03:17:25Z`.
@@ -29,21 +105,21 @@ the current description version are unchanged. Source application and final
 repository verification completed with exit 0, following independent review
 of this refinement. The primary owner verified delivery; no separate Planner
 acceptance is claimed. Earlier installation-authorization refusals remain
-retained evidence. After the user's direct approval, the reviewed local update
-and ordinary-reader postflight completed; current installation evidence is below.
+retained evidence. The 0.3.4 update and ordinary-reader postflight completed
+after direct approval; that historical installation evidence is below. The
+0.3.5 installation at that checkpoint is recorded above.
 
-## Current implementation
+## Retained 0.3.4 implementation and installation
 
-Canonical editable source is the 5-file package under
-[`skills/use-powershell-safely/`](../../../skills/use-powershell-safely/). It is
-currently the user-confirmed 0.3.4 source with package tree
+The accepted 0.3.4 source was the five-file package under
+[`skills/use-powershell-safely/`](../../../skills/use-powershell-safely/), with package tree
 0547154333ea4da6ed307b851becad6c8b52c9b4 and SOURCE-list digest 07487f2c94805bd1a76411464a0b6905ef025d03f35f18e803413b4bfc2c1339.
 Only the catalog description changes from 0.3.3, retaining material pre-command
 and diagnostic triggers and ordinary-task exclusions. The body and the other
 four package files are byte-identical to 0.3.3; existing safeguards, runtime
 reuse and reference routing remain in their previous owners.
 
-The current managed USER copy is `0.3.4`, matching the source tree above.
+The managed USER copy at that checkpoint was `0.3.4`, matching the source tree above.
 The actual update, ordinary-reader verification and native managed status
 passed. All original permissions are preserved, and the complete previous
 `0.3.3` copy and receipt are retained outside discovery roots for rollback.
@@ -217,6 +293,17 @@ controller-side.
 
 ## Next gate
 
+The current 0.3.6 source and local managed copy are the active delivery
+subject, with the authorization refusal and exact-SDDL postflight failure
+retained above and in [Verification](VERIFICATION.md#unreleased-036-verification).
+Publication and natural behavior remain separate evidence classes.
+
+The bounded 0.3.5 source package and separately authorized local installation
+have completed their checks and independent reviews. Exact application,
+readback and ordinary-reader verification passed; both writers are closed.
+No further source or installation action remains. Publication requires a
+separate decision. Natural adherence remains an observation gap.
+
 The [v0.3.4 publication](#v034-publication) is complete.
 No publication action remains. Verify current Git state before new work, retain
 prior installation and approval-failure evidence and recovery records, and keep
@@ -244,6 +331,15 @@ No further environment changes are authorized. Commit, push, tag/Release and
 new model/runtime-effect claims are not established by this source work.
 
 ## Documentation impact
+
+- 0.3.6: entrypoint Runtime Readiness reuse, new current candidate/map,
+  affected documentation and verification pins. Prior candidate/map, case
+  definitions, frozen history, and production installer trust logic remain.
+
+- 0.3.5: one package reference, the existing timestamp scenario, current
+  candidate/map, verification identity pins and affected documentation.
+  The frozen Changelog, earlier candidates/maps and publication evidence are
+  retained. Installer changes are limited to self-test subject selection.
 
 - 0.3.4: one catalog description, current candidate/map, validation identity
   pins and existing documentation consumers. Prior candidates/maps and release

@@ -8,8 +8,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "skills" / "use-powershell-safely"
-CURRENT_CANDIDATE = ROOT / "release" / "v0.3.4-candidate.json"
-CURRENT_PACKAGE_TREE = "0547154333ea4da6ed307b851becad6c8b52c9b4"
+CURRENT_CANDIDATE = ROOT / "release" / "v0.3.6-candidate.json"
+CURRENT_PACKAGE_TREE = "3e5e3f6463ad582e1279a94e27c36b07225127e2"
 HISTORICAL_PACKAGE_TREE = "7e10775d423bfb08bc4ad6388875b7277ce3c18c"
 HISTORICAL_MAP_SHA256 = "87d150637f20beaa802c69dfd7621214ace939522274943733f4d3517be74204"
 CANDIDATE = ROOT / "release" / "v0.3.0-candidate.json"
@@ -121,7 +121,7 @@ def check_current_candidate(value, package_tree, package_hashes):
         "schema": "use-powershell-safely-local-release-candidate/v1",
         "product": "use-powershell-safely",
         "public_identity": "junwei529/use-powershell-safely",
-        "version": "0.3.4",
+        "version": "0.3.6",
         "candidate_state": "SOURCE_READY_FOR_ASSESSMENT",
         "package": {
             "path": "skills/use-powershell-safely",
@@ -248,14 +248,19 @@ def main():
                 "POSIX-only work",
             ],
         ),
-        "command.readiness_and_authority": contains_all(
-            skill,
-            [
+        "command.readiness_and_authority": (
+            contains_all(skill, [
                 "parse the exact payload without executing it",
                 "New-Item` exposes `-Path`, not `-LiteralPath`",
                 "$LASTEXITCODE` belongs to a native process contract",
-                "Detection alone never authorizes installation",
-            ],
+                "[Runtime Readiness](references/native-process-boundaries.md#runtime-readiness)",
+                "Detection never authorizes installation",
+            ])
+            and contains_all(native, [
+                "## Runtime Readiness",
+                "## Installation Is A Separate Authorized Action",
+                "Keep resolution, launch, output-contract, and support status separate",
+            ])
         ),
         "native.identity_arguments_streams_and_exit": contains_all(
             native,

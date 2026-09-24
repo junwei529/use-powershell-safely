@@ -98,6 +98,28 @@ encoding defaults. Use explicit call-site behavior or a byte-oriented writer.
   prove the consumer accepts a hashtable. Do not claim that `-AsHashtable`
   preserves duplicate JSON member names. If duplicate identity is material,
   reject the input or choose a parser whose explicit contract satisfies it.
+- Treat timestamp conversion as a schema and comparison boundary. Preserve
+  the original timestamp text and inspect the parser's actual result type
+  before filtering, sorting, or serializing time-bearing JSON. Display output
+  and successful parsing do not prove that the original timezone, offset,
+  precision, or string representation was preserved.
+- When original timestamp strings are required, first check whether the
+  selected `ConvertFrom-Json` exposes `DateKind`. PowerShell 7.5 and later
+  provide `-DateKind String`; use it only when that representation matches
+  the consumer contract. `Utc` and `Offset` serve explicit typed contracts;
+  they are not interchangeable defaults. If the parameter is unavailable,
+  use an already available parser with a suitable explicit contract, or
+  report the capability gap. Do not upgrade the shell, install a dependency,
+  or mandate Python solely to avoid that decision.
+- Before a time-window comparison, establish the source timezone or offset
+  and the interval's inclusive/exclusive endpoints. Parse known instants and
+  both endpoints explicitly and compare them on a common time basis. Do not
+  reinterpret a timezone-free value as local or UTC without a source contract,
+  or rely on lexicographic ordering across mixed timestamp representations.
+  For the material comparison, verify an equivalent-offset pair, both interval
+  boundaries, and a representative parsed value. Report ambiguous or
+  unsupported timestamps as a coverage limit instead of silently including
+  or excluding them.
 - Do not rewrite the input before reproducing a parser failure. A rewrite can
   remove the evidence by changing BOM, newline, normalization, or encoding.
 - Distinguish a semantic text hash from a raw byte hash. State whether newline

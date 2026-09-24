@@ -1,5 +1,35 @@
 # Provenance And Transformation Boundary
 
+## v0.3.6 publication boundary
+
+The intended public package is the accepted five-file tree
+`3e5e3f6463ad582e1279a94e27c36b07225127e2`, covering the retained 0.3.5
+timestamp delta and the 0.3.6 entrypoint delta. Publication preparation does
+not alter package bytes or original migration lineage. The historical
+`CHANGELOG.md` and v0.3.0 release candidate remain byte-frozen; the reviewed
+v0.3.6 GitHub Release body carries the cumulative public notes. Observed
+commit, tag and Release identities are recorded only after those effects.
+
+## Current 0.3.6 entrypoint delta
+
+Only `SKILL.md` changes inside the five-file package. It points to the existing
+Runtime Readiness procedure in the Native reference while retaining the
+entrypoint's version, installation and result boundaries. The new
+[candidate](release/v0.3.6-candidate.json) and
+[current map](provenance/source-map-v0.3.6.json) bind the source and repository
+consumers. The 0.3.5 map and candidate remain historical snapshots; original
+migration lineage and frozen publication evidence retain their identities.
+
+## Retained 0.3.5 timestamp delta
+
+Only `references/text-encoding-boundaries.md` changes inside the five-file
+package. The existing case and necessary documentation and identity consumers
+follow that source revision. The [retained map](provenance/source-map-v0.3.5.json)
+and [candidate](release/v0.3.5-candidate.json) bind the new bytes while retaining
+original migration lineage. Prior maps, candidates, the frozen Changelog and
+release evidence retain their bytes. Installer self-test subject selection
+follows the new candidate; production installation and trust logic do not change.
+
 ## v0.3.4 publication boundary
 
 The publication packages the accepted current source unchanged. Its installable
@@ -85,7 +115,7 @@ from the source-mapping projection so the checker's own target hash is not circu
 five-file package and both digest formats as a source-assessment snapshot.
 It records no future commit, model qualification, publication, or release receipt.
 
-## Current 0.3.4 description delta
+## Retained 0.3.4 description delta
 
 Only SKILL.md description changes inside the five-file package. The body and
 all other package files retain their 0.3.3 bytes. The new candidate and

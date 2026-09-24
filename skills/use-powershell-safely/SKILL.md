@@ -84,34 +84,19 @@ remain outside the Skill even within a larger workflow that selected it.
 
 ## Start With Runtime And Boundary Readiness
 
-- Do not run a version probe for every routine cmdlet. Probe when the task
-  materially depends on text encoding, native argument passing, stream
-  behavior, WSL transport, or PowerShell-version compatibility.
-- Before relying on version-specific behavior, use already verified facts for
-  the unchanged runtime, or inspect its edition, version, and executable when
-  those facts are missing or no longer reliable:
+Before relying on version-specific encoding, arguments, streams, WSL transport
+or APIs, reuse verified unchanged-runtime facts or establish the actual edition,
+version, executable and required capabilities. Ordinary cmdlets need no version
+probe. Follow [Runtime Readiness](references/native-process-boundaries.md#runtime-readiness)
+for probes and the separate resolution, launch, output-contract and support checks.
 
-```powershell
-$PSVersionTable.PSEdition
-$PSVersionTable.PSVersion
-$PSHOME
-@(
-    Get-Command pwsh -CommandType Application -All -ErrorAction SilentlyContinue
-)
-```
-
-- Prefer a supported PowerShell 7 release for modern UTF-8, native-command, and
-  WSL workflows when the target modules and scripts are compatible. Keep a
-  Windows PowerShell 5.1 path when a legacy module or host requires it.
-- If no usable `pwsh` exists and the current task would materially benefit from
-  PowerShell 7, explain the task-specific benefit, note that 7 installs
-  side-by-side with 5.1, and ask whether the user wants the official
-  installation path. Detection alone never authorizes installation.
-- Read the runtime-readiness and installation sections in
-  [Native And Process Boundaries](references/native-process-boundaries.md)
-  before calling a resolved executable usable or recommending a version or
-  installation method. Resolution, launch, probe output, and support status are
-  separate facts.
+Prefer a supported PowerShell 7 release when compatible; retain Windows
+PowerShell 5.1 for a legacy module or host that requires it. If no usable `pwsh`
+exists, propose installation only for a concrete task benefit and explain that
+7 installs side-by-side with 5.1. Read the same reference's readiness and
+[installation](references/native-process-boundaries.md#installation-is-a-separate-authorized-action)
+sections before calling a runtime usable or recommending a version/method.
+Detection never authorizes installation.
 
 ## Classify Evidence Before Generalizing
 

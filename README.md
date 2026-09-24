@@ -2,7 +2,7 @@
 
 [简体中文](README.zh-CN.md)
 
-Latest release: **[v0.3.4](https://github.com/junwei529/use-powershell-safely/releases/tag/v0.3.4)**. [Verified publication](docs/skills/use-powershell-safely/STATE.md#v034-publication).
+See [GitHub Releases](https://github.com/junwei529/use-powershell-safely/releases) for the latest published version and [State](docs/skills/use-powershell-safely/STATE.md) for source, installation and publication evidence.
 
 **Help AI run commands correctly on Windows.**
 
@@ -55,7 +55,7 @@ This repository is the independent local product repository for
 [`skills/use-powershell-safely/`](skills/use-powershell-safely/). The frozen
 migration and `v0.3.0` baseline preserved package bytes from source commit
 `80910a8b2375a11be897e9660c4b00a06d00dd13`; the current working source contains
-a `0.3.4` source increment described in [State](docs/skills/use-powershell-safely/STATE.md).
+a `0.3.6` source increment described in [State](docs/skills/use-powershell-safely/STATE.md).
 
 ## v0.3.0 public release
 
@@ -98,7 +98,34 @@ the frozen `v0.3.0` evidence remains unchanged.
 See [Verification](docs/skills/use-powershell-safely/VERIFICATION.md) for the
 current verification entry points and retained historical failure records.
 
-## Current 0.3.4 source
+## Current 0.3.6 source
+
+The user-confirmed, unreleased 0.3.6 entrypoint reuses the package's existing
+[Runtime Readiness](skills/use-powershell-safely/references/native-process-boundaries.md#runtime-readiness)
+procedure. Runtime and capability evidence, PowerShell 5.1 and 7 compatibility,
+version and installation decisions, process results, and authorization boundaries
+remain in their existing owners. The current source candidate and mapping are
+[v0.3.6](release/v0.3.6-candidate.json) and
+[source-map-v0.3.6](provenance/source-map-v0.3.6.json); see
+[State](docs/skills/use-powershell-safely/STATE.md) and
+[Verification](docs/skills/use-powershell-safely/VERIFICATION.md) for delivery
+evidence and limits. At this preparation checkpoint, the published release was 0.3.4.
+The local managed copy is 0.3.6 and matches all five source files; see State
+for the retained approval and ACL postflight evidence.
+
+## Retained 0.3.5 source
+
+The retained, unpublished 0.3.5 source clarifies JSON timestamp result
+types, explicit timezone and interval semantics, and version-dependent
+`DateKind` capability in the existing Text reference. The existing evaluation
+case and identity consumers follow this candidate. [State](docs/skills/use-powershell-safely/STATE.md)
+and [Verification](docs/skills/use-powershell-safely/VERIFICATION.md) separate
+source checks from installation and natural behavior. The separately authorized
+local managed installation was 0.3.5 at that checkpoint; its source identity, ordinary-reader
+access and preserved permissions were verified. The published release remains
+0.3.4. Fresh-task loading and natural adherence remain unverified.
+
+## Retained 0.3.4 source
 
 The user-confirmed 0.3.4 revision shortens only the catalog description while
 retaining the material pre-command and diagnostic triggers and ordinary-task
@@ -126,43 +153,44 @@ model behavior remain unproven; see [State](docs/skills/use-powershell-safely/ST
 - Evaluation cases and fixtures: [`evals/`](evals/README.md)
 - Standalone verification: [`scripts/check_repository.py`](scripts/check_repository.py)
 - Source mapping: [`PROVENANCE.md`](PROVENANCE.md),
-  [current mapping](provenance/source-map-v0.3.4.json), and
+  [current mapping](provenance/source-map-v0.3.6.json), and
   [frozen historical mapping](provenance/source-map.json)
 
 ## Managed install, update and rollback
 
 Use an immutable checkout of the published tag and verify its resolved commit.
-The tool's built-in trust map contains only `0.3.0`. For `0.3.4`, retain the
-package tree published in the GitHub Release independently of that checkout:
-`0547154333ea4da6ed307b851becad6c8b52c9b4`. Do not take a new trust value solely
-from the candidate or installed receipt that it is meant to verify.
+The tool's built-in trust map contains only `0.3.0`. The intended `0.3.6`
+package tree is `3e5e3f6463ad582e1279a94e27c36b07225127e2`; after publication,
+verify it independently against the GitHub Release and retain that trust value
+apart from the checkout. Do not take it solely from the candidate or installed
+receipt that it is meant to verify.
 
-Run these examples from the verified `v0.3.4` repository root and replace quoted
+Run these examples from the verified `v0.3.6` repository root and replace quoted
 placeholders with your exact paths or independently verified identities. These
 commands are dry-runs; `install` requires an absent destination, while `update`
 and `rollback` require an unchanged managed copy with a valid receipt.
 
 ```text
-python -B scripts/manage_install.py install --source . --destination "<destination>" --expected-version 0.3.4 --trusted-target-package-tree 0547154333ea4da6ed307b851becad6c8b52c9b4
-python -B scripts/manage_install.py update --source . --destination "<destination>" --expected-version 0.3.4 --trusted-current-package-tree "<independently-retained-current-tree>" --trusted-target-package-tree 0547154333ea4da6ed307b851becad6c8b52c9b4
+python -B scripts/manage_install.py install --source . --destination "<destination>" --expected-version 0.3.6 --trusted-target-package-tree 3e5e3f6463ad582e1279a94e27c36b07225127e2
+python -B scripts/manage_install.py update --source . --destination "<destination>" --expected-version 0.3.6 --trusted-current-package-tree "<independently-retained-current-tree>" --trusted-target-package-tree 3e5e3f6463ad582e1279a94e27c36b07225127e2
 ```
 
 `--trusted-target-package-tree` verifies the version being installed.
 `--trusted-current-package-tree` verifies the version already at the destination;
 it is required when that version is absent from the built-in map, including
-`0.3.4`. For a current `0.3.0` copy, the current-tree argument may be omitted.
-After an authorized `0.3.4` update, verify status with its published tree:
+`0.3.6`. For a current `0.3.0` copy, the current-tree argument may be omitted.
+After an authorized `0.3.6` update, verify status with its independently checked tree:
 
 ```text
-python -B scripts/manage_install.py status --destination "<destination>" --trusted-current-package-tree 0547154333ea4da6ed307b851becad6c8b52c9b4
+python -B scripts/manage_install.py status --destination "<destination>" --trusted-current-package-tree 3e5e3f6463ad582e1279a94e27c36b07225127e2
 ```
 
-To roll back from `0.3.4`, retain the older immutable source and its independently
+To roll back from `0.3.6`, retain the older immutable source and its independently
 verified tree; a successful update may remove its temporary backup. Use the
 current tool with the older source and version as the target:
 
 ```text
-python -B scripts/manage_install.py rollback --source "<verified-older-checkout>" --destination "<destination>" --expected-version "<older-version>" --trusted-current-package-tree 0547154333ea4da6ed307b851becad6c8b52c9b4 --trusted-target-package-tree "<independently-retained-older-tree>"
+python -B scripts/manage_install.py rollback --source "<verified-older-checkout>" --destination "<destination>" --expected-version "<older-version>" --trusted-current-package-tree 3e5e3f6463ad582e1279a94e27c36b07225127e2 --trusted-target-package-tree "<independently-retained-older-tree>"
 ```
 
 `uninstall` takes the same destination and current-tree options as `status` and

@@ -60,6 +60,22 @@ These are reviewable scenario contracts, not executed model qualifications.
 | A routine boundary-free cmdlet follows a complex command | Do not apply the full Skill or reload Native/Text/WSL references merely because the larger workflow selected it |
 | A command fails or completes without a reliable result | Diagnose the implicated boundary with the smallest relevant evidence; expand only when necessary |
 
+### JSON timestamp window scenario
+
+Filter JSON records into `(2030-01-01T00:00:00Z, 2030-01-01T00:00:01Z]`.
+The records contain `2030-01-01T00:00:00Z`,
+`2030-01-01T08:00:00+08:00`, `2030-01-01T00:00:01Z`, and
+`2030-01-01T00:00:01`. The schema requires an explicit timezone or offset.
+Do not modify the input, install a parser, or change the host timezone.
+
+Expected handling: preserve original strings and inspect the JSON parser's
+actual result types. The first two values denote the excluded lower boundary;
+the third is the included upper boundary. The timezone-free fourth value is
+an explicit coverage gap. Check `DateKind` capability before using `String`,
+`Utc`, or `Offset`. If unavailable, use an already available suitable parser
+or return a capability gap. Parsing, window counts, and this scenario contract
+do not establish model adherence or complete inspection of another dataset.
+
 ### Failure diagnosis request
 
 > The verifier says the JSON is invalid only when run from PowerShell. Diagnose the problem. Do not modify system configuration.
