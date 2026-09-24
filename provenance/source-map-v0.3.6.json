@@ -68,8 +68,8 @@
           "source_path": "docs/PROVENANCE.md"
         }
       ],
-      "target_normalized_sha256": "e6590d5c7fa9bf825d437ee7bd08cd59d7adcef774caebfc983df447fc07fa5b",
-      "target_sha256": "e6590d5c7fa9bf825d437ee7bd08cd59d7adcef774caebfc983df447fc07fa5b",
+      "target_normalized_sha256": "29cb7c79b6fc7a3696733c2b310c07c4de870e77e1e983916e12645233d24d2e",
+      "target_sha256": "29cb7c79b6fc7a3696733c2b310c07c4de870e77e1e983916e12645233d24d2e",
       "transform": "Repository-native 0.3.6 entrypoint or required consumer update; original source identity retained"
     },
     {
@@ -83,8 +83,8 @@
           "source_path": "docs/skills/use-powershell-safely/README.md"
         }
       ],
-      "target_normalized_sha256": "ee8fab46665f6ab72a47cfb86a783ce059f41b2306dd42425b95bd377a0f3b8d",
-      "target_sha256": "ee8fab46665f6ab72a47cfb86a783ce059f41b2306dd42425b95bd377a0f3b8d",
+      "target_normalized_sha256": "1c827a972d101063c4721a94af88f6161ba1315ebd90c921da92aba59666149c",
+      "target_sha256": "1c827a972d101063c4721a94af88f6161ba1315ebd90c921da92aba59666149c",
       "transform": "Repository-native 0.3.6 entrypoint or required consumer update; original source identity retained"
     },
     {
@@ -98,8 +98,8 @@
           "source_path": "docs/skills/use-powershell-safely/README.zh-CN.md"
         }
       ],
-      "target_normalized_sha256": "b80aaa7d1d5a5402c084675cee3e04b83fdaa501dc51e38074204ef18908dff4",
-      "target_sha256": "b80aaa7d1d5a5402c084675cee3e04b83fdaa501dc51e38074204ef18908dff4",
+      "target_normalized_sha256": "fb9cd93bb4b159c6a1c47742f823527219985bdcbfb075ff6f224fa03d53b122",
+      "target_sha256": "fb9cd93bb4b159c6a1c47742f823527219985bdcbfb075ff6f224fa03d53b122",
       "transform": "Repository-native 0.3.6 entrypoint or required consumer update; original source identity retained"
     },
     {
@@ -158,8 +158,8 @@
           "source_path": "docs/skills/use-powershell-safely/STATE.md"
         }
       ],
-      "target_normalized_sha256": "5cdc7d17af7a10c690642c5be31685ecd882387222f06bd283e4143c8b4496d0",
-      "target_sha256": "5cdc7d17af7a10c690642c5be31685ecd882387222f06bd283e4143c8b4496d0",
+      "target_normalized_sha256": "3b1af2352d63f1babdc023f277b8fefaf53be58a2014a225a6d9ca8ba3f985ec",
+      "target_sha256": "3b1af2352d63f1babdc023f277b8fefaf53be58a2014a225a6d9ca8ba3f985ec",
       "transform": "Repository-native 0.3.6 entrypoint or required consumer update; original source identity retained"
     },
     {
@@ -173,8 +173,8 @@
           "source_path": "docs/skills/use-powershell-safely/VERIFICATION.md"
         }
       ],
-      "target_normalized_sha256": "cea4e17bd743ae4df85d4a1d91428a0ae192a68dcf70c01da5dfd6372fe3009f",
-      "target_sha256": "cea4e17bd743ae4df85d4a1d91428a0ae192a68dcf70c01da5dfd6372fe3009f",
+      "target_normalized_sha256": "961fcac92f945dea33156705d62bbaa132e1ebf390c1c85cf0930383b9749312",
+      "target_sha256": "961fcac92f945dea33156705d62bbaa132e1ebf390c1c85cf0930383b9749312",
       "transform": "Repository-native 0.3.6 entrypoint or required consumer update; original source identity retained"
     },
     {

@@ -95,25 +95,27 @@ broad efficacy 仍为 `UNKNOWN`。
 
 ## 当前 0.3.6 源码
 
-用户确认的未发布 0.3.6 让 Skill 入口复用同包现有的
+已发布的 0.3.6 让 Skill 入口复用同包现有的
 [Runtime Readiness](skills/use-powershell-safely/references/native-process-boundaries.md#runtime-readiness)
 步骤。运行时和能力证据、5.1/7 兼容性、版本与安装决定、进程终态及授权边界
 仍由原有内容维护。当前候选和映射分别为
 [v0.3.6](release/v0.3.6-candidate.json) 与
 [source-map-v0.3.6](provenance/source-map-v0.3.6.json)；交付证据和限制见
 [State](docs/skills/use-powershell-safely/STATE.md) 与
-[Verification](docs/skills/use-powershell-safely/VERIFICATION.md)。正式发布仍为 0.3.4。
+[Verification](docs/skills/use-powershell-safely/VERIFICATION.md)。已核验的
+[v0.3.6 Release](https://github.com/junwei529/use-powershell-safely/releases/tag/v0.3.6)
+包含未单独发布的 0.3.5 源码增量。
 本机托管副本现为 0.3.6，五个文件与源码一致；授权与 ACL 后置检查证据见 State。
 
 ## 保留的 0.3.5 源码
 
-保留的未单独发布的 0.3.5 在现有 Text reference 中补充 JSON 时间戳的实际类型、
+保留的 0.3.5 源码增量在现有 Text reference 中补充 JSON 时间戳的实际类型、
 时区和区间比较语义，以及 `DateKind` 的运行时能力检查；既有案例和身份消费者
 同步当前候选。[State](docs/skills/use-powershell-safely/STATE.md) 和
 [Verification](docs/skills/use-powershell-safely/VERIFICATION.md) 分开记录源码检查、
 安装和自然效果。经单独授权的本地托管安装在该检查点为 0.3.5，源码身份、普通读者
-访问和原权限保留均已核验；正式发布仍为 0.3.4。新任务加载和自然遵循效果
-仍未验证。
+访问和原权限保留均已核验；当时正式发布仍为 0.3.4。该源码增量已纳入
+v0.3.6 Release。新任务加载和自然遵循效果仍未验证。
 
 ## 保留的 0.3.4 源码
 

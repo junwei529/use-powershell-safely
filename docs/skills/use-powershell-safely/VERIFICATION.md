@@ -1,5 +1,23 @@
 # Use PowerShell Safely Verification
 
+## v0.3.6 publication verification
+
+Independent R inspected the full 18-path outgoing diff, four newly tracked
+candidate/map files, necessary consumers and the complete Release body, with
+no P0/P1/P2 finding. SOURCE passed 14/14 checks, repository/provenance passed
+44 mapped files, and staged `diff --check` passed before source commit. The
+committed package tree is `3e5e3f6463ad582e1279a94e27c36b07225127e2`.
+
+An atomic push advanced remote `main` to source commit
+`ac5e422cf1732d50e5b0ac6a54805039ba98a108` and created annotated tag
+object `d2e01ddf1cfc5aeb524af0ebc42dd2db6495b573`, which peels to that
+commit. The GitHub Release readback returned ID `395421385`, tag `v0.3.6`,
+the exact commit target, `draft=false`, `prerelease=false`, and
+`published_at=2026-09-24T07:08:03Z`; `/releases/latest` returned the same ID.
+The Release body contains the reviewed cumulative 0.3.5/0.3.6 notes and the
+local installation evidence limits. This is publication verification, not
+fresh-task or natural-behavior verification.
+
 ## v0.3.6 publication gate
 
 The publication source must retain the accepted five-file package tree

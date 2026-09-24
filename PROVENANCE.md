@@ -1,5 +1,16 @@
 # Provenance And Transformation Boundary
 
+## v0.3.6 publication identity
+
+The reviewed source commit `ac5e422cf1732d50e5b0ac6a54805039ba98a108`
+contains the five-file package tree
+`3e5e3f6463ad582e1279a94e27c36b07225127e2`. The new annotated
+`v0.3.6` tag object `d2e01ddf1cfc5aeb524af0ebc42dd2db6495b573` peels
+to that commit. GitHub Release ID `395421385` is a published, non-prerelease
+Latest Release at the [v0.3.6 page](https://github.com/junwei529/use-powershell-safely/releases/tag/v0.3.6).
+This records observed publication identities without changing the original
+migration lineage or frozen historical candidate, map and Changelog bytes.
+
 ## v0.3.6 publication boundary
 
 The intended public package is the accepted five-file tree

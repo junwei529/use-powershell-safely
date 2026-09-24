@@ -1,5 +1,23 @@
 # Use PowerShell Safely State
 
+## v0.3.6 publication
+
+Status: **PUBLISHED_VERIFIED**, GitHub `published_at`
+`2026-09-24T07:08:03Z`. The reviewed 18-path source commit is
+`ac5e422cf1732d50e5b0ac6a54805039ba98a108`; remote `main` pointed to that
+commit when the Release was published. The new annotated `v0.3.6` tag object is
+`d2e01ddf1cfc5aeb524af0ebc42dd2db6495b573` and peels to the same source
+commit. The [formal GitHub Release](https://github.com/junwei529/use-powershell-safely/releases/tag/v0.3.6)
+is ID `395421385`, with `draft=false`, `prerelease=false`, exact commit target,
+and a matching `/releases/latest` readback. The tagged five-file package tree is
+`3e5e3f6463ad582e1279a94e27c36b07225127e2`. The 0.3.5 source increment
+was included cumulatively; no separate 0.3.5 Release was created.
+
+This publication did not repeat the already authorized local managed update
+or ACL work. The installation evidence below retains its exact-SDDL wrapper
+failure and subsequent semantic ACL postflight. Fresh-task loading, natural
+model adherence and untested runtime behavior remain `UNKNOWN`.
+
 ## v0.3.6 publication preparation
 
 The authorized publication subject is the accepted five-file 0.3.6 package,
@@ -291,23 +309,14 @@ contexts, and broad product efficacy remain `UNKNOWN`. The retained legacy copy
 is preserved outside Skill discovery roots; its private recovery locator remains
 controller-side.
 
-## Next gate
+## Remaining evidence gaps
 
-The current 0.3.6 source and local managed copy are the active delivery
-subject, with the authorization refusal and exact-SDDL postflight failure
-retained above and in [Verification](VERIFICATION.md#unreleased-036-verification).
-Publication and natural behavior remain separate evidence classes.
-
-The bounded 0.3.5 source package and separately authorized local installation
-have completed their checks and independent reviews. Exact application,
-readback and ordinary-reader verification passed; both writers are closed.
-No further source or installation action remains. Publication requires a
-separate decision. Natural adherence remains an observation gap.
-
-The [v0.3.4 publication](#v034-publication) is complete.
-No publication action remains. Verify current Git state before new work, retain
-prior installation and approval-failure evidence and recovery records, and keep
-fresh-task loading, runtime behavior and performance separately scoped.
+The v0.3.6 source commit, annotated tag and formal Release are published and
+read back above. The local managed copy is 0.3.6; the two pre-start approval
+refusals and exact-SDDL wrapper failure remain in the installation record.
+Verify current Git and installed state before any future work. Fresh-task
+loading, natural adherence, runtime behavior outside tested environments and
+broad product efficacy remain separate, unverified questions.
 
 ### Retained delivery and installation scopes
 

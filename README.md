@@ -100,7 +100,7 @@ current verification entry points and retained historical failure records.
 
 ## Current 0.3.6 source
 
-The user-confirmed, unreleased 0.3.6 entrypoint reuses the package's existing
+The published 0.3.6 entrypoint reuses the package's existing
 [Runtime Readiness](skills/use-powershell-safely/references/native-process-boundaries.md#runtime-readiness)
 procedure. Runtime and capability evidence, PowerShell 5.1 and 7 compatibility,
 version and installation decisions, process results, and authorization boundaries
@@ -109,21 +109,24 @@ remain in their existing owners. The current source candidate and mapping are
 [source-map-v0.3.6](provenance/source-map-v0.3.6.json); see
 [State](docs/skills/use-powershell-safely/STATE.md) and
 [Verification](docs/skills/use-powershell-safely/VERIFICATION.md) for delivery
-evidence and limits. At this preparation checkpoint, the published release was 0.3.4.
+evidence and limits. The verified [v0.3.6 Release](https://github.com/junwei529/use-powershell-safely/releases/tag/v0.3.6)
+includes the retained 0.3.5 source changes without a separate 0.3.5 Release.
 The local managed copy is 0.3.6 and matches all five source files; see State
 for the retained approval and ACL postflight evidence.
 
 ## Retained 0.3.5 source
 
-The retained, unpublished 0.3.5 source clarifies JSON timestamp result
+The retained 0.3.5 source increment clarifies JSON timestamp result
 types, explicit timezone and interval semantics, and version-dependent
 `DateKind` capability in the existing Text reference. The existing evaluation
 case and identity consumers follow this candidate. [State](docs/skills/use-powershell-safely/STATE.md)
 and [Verification](docs/skills/use-powershell-safely/VERIFICATION.md) separate
 source checks from installation and natural behavior. The separately authorized
 local managed installation was 0.3.5 at that checkpoint; its source identity, ordinary-reader
-access and preserved permissions were verified. The published release remains
-0.3.4. Fresh-task loading and natural adherence remain unverified.
+access and preserved permissions were verified. The published release was
+0.3.4 at that checkpoint. The 0.3.5 source increment is included in the
+v0.3.6 Release. Fresh-task
+loading and natural adherence remain unverified.
 
 ## Retained 0.3.4 source
 
